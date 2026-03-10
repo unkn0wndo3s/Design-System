@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import Icon from '../icons/icon.svelte';
+  import Close from '~icons/my-icons/close';
 
 
   interface Props {
@@ -18,7 +18,7 @@
   {#if children}
     {@render children()}
   {/if}
-  <Icon type="close" size={24} />
+  <Close />
 </div>
 
 <style lang="scss" global>
