@@ -2,6 +2,10 @@ name: Publish Package
 
 on:
   push:
+    branches:
+      - main
+    paths:
+      - 'package.json'
     tags:
       - 'v*'
 
