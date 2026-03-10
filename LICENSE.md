@@ -1,6 +1,6 @@
 # LICENSE - Nova Design System (NDS)
 
-Copyright (c) 2026 [Ton Nom ou Nom de l'Organisation]
+Copyright (c) 2026 Unkn0wn
 
 ## 1. OWNERSHIP AND SCOPE
 Nova Design System (NDS), including its source code, components, documentation, and visual assets (icons, layout logic), is the property of its creator. This license applies to both public and private versions of the repository.
