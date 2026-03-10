@@ -1,9 +1,13 @@
 
 ---
 name: Bug Report
+
 about: Report a technical issue or visual glitch in NDS
+
 title: "[BUG] [Component Name] - Brief description"
+
 labels: bug
+
 assignees: ''
 ---
 
