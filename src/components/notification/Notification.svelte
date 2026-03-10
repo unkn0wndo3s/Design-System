@@ -21,5 +21,5 @@
 </div>
 
 <style lang="scss" global>
-  @import "./search.scss";
+  @import "./notification.scss";
 </style>
