@@ -8,7 +8,6 @@
     component: Button,
     tags: ['autodocs'],
     argTypes: {
-      backgroundColor: { control: 'color' },
       size: {
         control: { type: 'select' },
         options: ['Small', 'Medium', 'Large'],
