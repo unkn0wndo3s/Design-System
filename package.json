@@ -1,6 +1,6 @@
 {
 	"name": "@unkn0wn-pkgs/nds",
-	"version": "1.0.2-alpha.8",
+	"version": "1.0.2-alpha.9",
 	"versionTag": "alpha",
 	"license": "SEE LICENSE IN LICENSE.md",
 	"repository": {
@@ -78,7 +78,8 @@
 		"vitest": "^4.0.18"
 	},
 	"dependencies": {
-		"svelte":  "^5.51.0"
+		"svelte":  "^5.51.0",
+		"sass": "^1.97.3"
 	},
 	"keywords": [
 		"svelte"
