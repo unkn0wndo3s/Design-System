@@ -9,6 +9,7 @@ title: "[BUG] [Component Name] - Brief description"
 labels: bug
 
 assignees: ''
+
 ---
 
 # [Component Name] - Bug Description
