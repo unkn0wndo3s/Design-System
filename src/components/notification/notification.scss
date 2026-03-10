@@ -24,4 +24,8 @@
     background-color: var(--nds-info-high);
     color: var(--nds-info-low);
   }
+
+  & svg {
+    color: var(--nds-icon);
+  }
 }
