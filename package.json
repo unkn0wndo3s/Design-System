@@ -38,6 +38,7 @@
 		"@chromatic-com/storybook": "^5.0.1",
 		"@eslint/compat": "^2.0.2",
 		"@eslint/js": "^9.39.2",
+		"@iconify/json": "^2.2.448",
 		"@storybook/addon-a11y": "^10.2.15",
 		"@storybook/addon-docs": "^10.2.15",
 		"@storybook/addon-svelte-csf": "^5.0.11",
@@ -65,6 +66,7 @@
 		"svelte-check": "^4.4.2",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.54.0",
+		"unplugin-icons": "^23.0.1",
 		"vite": "^7.3.1",
 		"vite-plugin-devtools-json": "^1.0.0",
 		"vitest": "^4.0.18"
