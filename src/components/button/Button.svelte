@@ -1,16 +1,15 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte'; // Import du type pour les snippets
+  import type { Snippet } from 'svelte';
 
   interface Props {
     disabled?: boolean;
     size: 'Small' | 'Medium' | 'Large';
-    /** Le snippet qui remplace le slot par défaut */
+
     children?: Snippet; 
-    /** The onclick event handler */
+    
     onclick?: () => void;
   }
 
-  // On récupère children ici
   const { disabled, size, onclick, children, ...props }: Props = $props();
 </script>
 
