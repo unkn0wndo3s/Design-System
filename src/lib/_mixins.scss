@@ -1,0 +1,63 @@
+@mixin nds-body-small {
+    font-size: var(--nds-body-small-font-size);
+    line-height: var(--nds-body-small-line-height);
+    font-style: var(--nds-body-small-style);
+    font-family: var(--nds-font);
+    font-weight: var(--nds-body-small-font-weight);
+    letter-spacing: var(--nds-body-small-letter-spacing);
+}
+
+@mixin nds-body-medium {
+    font-size: var(--nds-body-medium-font-size);
+    line-height: var(--nds-body-medium-line-height);
+    font-style: var(--nds-body-medium-style);
+    font-family: var(--nds-font);
+    font-weight: var(--nds-body-medium-font-weight);
+    letter-spacing: var(--nds-body-medium-letter-spacing);
+}
+
+
+@mixin nds-body-large {
+    font-size: var(--nds-body-large-font-size);
+    line-height: var(--nds-body-large-line-height);
+    font-style: var(--nds-body-large-style);
+    font-family: var(--nds-font);
+    font-weight: var(--nds-body-large-font-weight);
+    letter-spacing: var(--nds-body-large-letter-spacing);
+}
+
+@mixin nds-heading-small {
+    font-size: var(--nds-heading-small-font-size);
+    line-height: var(--nds-heading-small-line-height);
+    font-style: var(--nds-heading-small-style);
+    font-family: var(--nds-font);
+    font-weight: var(--nds-heading-small-font-weight);
+    letter-spacing: var(--nds-heading-small-letter-spacing);
+}
+
+@mixin nds-heading-medium {
+    font-size: var(--nds-heading-medium-font-size);
+    line-height: var(--nds-heading-medium-line-height);
+    font-style: var(--nds-heading-medium-style);
+    font-family: var(--nds-font);
+    font-weight: var(--nds-heading-medium-font-weight);
+    letter-spacing: var(--nds-heading-medium-letter-spacing);
+}
+
+@mixin nds-display-small {
+    font-size: var(--nds-display-small-font-size);
+    line-height: var(--nds-display-small-line-height);
+    font-style: var(--nds-display-small-style);
+    font-family: var(--nds-font);
+    font-weight: var(--nds-display-small-font-weight);
+    letter-spacing: var(--nds-display-small-letter-spacing);
+}
+
+@mixin nds-display-medium {
+    font-size: var(--nds-display-medium-font-size);
+    line-height: var(--nds-display-medium-line-height);
+    font-style: var(--nds-display-medium-style);
+    font-family: var(--nds-font);
+    font-weight: var(--nds-display-medium-font-weight);
+    letter-spacing: var(--nds-display-medium-letter-spacing);
+}
