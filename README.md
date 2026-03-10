@@ -1,40 +1,58 @@
-# Nova Dseign System (NDS)
-Nova Design System (NDS) is a lightweight, responsive, and secure UI library built with **Svelte 5**. While developed primarily for personal projects, it is public and open for anyone to use or contribute to.
+# Nova Design System (NDS)
 
-## Features
-- Responsive by design: Components are built to look great on any screen size.
-- Security first: No use of unsafe practices; built-in protection against common vulnerabilities.
-- Dark mode reaady: Automatic theme switching with a dedicated toggle function.
-- Type safe: Built with TypeScript
+Nova Design System (NDS) is a lightweight, responsive, and secure UI library built with **Svelte**. While developed primarily for internal and personal projects, the library is open-source and welcomes community contributions.
 
-## Status: Alpha
-NDS is currently under developpment in **ALPHA**. The following components will be available:
-- Button
-- Checkbox
-- Dropdown
-- Toggle
-- Search Bar
-- Radio
-- Select
-- Badge
-- Table
-- Row
-- Cell
-- Tooltip
-- Paginating
-- Notifications
-- Loading Bar
+---
 
-## Installation 
-_coming soon_
+## Table of Contents
+1. [Overview](#overview)
+2. [Project Status](#project-status)
+3. [Core Principles](#core-principles)
+4. [Component Roadmap](#component-roadmap)
+5. [Installation](#installation)
+6. [Usage](#usage)
+7. [Theming and Variables](#theming-and-variables)
+8. [Contributing](#contributing)
+9. [Development and Documentation](#development-and-documentation)
+
+---
+
+## Overview
+NDS aims to provide a robust set of components that are easy to implement while maintaining high security standards and full responsiveness across all modern web platforms.
+
+## Project Status
+**Current Phase: ALPHA (In Development)** The library is currently undergoing heavy development. APIs and component structures are subject to change until the Beta release.
+
+## Core Principles
+* **Responsive Architecture:** All components are built with a mobile-first approach to ensure compatibility across various devices.
+* **Security-Centric:** NDS strictly avoids unsafe practices (such as raw HTML injection without sanitization) to protect applications from common vulnerabilities.
+* **Native Theming:** Features a built-in theme management system for seamless transitions between Light and Dark modes.
+* **Type Safety:** Fully written in TypeScript to provide an excellent developer experience and catch errors at compile time.
+
+## Component Roadmap
+
+### Alpha Components (Available or in progress)
+* **Actions:** Button, Dropdown, Search Bar, Toggle.
+* **Form Inputs:** Checkbox, Radio, Select.
+* **Data Display:** Badge, Table, Row, Cell, Tooltip, Paginating.
+* **Feedback:** Notifications, Loading Bar.
+
+### Beta Phase Objectives
+* **Palette Refinement:** Comprehensive review and expansion of the brand and functional color systems.
+* **Token Audit:** Standardization of sizing tokens including padding, radius, and margins.
+* **Component Variants:** Introduction of multiple size and emphasis variations for existing components.
+* **Custom Iconography:** Release of a proprietary, custom-designed icon set.
+
+## Installation
+The package is currently in private Alpha. Public installation will be enabled soon.
 ```bash
-npm install --
+# Coming soon
+npm install nova-design-system
 ```
-
 ## Usage
-### Basic component example
+### Basic Component Implementation
 ```html
-<script>
+<script lang="ts">
   import { Notification } from 'nova-design-system';
 </script>
 
@@ -42,25 +60,33 @@ npm install --
   This is a warning message.
 </Notification>
 ```
+## Theming and Variables
+NDS relies on a centralized Design Token system. All styling is controlled through CSS variables (custom properties) prefixed with `--nds-`.
 
-**Dev Note:** Within the NDS ecosystem, we never override variables locally. All tokens must be registered in the core system to maintain integrity.
-
-## Coming - Phase: Beta
-- Redefined Color Palette & Palette expansion.
-- Audit of sizing tokens (padding, radius, margins).
-- additional component variants.
-- Custom Icons: Introduction of a personal, unique icon set.
+**Implementation Rule**: To maintain design integrity, developers should never override variables locally within a component's scope. All modifications must be registered within the core system to ensure global consistency.
 
 ## Contributing
-contributions are welcome! Wether it's a bug report, a new component, or an icon, feel free to open a Pull Request.
+Contributions are welcome. Whether you are reporting a bug, suggesting a feature, or submitting a Pull Request, please follow the project's coding standards.
 
 ### Icon Contribution Policy
-By contributing a custom icon to NDS, you grant all users the right to use it freely in their projects. **No mandatory attribution to the creator is required** for end-users, ensuring a seamless experience for developers.
+By contributing a custom icon to NDS, you grant all users the right to use it freely in their projects. No mandatory attribution to the creator is required for end-users.
 
-## Documentation
-Currently, the documentation is available via Storybook within the repository
-1. Clone the repo
-2. Run `npm install`
-3. Run `npm run storybook`
+## Development and Documentation
+Documentation is managed via Storybook. To browse the component library locally:
 
-_A public URL for documentation will be available in the Beta phase.
+1. **Clone the repository:**
+```bash
+git clone https://github.com/unkn0wndo3s/Design-System.git
+```
+
+2. **Install dependacies:**
+```bash
+npm install
+```
+
+3. **Launch Storybook:**
+```bash
+npm run storybook
+```
+
+_Note: A public documentation URL will be hosted alongside the Beta release._
