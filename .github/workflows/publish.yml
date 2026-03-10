@@ -1,52 +1,25 @@
-name: Publish to NPM
+name: Publish Package
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'package.json'
+    tags:
+      - 'v*'
+
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Library
-        run: npm run build
-
-      - name: Check Version and Publish
-        id: publish_logic
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} 
-        run: |
-          PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          PACKAGE_NAME=$(node -p "require('./package.json').name")
-          CUSTOM_TAG=$(node -p "require('./package.json').versionTag || ''")
-          
-          echo "Target version: $PACKAGE_VERSION"
-          echo "Custom tag found: $CUSTOM_TAG"
-
-          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
-            echo "Version $PACKAGE_VERSION already exists on NPM. Skipping."
-            exit 0
-          fi
-
-          if [[ -z "$CUSTOM_TAG" || "$CUSTOM_TAG" == "latest" ]]; then
-            echo "Publishing as @latest"
-            npm publish dist --access public --tag latest
-          else
-            echo "Publishing with custom tag: @$CUSTOM_TAG"
-            npm publish dist --access public --tag "$CUSTOM_TAG"
-          fi
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      - run: npm publish
