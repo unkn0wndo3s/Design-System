@@ -27,5 +27,11 @@
 
   & svg {
     color: var(--nds-icon);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    &:hover {
+      color: var(--nds-interaction-low);
+    }
   }
 }
