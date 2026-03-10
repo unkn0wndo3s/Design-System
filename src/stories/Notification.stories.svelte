@@ -17,13 +17,12 @@
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Default" args={{ type: 'info' }} ></Story>
+<Story name="Default" args={{ type: 'info' }} >custom message</Story>
 
+<Story name="Information" args={{ type: 'info'}} >custom message</Story>
 
-<Story name="Information" args={{ type: 'info'}} ></Story>
+<Story name="Success" args={{ type: 'success' }} >success message</Story>
 
-<Story name="Success" args={{ type: 'success' }} ></Story>
+<Story name="Warning" args={{ type: 'warning' }} >warning message</Story>
 
-<Story name="Warning" args={{ type: 'warning' }} ></Story>
-
-<Story name="Error" args={{ type: 'error' }} ></Story>
+<Story name="Error" args={{ type: 'error' }} >error message</Story>
