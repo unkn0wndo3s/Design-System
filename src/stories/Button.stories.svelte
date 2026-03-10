@@ -1,7 +1,6 @@
 <script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Button from './Button.svelte';
-  import { fn } from 'storybook/test';
+  import Button from '../components/button/Button.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
@@ -12,20 +11,19 @@
       backgroundColor: { control: 'color' },
       size: {
         control: { type: 'select' },
-        options: ['small', 'medium', 'large'],
+        options: ['Small', 'Medium', 'Large'],
       },
-    },
-    args: {
-      onclick: fn(),
     }
   });
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Primary" args={{ primary: true, label: 'Button' }} />
+<Story name="Example" args={{ size: 'Medium' }} >example button</Story>
 
-<Story name="Secondary" args={{ label: 'Button' }} />
+<Story name="Small" args={{ size: 'Small'}}>small sized</Story>
 
-<Story name="Large" args={{ size: 'large', label: 'Button' }} />
+<Story name="Medium" args={{ size: 'Medium' }} >medium sized</Story>
 
-<Story name="Small" args={{ size: 'small', label: 'Button' }} />
+<Story name="Large" args={{ size: 'Large' }} >large sized</Story> 
+
+<Story name="Disabled" args={{ size: 'Medium', disabled: true}} >disabled button</Story>
