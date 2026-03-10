@@ -44,8 +44,8 @@ jobs:
           fi
           if [[ -z "$CUSTOM_TAG" || "$CUSTOM_TAG" == "latest" ]]; then
             echo "Publishing as @latest"
-            npm publish --tag latest
+            npm publish --access public --tag latest
           else
             echo "Publishing with custom tag: @$CUSTOM_TAG"
-            npm publish --tag "$CUSTOM_TAG"
+            npm publish --access public --tag "$CUSTOM_TAG"
           fi
