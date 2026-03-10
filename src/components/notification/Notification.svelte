@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import Close from '~icons/my-icons/close';
+  // @ts-expect-error - Icon library alias is configured externally
+  import Close from '~icons/my-icons/close'; 
 
 
   interface Props {
