@@ -1,65 +1,66 @@
-# Svelte library
+# Nova Dseign System (NDS)
+Nova Design System (NDS) is a lightweight, responsive, and secure UI library built with **Svelte 5**. While developed primarily for personal projects, it is public and open for anyone to use or contribute to.
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+## Features
+- Responsive by design: Components are built to look great on any screen size.
+- Security first: No use of unsafe practices; built-in protection against common vulnerabilities.
+- Dark mode reaady: Automatic theme switching with a dedicated toggle function.
+- Type safe: Built with TypeScript
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+## Status: Alpha
+NDS is currently under developpment in **ALPHA**. The following components will be available:
+- Button
+- Checkbox
+- Dropdown
+- Toggle
+- Search Bar
+- Radio
+- Select
+- Badge
+- Table
+- Row
+- Cell
+- Tooltip
+- Paginating
+- Notifications
+- Loading Bar
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+## Installation 
+_coming soon_
+```bash
+npm install --
 ```
 
-To recreate this project with the same configuration:
+## Usage
+### Basic component example
+```html
+<script>
+  import { Notification } from 'nova-design-system';
+</script>
 
-```sh
-# recreate this project
-npx sv@0.12.5 create --template library --types ts --add prettier devtools-json sveltekit-adapter="adapter:auto" eslint storybook --install npm DS
+<Notification type="warning">
+  This is a warning message.
+</Notification>
 ```
 
-## Developing
+**Dev Note:** Within the NDS ecosystem, we never override variables locally. All tokens must be registered in the core system to maintain integrity.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Coming - Phase: Beta
+- Redefined Color Palette & Palette expansion.
+- Audit of sizing tokens (padding, radius, margins).
+- additional component variants.
+- Custom Icons: Introduction of a personal, unique icon set.
 
-```sh
-npm run dev
+## Contributing
+contributions are welcome! Wether it's a bug report, a new component, or an icon, feel free to open a Pull Request.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Icon Contribution Policy
+By contributing a custom icon to NDS, you grant all users the right to use it freely in their projects. **No mandatory attribution to the creator is required** for end-users, ensuring a seamless experience for developers.
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+## Documentation
+Currently, the documentation is available via Storybook within the repository
+1. Clone the repo
+2. Run `npm install`
+3. Run `npm run storybook`
 
-## Building
-
-To build your library:
-
-```sh
-npm pack
-```
-
-To create a production version of your showcase app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
-```
+_A public URL for documentation will be available in the Beta phase.
