@@ -1,0 +1,42 @@
+@use '../../lib/assets.scss' as *;
+
+.button {
+  padding: var(--nds-spacing-xs);
+  border: none;
+  border-radius: var(--nds-radius-sm);
+  background-color: var(--nds-disabled-primary);
+  color: var(--nds-neutral-low);
+  &:hover {
+    background-color: var(--nds-interaction-primary);
+  }
+  &:active {
+    background-color: var(--nds-interaction-high);
+  }
+}
+.button--disabled {
+  background-color: var(--nds-disabled-primary);
+  color: var(--nds-disabled-medium);
+  cursor: not-allowed;
+  &:hover {
+      background-color: var(--nds-disabled-primary);
+  }
+  &:active {
+      background-color: var(--nds-disabled-primary);
+  }
+}
+
+.button--Small {
+  width: 100px;
+  height: 25px;
+  @include nds-body-small;
+}
+.button--Medium {
+  width: 150px;
+  height: 30px;
+  @include nds-body-medium;
+}
+.button--Large {
+  width: 200px;
+  height: 35px;
+  @include nds-body-large;
+}
