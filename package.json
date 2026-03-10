@@ -1,8 +1,12 @@
 {
 	"name": "@unkn0wn-pkgs/nds",
-	"version": "1.0.2-alpha.6",
+	"version": "1.0.2-alpha.7",
 	"versionTag": "alpha",
 	"license": "SEE LICENSE IN LICENSE.md",
+	"repository": {
+      "type": "git",
+      "url": "https://github.com/unkn0wndo3s/Design-System.git"
+    },
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
