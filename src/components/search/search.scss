@@ -1,0 +1,36 @@
+@use '../../lib/assets.scss' as *;
+
+.search {
+  padding: var(--nds-spacing-xs);
+  border: transparent;
+  border-radius: var(--nds-radius-sm);
+  background-color: var(--nds-disabled-primary);
+    color: var(--nds-neutral-low);
+  &::placeholder {
+    color: var(--nds-disabled-medium);
+    display: inline-flex;
+    align-items: center;
+    justify-content: left;
+    @include nds-body-small;
+  }
+  &:focus {
+    color: var(--nds-neutral-low);
+    border: none;
+    cursor: text;
+  }
+  &:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+}
+.search--disabled {
+  background-color: var(--nds-disabled-primary);
+  color: var(--nds-disabled-medium);
+  cursor: not-allowed;
+  &::placeholder {
+      background-color: var(--nds-disabled-primary);
+  }
+  &:active {
+      background-color: var(--nds-disabled-primary);
+  }
+}
