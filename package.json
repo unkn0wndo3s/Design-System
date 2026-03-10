@@ -1,7 +1,8 @@
 {
 	"name": "@unkn0wn-pkgs/nds",
-	"version": "1.0.2-alpha.2",
+	"version": "1.0.2-alpha.3",
 	"versionTag": "alpha",
+	"license": "SEE LICENSE IN LICENSE.md",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -71,6 +72,9 @@
 		"vite": "^7.3.1",
 		"vite-plugin-devtools-json": "^1.0.0",
 		"vitest": "^4.0.18"
+	},
+	"dependencies": {
+		"svelte":  "^5.51.0"
 	},
 	"keywords": [
 		"svelte"
