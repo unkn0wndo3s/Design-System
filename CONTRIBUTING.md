@@ -63,5 +63,8 @@ We strongly encourage contributors to write tests for every new feature:
 - **E2E Tests:** For complex interactions.
 Make sure all existing tests pass before submitting your PR.
 
+### Policy on Templates
+Please note that all Issues and Pull Requests must strictly follow the provided templates. **Any Pull Request or Issue that does not respect the template will be automatically rejected or closed without review.**
+
 ---
 Thank you for helping us make Nova Design System more robust!
