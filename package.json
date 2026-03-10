@@ -59,6 +59,7 @@
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.4.1",
 		"publint": "^0.3.17",
+		"sass": "^1.97.3",
 		"storybook": "^10.2.15",
 		"svelte": "^5.51.0",
 		"svelte-check": "^4.4.2",
