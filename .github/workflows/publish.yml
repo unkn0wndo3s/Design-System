@@ -28,6 +28,8 @@ jobs:
 
       - name: Check Version and Publish
         id: publish_logic
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} 
         run: |
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
           PACKAGE_NAME=$(node -p "require('./package.json').name")
@@ -40,10 +42,11 @@ jobs:
             echo "Version $PACKAGE_VERSION already exists on NPM. Skipping."
             exit 0
           fi
+
           if [[ -z "$CUSTOM_TAG" || "$CUSTOM_TAG" == "latest" ]]; then
             echo "Publishing as @latest"
-            npm publish --access public --tag latest
+            npm publish dist --access public --tag latest
           else
             echo "Publishing with custom tag: @$CUSTOM_TAG"
-            npm publish --access public --tag "$CUSTOM_TAG"
+            npm publish dist --access public --tag "$CUSTOM_TAG"
           fi
