@@ -1,6 +1,7 @@
 {
-	"name": "nova-ds",
-	"version": "0.0.1",
+	"name": "@unkn0wn-pkgs/nds",
+	"version": "1.0.1-alpha.2",
+	"versionTag": "alpha",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
