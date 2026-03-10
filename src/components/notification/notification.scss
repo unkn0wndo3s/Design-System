@@ -1,0 +1,27 @@
+@use '../../lib/assets.scss' as *;
+
+.notification {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--nds-radius-md);
+  padding: var(--nds-spacing-3xs) var(--nds-spacing-xs) ;
+  &--success {
+    background-color: var(--nds-success-high);
+    color: var(--nds-success-low);
+  }
+  &--error {
+    background-color: var(--nds-error-high);
+    color: var(--nds-error-low);
+  }
+  &--warning {
+    background-color: var(--nds-warning-high);
+    color: var(--nds-warning-low);
+  }
+  &--info {
+    background-color: var(--nds-info-high);
+    color: var(--nds-info-low);
+  }
+}
