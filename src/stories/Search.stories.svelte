@@ -14,7 +14,7 @@
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Default" args={{ placeholder: 'search text' }} />
+<Story name="Default" args={{ placeholder: 'search text' }} ></Story>
 
 
-<Story name="Disabled" args={{ placeholder: 'search text', disabled: true}} />
+<Story name="Disabled" args={{ placeholder: 'search text', disabled: true}} ></Story>
