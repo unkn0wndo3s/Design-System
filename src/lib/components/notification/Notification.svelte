@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  // @ts-expect-error - Icon library alias is configured externally
-  import Close from '~icons/my-icons/close'; 
+  import CloseIcon from '../icons/CloseIcon.svelte'; 
 
   let visible = $state(true);
 
@@ -35,7 +34,7 @@
     {/if}
 
     <button type="button" class="notification__close" aria-label="Close notification" onclick={handleClose}>
-      <Close />
+      <CloseIcon />
     </button>
   </div>
 {/if}

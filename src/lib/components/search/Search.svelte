@@ -1,6 +1,5 @@
 <script lang="ts">
-  // @ts-expect-error - Icon library alias is configured externally
-  import SearchIcon from '~icons/my-icons/search';
+  import SearchIcon from '../icons/SearchIcon.svelte';
   import type { HTMLInputAttributes } from 'svelte/elements';
 
   interface Props extends Omit<HTMLInputAttributes, 'placeholder' | 'disabled' | 'type'> {
