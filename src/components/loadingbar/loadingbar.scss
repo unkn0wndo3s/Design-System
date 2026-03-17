@@ -1,0 +1,61 @@
+@use '../../lib/assets.scss' as *;
+
+@keyframes loadingbar-indeterminate {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0%;
+    left: 100%;
+  }
+}
+
+.loadingbar {
+  position: relative;
+  width: 240px;
+  height: 8px;
+  display: flex;
+  align-items: center;
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #d9d9d9;
+    border-radius: var(--nds-spacing-2xs);
+    inset: 0;
+    overflow: hidden;
+  }
+
+  &__progress {
+    position: absolute;
+    height: 100%;
+    width: 42.08%;
+    background-color: var(--nds-info-medium);
+    border-radius: var(--nds-spacing-2xs);
+    top: 0;
+    transition: width 0.3s ease;
+  }
+
+  &--unknown {
+    .loadingbar__progress {
+      width: 0%;
+      left: 0;
+      animation: loadingbar-indeterminate 1.5s ease-in-out infinite;
+      transition: none;
+    }
+  }
+
+  &--known {
+    .loadingbar__progress {
+      width: 61.67%;
+      animation: none;
+      left: 0;
+    }
+  }
+}
