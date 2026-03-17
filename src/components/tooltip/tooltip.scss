@@ -1,0 +1,73 @@
+@use '../../lib/assets.scss' as *;
+
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: 159px;
+  min-height: 56px;
+  padding: var(--nds-spacing-md) 14px;
+  border-radius: var(--nds-radius-md);
+  background-color: var(--nds-neutral-low);
+  @include nds-body-small;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: inherit;
+    transform: rotate(45deg);
+  }
+
+  &__text {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--nds-default);
+  }
+
+  &--bottom-right::after {
+    right: 24px;
+    bottom: -7px;
+  }
+
+  &--bottom-left::after {
+    left: 24px;
+    bottom: -7px;
+  }
+
+  &--top-right::after {
+    right: 24px;
+    top: -7px;
+  }
+
+  &--top-left::after {
+    left: 24px;
+    top: -7px;
+  }
+
+  &--right::after {
+    right: -7px;
+    top: calc(50% - 7px);
+  }
+
+  &--left::after {
+    left: -7px;
+    top: calc(50% - 7px);
+  }
+
+  &--bottom::after {
+    left: calc(50% - 7px);
+    bottom: -7px;
+  }
+
+  &--top::after {
+    left: calc(50% - 7px);
+    top: -7px;
+  }
+}
