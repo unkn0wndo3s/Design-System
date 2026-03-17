@@ -14,7 +14,7 @@ const dirname =
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
 	plugins: [sveltekit(), devtoolsJson(), Icons({ compiler: 'svelte', customCollections: {
-		'my-icons': FileSystemIconLoader('./src/components/icons'),
+		'my-icons': FileSystemIconLoader('./src/lib/components/icons'),
 	}})],
 	test: {
 		projects: [
