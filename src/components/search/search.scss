@@ -1,36 +1,93 @@
 @use '../../lib/assets.scss' as *;
 
 .search {
-  padding: var(--nds-spacing-xs);
-  border: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nds-spacing-2xs);
+  width: 150px;
+  height: 30px;
+  box-sizing: border-box;
+  padding: var(--nds-spacing-2xs) var(--nds-spacing-xs);
+  border: var(--nds-border-thin) solid transparent;
   border-radius: var(--nds-radius-sm);
-  background-color: var(--nds-disabled-primary);
-    color: var(--nds-neutral-low);
-  &::placeholder {
-    color: var(--nds-disabled-medium);
+  background-color: var(--nds-neutral-low);
+  color: var(--nds-neutral-medium);
+  @include nds-body-small;
+
+  &__icon {
     display: inline-flex;
     align-items: center;
-    justify-content: left;
-    @include nds-body-small;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: var(--nds-neutral-medium);
+    flex-shrink: 0;
+
+    :global(svg) {
+      width: 16px;
+      height: 16px;
+    }
   }
-  &:focus {
-    color: var(--nds-neutral-low);
+
+  &__placeholder-text {
+    color: var(--nds-neutral-medium);
+    @include nds-body-small;
+    flex-shrink: 0;
+  }
+
+  &__caret {
+    display: none;
+    width: var(--nds-border-thin);
+    height: 20px;
+    background-color: var(--nds-neutral-medium);
+    flex-shrink: 0;
+  }
+
+  &__input {
+    width: 100%;
+    min-width: 0;
     border: none;
+    outline: none;
+    background: transparent;
+    color: var(--nds-neutral-high);
+    @include nds-body-small;
+
+    &::placeholder {
+      color: var(--nds-neutral-medium);
+    }
+  }
+
+  &:focus {
+    border: var(--nds-border-thin) solid transparent;
     cursor: text;
   }
+
+  &:focus-within &__caret {
+    display: block;
+  }
+
   &:focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
   }
 }
+
 .search--disabled {
-  background-color: var(--nds-disabled-primary);
+  background-color: var(--nds-disabled-low);
   color: var(--nds-disabled-medium);
   cursor: not-allowed;
-  &::placeholder {
-      background-color: var(--nds-disabled-primary);
+
+  .search__icon {
+    color: var(--nds-disabled-medium);
+    //background-color: var(--nds-disabled-medium);
   }
-  &:active {
-      background-color: var(--nds-disabled-primary);
+
+  .search__input {
+    color: var(--nds-disabled-medium);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--nds-disabled-medium);
+    }
   }
 }

@@ -1,26 +1,44 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
+  // @ts-expect-error - Icon library alias is configured externally
+  import SearchIcon from '~icons/my-icons/search';
+  import type { HTMLInputAttributes } from 'svelte/elements';
 
-  interface Props {
+  interface Props extends Omit<HTMLInputAttributes, 'placeholder' | 'disabled' | 'type'> {
     disabled?: boolean;
-    placeholder: string;
-
-    children?: Snippet; 
-    /** The onclick event handler */
-    onclick?: () => void;
+    placeholder?: string;
   }
 
-  const { disabled, placeholder, onclick, ...props }: Props = $props();
+  let inputValue = $state('');
+  let isFocused = $state(false);
+
+  const {
+    disabled = false,
+    placeholder = 'search',
+    ...props
+  }: Props = $props();
 </script>
 
-<input
-  type="text"
-  class={[`search`, disabled && 'search--disabled'].join(' ')}
-  placeholder={placeholder}
-  {...props}
-  {disabled}
-  {onclick}
-/>
+<label class={[`search`, disabled && 'search--disabled'].filter(Boolean).join(' ')}>
+  {#if !isFocused && !inputValue}
+    <span class="search__icon" aria-hidden="true">
+      <SearchIcon />
+    </span>
+    <span class="search__placeholder-text" aria-hidden="true">
+      {placeholder}
+    </span>
+  {/if}
+
+  <input
+    type="text"
+    class="search__input"
+    placeholder=""
+    bind:value={inputValue}
+    onfocus={() => (isFocused = true)}
+    onblur={() => (isFocused = false)}
+    {...props}
+    {disabled}
+  />
+</label>
 
 <style lang="scss" global>
   @import "./search.scss";

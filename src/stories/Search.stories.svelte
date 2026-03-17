@@ -8,13 +8,15 @@
     component: Search,
     tags: ['autodocs'],
     argTypes: {
-      placeholder: { control: 'string' },
+      placeholder: { control: { type: 'text' } },
+      disabled: { control: 'boolean' },
     }
   });
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Default" args={{ placeholder: 'search text' }} ></Story>
+<Story name="Default" args={{ placeholder: 'search' }} ></Story>
 
+<Story name="Focus" args={{ placeholder: 'search', autofocus: true }} ></Story>
 
-<Story name="Disabled" args={{ placeholder: 'search text', disabled: true}} ></Story>
+<Story name="Disabled" args={{ placeholder: 'search', disabled: true}} ></Story>
