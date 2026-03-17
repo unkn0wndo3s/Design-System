@@ -3,19 +3,27 @@
 
   interface Props {
     disabled?: boolean;
-    size: 'Small' | 'Medium' | 'Large';
+    size?: 'Small' | 'Medium' | 'Large';
+    variant?: 'Primary' | 'Secondary';
 
-    children?: Snippet; 
-    
+    children?: Snippet;
+
     onclick?: () => void;
   }
 
-  const { disabled, size, onclick, children, ...props }: Props = $props();
+  const {
+    disabled = false,
+    size = 'Medium',
+    variant = 'Primary',
+    onclick,
+    children,
+    ...props
+  }: Props = $props();
 </script>
 
 <button
   type="button"
-  class={[`button`, `button--${size}`, disabled && 'button--disabled'].join(' ')}
+  class={[`button`, `button--${variant}`, `button--${size}`].join(' ')}
   {...props}
   {disabled}
   {onclick}

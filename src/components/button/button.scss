@@ -1,42 +1,72 @@
 @use '../../lib/assets.scss' as *;
 
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   padding: var(--nds-spacing-xs);
-  border: none;
-  border-radius: var(--nds-radius-sm);
-  background-color: var(--nds-disabled-primary);
-  color: var(--nds-neutral-low);
-  &:hover {
-    background-color: var(--nds-interaction-primary);
-  }
-  &:active {
-    background-color: var(--nds-interaction-high);
-  }
-}
-.button--disabled {
-  background-color: var(--nds-disabled-primary);
-  color: var(--nds-disabled-medium);
-  cursor: not-allowed;
-  &:hover {
-      background-color: var(--nds-disabled-primary);
-  }
-  &:active {
-      background-color: var(--nds-disabled-primary);
-  }
-}
-
-.button--Small {
-  width: 100px;
-  height: 25px;
+  border: var(--nds-border-thin) solid transparent;
+  border-radius: var(--nds-spacing-2xs);
+  cursor: pointer;
   @include nds-body-small;
-}
-.button--Medium {
-  width: 150px;
-  height: 30px;
-  @include nds-body-medium;
-}
-.button--Large {
-  width: 200px;
-  height: 35px;
-  @include nds-body-large;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &--Small {
+    width: 100px;
+    height: 25px;
+  }
+
+  &--Medium {
+    width: 150px;
+    height: 30px;
+  }
+
+  &--Large {
+    width: 200px;
+    height: 35px;
+  }
+
+  &--Primary {
+    background-color: var(--nds-brand-primary);
+    color: var(--nds-default);
+
+    &:hover:not(:disabled) {
+      background-color: var(--nds-brand-high);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--nds-brand-medium);
+    }
+
+    &:disabled {
+      background-color: var(--nds-disabled-medium);
+      color: var(--nds-disabled-high);
+      border-color: transparent;
+    }
+  }
+
+  &--Secondary {
+    background-color: transparent;
+    border-color: var(--nds-brand-primary);
+    color: var(--nds-brand-primary);
+
+    &:hover:not(:disabled) {
+      border-color: var(--nds-brand-high);
+      color: var(--nds-brand-high);
+    }
+
+    &:active:not(:disabled) {
+      border-color: var(--nds-brand-medium);
+      color: var(--nds-brand-medium);
+    }
+
+    &:disabled {
+      border-color: var(--nds-disabled-medium);
+      color: var(--nds-disabled-high);
+    }
+  }
 }

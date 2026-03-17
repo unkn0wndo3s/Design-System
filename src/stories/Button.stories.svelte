@@ -12,17 +12,28 @@
         control: { type: 'select' },
         options: ['Small', 'Medium', 'Large'],
       },
+      variant: {
+        control: { type: 'select' },
+        options: ['Primary', 'Secondary'],
+      },
+      disabled: {
+        control: { type: 'boolean' },
+      },
     }
   });
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Example" args={{ size: 'Medium' }} >example button</Story>
+<Story name="Example" args={{ size: 'Medium', variant: 'Primary' }}>Button</Story>
 
-<Story name="Small" args={{ size: 'Small'}}>small sized</Story>
+<Story name="Small" args={{ size: 'Small', variant: 'Primary' }}>Button</Story>
 
-<Story name="Medium" args={{ size: 'Medium' }} >medium sized</Story>
+<Story name="Medium" args={{ size: 'Medium', variant: 'Primary' }}>Button</Story>
 
-<Story name="Large" args={{ size: 'Large' }} >large sized</Story> 
+<Story name="Large" args={{ size: 'Large', variant: 'Primary' }}>Button</Story>
 
-<Story name="Disabled" args={{ size: 'Medium', disabled: true}} >disabled button</Story>
+<Story name="Primary" args={{ size: 'Medium', variant: 'Primary' }}>Button</Story>
+
+<Story name="Secondary" args={{ size: 'Medium', variant: 'Secondary' }}>Button</Story>
+
+<Story name="Disabled (Legacy Prop)" args={{ size: 'Medium', variant: 'Primary', disabled: true }}>Button</Story>
