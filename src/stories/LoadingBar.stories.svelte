@@ -1,6 +1,6 @@
 <script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import LoadingBar from '../components/loadingbar/LoadingBar.svelte';
+  import LoadingBar from '../lib/components/loadingbar/LoadingBar.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({

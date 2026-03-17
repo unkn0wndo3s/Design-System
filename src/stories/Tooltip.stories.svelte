@@ -1,6 +1,6 @@
 <script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Tooltip from '../components/tooltip/Tooltip.svelte';
+  import Tooltip from '../lib/components/tooltip/Tooltip.svelte';
 
   const { Story } = defineMeta({
     title: 'Components/Tooltip',
