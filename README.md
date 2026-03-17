@@ -49,6 +49,17 @@ The package is currently in private Alpha. Public installation will be enabled s
 # Coming soon
 npm install nova-design-system
 ```
+### vite configuration
+Due to the library being in Alpha, you need to prevent Vite from pre-bundling the package to avoid resolution issues with Svelte components and SCSS:
+```ts
+// vite.config.ts
+export default defineConfig({
+  optimizeDeps: {
+    exclude: ['@unkn0wn-pkgs/nds']
+  }
+});
+```
+
 ## Usage
 ### Basic Component Implementation
 ```html
