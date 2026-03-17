@@ -5,6 +5,13 @@
 
   let visible = $state(true);
 
+  const fallbackMessageByType: Record<'error' | 'success' | 'warning' | 'info', string> = {
+    error: 'Error message',
+    success: 'Success message',
+    info: 'Info message',
+    warning: 'Warning Message',
+  };
+
   interface Props {
     disabled?: boolean;
     type: "error" | "success" | "warning" | "info";
@@ -20,12 +27,16 @@
 </script>
 
 {#if visible}
-  <div class={[`notification`, `notification--${type}`]}
-    {...props}>
+  <div class={[`notification`, `notification--${type}`]} {...props}>
     {#if children}
       {@render children()}
+    {:else}
+      <span class="notification__message">{fallbackMessageByType[type]}</span>
     {/if}
-    <Close onclick={handleClose} />
+
+    <button type="button" class="notification__close" aria-label="Close notification" onclick={handleClose}>
+      <Close />
+    </button>
   </div>
 {/if}
 

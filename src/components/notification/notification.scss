@@ -1,37 +1,87 @@
 @use '../../lib/assets.scss' as *;
 
 .notification {
+  box-sizing: border-box;
   width: 200px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: var(--nds-radius-md);
-  padding: var(--nds-spacing-3xs) var(--nds-spacing-sm) ;
+  padding: var(--nds-spacing-3xs) var(--nds-spacing-xs);
+  @include nds-body-small;
+
+  &__message {
+    white-space: nowrap;
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
   &--success {
-    background-color: var(--nds-success-high);
-    color: var(--nds-success-low);
+    background-color: var(--nds-correct-low);
+    color: var(--nds-correct-high);
   }
+
   &--error {
-    background-color: var(--nds-error-high);
-    color: var(--nds-error-low);
+    background-color: var(--nds-error-low);
+    color: var(--nds-error-high);
   }
+
   &--warning {
-    background-color: var(--nds-warning-high);
-    color: var(--nds-warning-low);
+    background-color: var(--nds-warning-low);
+    color: var(--nds-warning-high);
   }
+
   &--info {
-    background-color: var(--nds-info-high);
-    color: var(--nds-info-low);
+    background-color: var(--nds-info-low);
+    color: var(--nds-info-high);
   }
 
   & svg {
-    color: var(--nds-icon);
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    &:hover {
-      color: var(--nds-interaction-low);
-    }
+    width: 12px;
+    height: 12px;
+  }
+
+  &--error svg {
+    color: var(--nds-error-high);
+  }
+
+  &--success svg {
+    color: var(--nds-correct-high);
+  }
+
+  &--info svg {
+    color: var(--nds-info-high);
+  }
+
+  &--warning svg {
+    color: var(--nds-warning-high);
+  }
+
+  &--error &__close:hover svg {
+    color: var(--nds-error-medium);
+  }
+
+  &--success &__close:hover svg {
+    color: var(--nds-correct-medium);
+  }
+
+  &--info &__close:hover svg {
+    color: var(--nds-info-medium);
+  }
+
+  &--warning &__close:hover svg {
+    color: var(--nds-warning-medium);
   }
 }
