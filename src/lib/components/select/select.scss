@@ -1,10 +1,12 @@
 @use '../../assets.scss' as *;
 
   .select {
+    position: relative;
     display: inline-flex;
     flex-direction: column;
     width: 150px;
     border-radius: var(--nds-radius-sm);
+    overflow: visible;
 
     &__trigger {
       display: inline-flex;
@@ -39,13 +41,14 @@
       }
     }
 
-    &--expanded {
-      gap: var(--nds-spacing-sm);
-    }
-
     &__options {
       display: inline-flex;
       flex-direction: column;
+      position: absolute;
+      top: calc(100% + var(--nds-spacing-sm));
+      left: 0;
+      width: 150px;
+      z-index: 1;
       border-radius: var(--nds-radius-sm);
       overflow: clip;
     }

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getContext } from 'svelte';
+  import type { Writable } from 'svelte/store';
 
   interface Props {
     label?: string;
@@ -16,9 +17,17 @@
     ...props
   }: Props = $props();
 
-  const isSelected = $derived(state === 'Selected');
+  interface SelectContext {
+    onOptionSelect?: (value: string) => void;
+    selectedValueStore?: Writable<string>;
+  }
 
-  const selectContext = getContext<{ onOptionSelect?: (value: string) => void }>('nds-select');
+  const selectContext = getContext<SelectContext>('nds-select');
+  const selectedValueStore = selectContext?.selectedValueStore;
+
+  const isContextSelected = $derived(selectedValueStore ? $selectedValueStore === value : false);
+  const resolvedState = $derived(selectedValueStore ? (isContextSelected ? 'Selected' : 'Default') : state);
+  const isSelected = $derived(resolvedState === 'Selected');
 
   function handleClick(event: MouseEvent) {
     onclick?.(event);
@@ -28,7 +37,7 @@
 
 <button
   type="button"
-  class={[`select-option`, `select-option--${state}`].join(' ')}
+  class={[`select-option`, `select-option--${resolvedState}`].join(' ')}
   data-select-option="true"
   data-value={value}
   role="option"

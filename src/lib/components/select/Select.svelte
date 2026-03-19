@@ -1,5 +1,6 @@
 <script lang="ts">
   import { setContext } from 'svelte';
+  import { writable, type Writable } from 'svelte/store';
   import type { Snippet } from 'svelte';
 
   interface Props {
@@ -16,8 +17,13 @@
   }: Props = $props();
 
   let isExpanded = $state(false);
+  const selectedValueStore = writable(value);
 
   const selectedLabel = $derived(value || placeholder);
+
+  $effect(() => {
+    selectedValueStore.set(value);
+  });
 
   function handleToggle() {
     isExpanded = !isExpanded;
@@ -28,9 +34,15 @@
     isExpanded = false;
   }
 
+  interface SelectContext {
+    onOptionSelect?: (value: string) => void;
+    selectedValueStore?: Writable<string>;
+  }
+
   setContext('nds-select', {
     onOptionSelect: handleOptionSelect,
-  });
+    selectedValueStore,
+  } satisfies SelectContext);
 </script>
 
 <div
