@@ -1,0 +1,60 @@
+@use '../../assets.scss' as *;
+
+.pagination-number {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: var(--nds-border-thin) solid transparent;
+  border-radius: var(--nds-radius-full);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+  color: var(--nds-neutral-medium);
+
+  &__label {
+    @include nds-body-small;
+    color: inherit;
+    white-space: nowrap;
+  }
+
+  &:focus-visible:not(:disabled) {
+    outline: none;
+    border-color: var(--nds-interaction-medium);
+  }
+
+  &:hover:not(:disabled):not(.pagination-number--Selected):not(.pagination-number--Hover):not(.pagination-number--Active) {
+    background-color: var(--nds-neutral-low);
+    color: var(--nds-neutral-high);
+  }
+
+  &:active:not(:disabled):not(.pagination-number--Selected):not(.pagination-number--Hover):not(.pagination-number--Active) {
+    background-color: var(--nds-brand-low);
+    color: var(--nds-brand-primary);
+  }
+
+  &--Hover {
+    background-color: var(--nds-neutral-low);
+    color: var(--nds-neutral-high);
+  }
+
+  &--Active {
+    background-color: var(--nds-brand-low);
+    color: var(--nds-brand-primary);
+  }
+
+  &--Selected {
+    background-color: var(--nds-brand-primary);
+    color: var(--nds-default);
+  }
+
+  &--Disabled,
+  &:disabled {
+    color: var(--nds-disabled-high);
+    cursor: not-allowed;
+    background-color: transparent;
+  }
+}

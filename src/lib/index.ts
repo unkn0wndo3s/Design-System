@@ -6,3 +6,4 @@ export { default as Search } from './components/search/Search.svelte';
 export { default as Select } from './components/select/Select.svelte';
 export { default as SelectOption } from './components/selectoption/SelectOption.svelte';
 export { default as Tooltip } from './components/tooltip/Tooltip.svelte';
+export { default as PaginationNumber } from './components/paginationnumber/PaginationNumber.svelte';
