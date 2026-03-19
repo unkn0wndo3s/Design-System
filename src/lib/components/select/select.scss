@@ -1,0 +1,50 @@
+@use '../../assets.scss' as *;
+
+  .select {
+    display: inline-flex;
+    flex-direction: column;
+    width: 150px;
+    border-radius: var(--nds-radius-sm);
+
+    &__trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      width: 150px;
+      height: 30px;
+      padding: 0 var(--nds-spacing-xs);
+      border-radius: var(--nds-radius-sm);
+      background-color: var(--nds-neutral-low);
+    }
+
+    &__label {
+      @include nds-body-small;
+      color: var(--nds-neutral-high);
+      white-space: nowrap;
+    }
+
+    &__chevron {
+      width: 6px;
+      height: 6px;
+      border-right: 1px solid var(--nds-neutral-medium);
+      border-bottom: 1px solid var(--nds-neutral-medium);
+      transform: rotate(135deg);
+      flex-shrink: 0;
+
+      &--expanded {
+        transform: rotate(45deg);
+      }
+    }
+
+    &--expanded {
+      gap: var(--nds-spacing-sm);
+    }
+
+    &__options {
+      display: inline-flex;
+      flex-direction: column;
+      border-radius: var(--nds-radius-sm);
+      overflow: clip;
+    }
+  }

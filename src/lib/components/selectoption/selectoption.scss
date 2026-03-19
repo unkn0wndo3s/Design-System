@@ -1,0 +1,33 @@
+@use '../../assets.scss' as *;
+
+.select-option {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 150px;
+  height: 30px;
+  padding: 0 var(--nds-spacing-xs);
+  background-color: var(--nds-neutral-low);
+
+  &__label {
+    @include nds-body-small;
+    color: var(--nds-neutral-high);
+    white-space: nowrap;
+  }
+
+  &--Hover {
+    background-color: var(--nds-brand-low);
+
+    .select-option__label {
+      color: var(--nds-brand-primary);
+    }
+  }
+
+  &--Selected {
+    background-color: var(--nds-interaction-low);
+
+    .select-option__label {
+      color: var(--nds-brand-high);
+    }
+  }
+}
