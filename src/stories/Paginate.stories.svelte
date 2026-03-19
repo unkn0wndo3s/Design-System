@@ -1,11 +1,11 @@
 <script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Paginating from '../lib/components/paginating/Paginating.svelte';
+  import Paginate from '../lib/components/paginate/Paginate.svelte';
   import PaginationNumber from '../lib/components/paginationnumber/PaginationNumber.svelte';
 
   const { Story } = defineMeta({
-    title: 'Components/Paginating',
-    component: Paginating,
+    title: 'Components/Paginate',
+    component: Paginate,
     tags: ['autodocs'],
     argTypes: {
       selectedPage: { control: { type: 'number' } },

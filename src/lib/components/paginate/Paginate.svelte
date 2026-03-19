@@ -66,7 +66,7 @@
   }
 </script>
 
-<nav class="paginating" aria-label="Pagination" {...props}>
+<nav class="paginate" aria-label="Pagination" {...props}>
   {#if children}
     {@render children()}
   {:else}
@@ -83,5 +83,5 @@
 </nav>
 
 <style lang="scss" global>
-  @use "./paginating.scss";
+  @use "./paginate.scss";
 </style>
