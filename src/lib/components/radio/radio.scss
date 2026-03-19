@@ -1,0 +1,98 @@
+@use '../../assets.scss' as *;
+
+.radio {
+  // Local variables mapped to design tokens so Figma primitive/mode changes cascade safely.
+  --radio-size: 16px;
+  --radio-dot-size: 8px;
+  --radio-gap: var(--nds-spacing-xs);
+  --radio-border: var(--nds-neutral-medium);
+  --radio-border-hover: var(--nds-brand-primary);
+  --radio-bg: var(--nds-neutral-low);
+  --radio-bg-hover: var(--nds-brand-low);
+  --radio-dot: var(--nds-brand-primary);
+  --radio-dot-hover: var(--nds-brand-high);
+  --radio-focus-ring: var(--nds-interaction-low);
+  --radio-bg-disabled: var(--nds-disabled-low);
+  --radio-border-disabled: var(--nds-disabled-medium);
+  --radio-dot-disabled: var(--nds-disabled-high);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--radio-gap);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__control {
+    position: relative;
+    width: var(--radio-size);
+    height: var(--radio-size);
+    border: var(--nds-border-thin) solid var(--radio-border);
+    border-radius: var(--nds-radius-full);
+    background-color: var(--radio-bg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 120ms ease, background-color 120ms ease;
+    flex-shrink: 0;
+  }
+
+  &__dot {
+    width: var(--radio-dot-size);
+    height: var(--radio-dot-size);
+    border-radius: var(--nds-radius-full);
+    background-color: var(--radio-dot);
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 120ms ease, transform 120ms ease, background-color 120ms ease;
+  }
+
+  &:hover:not(.radio--disabled):not(.radio--checked) .radio__control {
+    border-color: var(--radio-border-hover);
+    background-color: var(--radio-bg-hover);
+  }
+
+  &--checked .radio__control {
+    border-color: var(--radio-dot);
+  }
+
+  &--checked .radio__dot {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &--checked:hover:not(.radio--disabled) .radio__dot {
+    background-color: var(--radio-dot-hover);
+  }
+
+  &__input:focus-visible + .radio__control {
+    outline: var(--nds-border-medium) solid var(--radio-focus-ring);
+    outline-offset: var(--nds-spacing-3xs);
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &--disabled .radio__control {
+    border-color: var(--radio-border-disabled);
+    background-color: var(--radio-bg-disabled);
+  }
+
+  &--disabled .radio__dot {
+    background-color: var(--radio-dot-disabled);
+  }
+
+}

@@ -14,29 +14,34 @@
     onchange,
     ...props
   }: Props = $props();
+
+  function handleChange(event: Event) {
+    checked = (event.currentTarget as HTMLInputElement).checked;
+    onchange?.(event);
+  }
 </script>
 
 <label
   class={[
-    'checkbox',
-    checked && 'checkbox--checked',
-    disabled && 'checkbox--disabled'
+    'radio',
+    checked && 'radio--checked',
+    disabled && 'radio--disabled'
   ].filter(Boolean).join(' ')}
 >
   <input
-    type="checkbox"
-    class="checkbox__input"
-    bind:checked
+    type="radio"
+    class="radio__input"
+    {checked}
     {disabled}
-    {onchange}
+    onchange={handleChange}
     {...props}
   />
 
-  <span class="checkbox__control" aria-hidden="true">
-    <span class="checkbox__mark"></span>
+  <span class="radio__control" aria-hidden="true">
+    <span class="radio__dot"></span>
   </span>
 </label>
 
 <style lang="scss" global>
-  @use "./checkbox.scss";
+  @use "./radio.scss";
 </style>

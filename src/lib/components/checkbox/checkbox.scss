@@ -15,8 +15,6 @@
   --checkbox-border-checked-hover: var(--nds-brand-high);
   --checkbox-mark: var(--nds-icon);
   --checkbox-focus-ring: var(--nds-interaction-low);
-  --checkbox-label: var(--nds-neutral-high);
-  --checkbox-label-disabled: var(--nds-disabled-high);
   --checkbox-bg-disabled: var(--nds-disabled-low);
   --checkbox-border-disabled: var(--nds-disabled-medium);
 
@@ -64,11 +62,6 @@
     transition: opacity 120ms ease, transform 120ms ease;
   }
 
-  &__label {
-    @include nds-body-small;
-    color: var(--checkbox-label);
-  }
-
   &:hover:not(.checkbox--disabled):not(.checkbox--checked) .checkbox__control {
     border-color: var(--checkbox-border-hover);
     background-color: var(--checkbox-bg-hover);
@@ -108,7 +101,4 @@
     border-bottom-color: var(--nds-disabled-high);
   }
 
-  &--disabled .checkbox__label {
-    color: var(--checkbox-label-disabled);
-  }
 }

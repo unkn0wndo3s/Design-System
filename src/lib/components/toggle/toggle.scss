@@ -8,8 +8,6 @@
   --toggle-track-bg-hover-on: var(--nds-brand-high);
   --toggle-track-bg-disabled: var(--nds-disabled-medium);
   --toggle-thumb-bg: var(--nds-default);
-  --toggle-label-color: var(--nds-neutral-high);
-  --toggle-label-color-disabled: var(--nds-disabled-high);
   --toggle-focus-ring: var(--nds-interaction-low);
   --toggle-width: 40px;
   --toggle-height: 24px;
@@ -58,12 +56,6 @@
     transition: transform 120ms ease;
   }
 
-  &__label {
-    @include nds-body-small;
-    color: var(--toggle-label-color);
-    white-space: nowrap;
-  }
-
   &--checked .toggle__control {
     background-color: var(--toggle-track-bg-on);
   }
@@ -101,7 +93,4 @@
     background-color: var(--nds-disabled-low);
   }
 
-  &--disabled .toggle__label {
-    color: var(--toggle-label-color-disabled);
-  }
 }
