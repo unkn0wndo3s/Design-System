@@ -6,16 +6,31 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
-import Icons from 'unplugin-icons/vite';
-import { FileSystemIconLoader } from 'unplugin-icons/loaders'; 
 const dirname =
 	typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-	plugins: [sveltekit(), devtoolsJson(), Icons({ compiler: 'svelte', customCollections: {
-		'my-icons': FileSystemIconLoader('./src/lib/components/icons'),
-	}})],
+	plugins: [sveltekit(), devtoolsJson()],
+	build: {
+		lib: {
+			entry: path.resolve(dirname, 'src/lib/index.ts'),
+			fileName: 'index',
+			formats: ['es']
+		},
+		rollupOptions: {
+			external: [
+				'svelte',
+				'svelte/internal',
+				/\.scss$/,
+			],
+			output: {
+				globals: {
+					svelte: 'Svelte',
+				}
+			}
+		}
+	},
 	test: {
 		projects: [
 			{
