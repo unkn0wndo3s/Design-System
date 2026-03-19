@@ -1,0 +1,92 @@
+@use '../../assets.scss' as *;
+
+.textarea {
+  // Local variables mapped to design tokens to support Figma variable modes.
+  --textarea-gap: var(--nds-spacing-2xs);
+  --textarea-label-color: var(--nds-neutral-high);
+  --textarea-support-color: var(--nds-neutral-medium);
+
+  --textarea-padding-x: var(--nds-spacing-sm);
+  --textarea-padding-y: var(--nds-spacing-xs);
+  --textarea-radius: var(--nds-radius-md);
+
+  --textarea-bg: var(--nds-neutral-low);
+  --textarea-bg-hover: var(--nds-neutral-low);
+  --textarea-bg-disabled: var(--nds-disabled-low);
+
+  --textarea-border: var(--nds-neutral-medium);
+  --textarea-border-hover: var(--nds-brand-primary);
+  --textarea-border-focus: var(--nds-interaction-medium);
+  --textarea-border-disabled: var(--nds-disabled-medium);
+
+  --textarea-text: var(--nds-default);
+  --textarea-placeholder: var(--nds-neutral-medium);
+  --textarea-text-disabled: var(--nds-disabled-high);
+  --textarea-focus-ring: var(--nds-interaction-low);
+  --textarea-caret: var(--nds-brand-primary);
+
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--textarea-gap);
+  width: 100%;
+  min-width: 220px;
+  box-sizing: border-box;
+
+  &__label {
+    color: var(--textarea-label-color);
+    @include nds-body-small;
+  }
+
+  &__field {
+    width: 100%;
+    min-height: 96px;
+    box-sizing: border-box;
+    resize: vertical;
+    padding: var(--textarea-padding-y) var(--textarea-padding-x);
+    border: var(--nds-border-thin) solid var(--textarea-border);
+    border-radius: var(--textarea-radius);
+    background-color: var(--textarea-bg);
+    color: var(--textarea-text);
+    caret-color: var(--textarea-caret);
+    transition: border-color 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+    @include nds-body-small;
+
+    &::placeholder {
+      color: var(--textarea-placeholder);
+    }
+
+    &:hover:not(:disabled) {
+      border-color: var(--textarea-border-hover);
+      background-color: var(--textarea-bg-hover);
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--textarea-border-focus);
+      box-shadow: 0 0 0 var(--nds-border-medium) var(--textarea-focus-ring);
+    }
+
+    &:disabled {
+      border-color: var(--textarea-border-disabled);
+      background-color: var(--textarea-bg-disabled);
+      color: var(--textarea-text-disabled);
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: var(--textarea-text-disabled);
+      }
+    }
+  }
+
+  &__support {
+    color: var(--textarea-support-color);
+    @include nds-body-small;
+  }
+
+  &--disabled {
+    .textarea__label,
+    .textarea__support {
+      color: var(--textarea-text-disabled);
+    }
+  }
+}

@@ -12,3 +12,4 @@ export { default as Badge } from './components/badge/Badge.svelte';
 export { default as Toggle } from './components/toggle/Toggle.svelte';
 export { default as Checkbox } from './components/checkbox/Checkbox.svelte';
 export { default as Radio } from './components/radio/Radio.svelte';
+export { default as Textarea } from './components/textarea/Textarea.svelte';
