@@ -9,3 +9,4 @@ export { default as Tooltip } from './components/tooltip/Tooltip.svelte';
 export { default as PaginationNumber } from './components/paginationnumber/PaginationNumber.svelte';
 export { default as Paginate } from './components/paginate/Paginate.svelte';
 export { default as Badge } from './components/badge/Badge.svelte';
+export { default as Toggle } from './components/toggle/Toggle.svelte';

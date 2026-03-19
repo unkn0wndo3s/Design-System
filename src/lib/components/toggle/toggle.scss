@@ -1,0 +1,107 @@
+@use '../../assets.scss' as *;
+
+.toggle {
+  // Local variables mapped to design tokens to keep Figma variable modes configurable.
+  --toggle-track-bg-off: var(--nds-neutral-low);
+  --toggle-track-bg-on: var(--nds-brand-primary);
+  --toggle-track-bg-hover-off: var(--nds-brand-low);
+  --toggle-track-bg-hover-on: var(--nds-brand-high);
+  --toggle-track-bg-disabled: var(--nds-disabled-medium);
+  --toggle-thumb-bg: var(--nds-default);
+  --toggle-label-color: var(--nds-neutral-high);
+  --toggle-label-color-disabled: var(--nds-disabled-high);
+  --toggle-focus-ring: var(--nds-interaction-low);
+  --toggle-width: 40px;
+  --toggle-height: 24px;
+  --toggle-thumb-size: 18px;
+  --toggle-spacing: var(--nds-spacing-xs);
+  --toggle-padding: var(--nds-spacing-3xs);
+  --toggle-radius: var(--nds-radius-full);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--toggle-spacing);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__control {
+    position: relative;
+    width: var(--toggle-width);
+    height: var(--toggle-height);
+    box-sizing: border-box;
+    padding: var(--toggle-padding);
+    border: var(--nds-border-thin) solid transparent;
+    border-radius: var(--toggle-radius);
+    background-color: var(--toggle-track-bg-off);
+    transition: background-color 120ms ease, border-color 120ms ease;
+  }
+
+  &__thumb {
+    display: block;
+    width: var(--toggle-thumb-size);
+    height: var(--toggle-thumb-size);
+    border-radius: var(--nds-radius-full);
+    background-color: var(--toggle-thumb-bg);
+    transition: transform 120ms ease;
+  }
+
+  &__label {
+    @include nds-body-small;
+    color: var(--toggle-label-color);
+    white-space: nowrap;
+  }
+
+  &--checked .toggle__control {
+    background-color: var(--toggle-track-bg-on);
+  }
+
+  &--checked .toggle__thumb {
+    transform: translateX(calc(var(--toggle-width) - var(--toggle-thumb-size) - (var(--toggle-padding) * 2)));
+  }
+
+  &:hover:not(.toggle--disabled):not(.toggle--checked) .toggle__control {
+    background-color: var(--toggle-track-bg-hover-off);
+  }
+
+  &:hover:not(.toggle--disabled).toggle--checked .toggle__control {
+    background-color: var(--toggle-track-bg-hover-on);
+  }
+
+  &:active:not(.toggle--disabled) .toggle__control {
+    border-color: var(--nds-interaction-medium);
+  }
+
+  &__input:focus-visible + .toggle__control {
+    outline: var(--nds-border-medium) solid var(--toggle-focus-ring);
+    outline-offset: var(--nds-spacing-3xs);
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &--disabled .toggle__control {
+    background-color: var(--toggle-track-bg-disabled);
+  }
+
+  &--disabled .toggle__thumb {
+    background-color: var(--nds-disabled-low);
+  }
+
+  &--disabled .toggle__label {
+    color: var(--toggle-label-color-disabled);
+  }
+}
