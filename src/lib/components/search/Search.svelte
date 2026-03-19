@@ -40,5 +40,5 @@
 </label>
 
 <style lang="scss" global>
-  @import "./search.scss";
+  @use "./search.scss";
 </style>

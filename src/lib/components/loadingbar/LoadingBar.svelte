@@ -20,5 +20,5 @@
 </div>
 
 <style lang="scss" global>
-  @import "./loadingbar.scss";
+  @use "./loadingbar.scss";
 </style>

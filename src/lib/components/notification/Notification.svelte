@@ -40,5 +40,5 @@
 {/if}
 
 <style lang="scss" global>
-  @import "./notification.scss";
+  @use "./notification.scss";
 </style>

@@ -31,5 +31,5 @@
 </div>
 
 <style lang="scss" global>
-  @import './tooltip.scss';
+  @use './tooltip.scss';
 </style>

@@ -34,5 +34,5 @@
 </button>
 
 <style lang="scss" global>
-  @import "./button.scss";
+  @use "./button.scss";
 </style>
