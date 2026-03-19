@@ -11,11 +11,11 @@
         control: { type: 'select' },
         options: ['Default', 'Hover', 'Selected'],
       },
-      label: { control: { type: 'text' } },
+      value: { control: { type: 'text' } },
     },
   });
 </script>
 
-<Story name="Default" args={{ state: 'Default', label: 'Option' }} />
-<Story name="Hover" args={{ state: 'Hover', label: 'Option' }} />
-<Story name="Selected" args={{ state: 'Selected', label: 'Option' }} />
+<Story name="Default" args={{ state: 'Default', value: 'Option' }}>Option</Story>
+<Story name="Hover" args={{ state: 'Hover', value: 'Option' }}>Option</Story>
+<Story name="Selected" args={{ state: 'Selected', value: 'Option' }}>Option</Story>

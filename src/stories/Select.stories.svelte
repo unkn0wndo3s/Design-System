@@ -15,11 +15,11 @@
 </script>
 
 <Story name="Default" args={{ placeholder: 'Default option', value: '' }}>
-  <SelectOption label="Option" value="Option" />
-  <SelectOption label="Second option" value="Second option" />
+  <SelectOption value="Option">Option</SelectOption>
+  <SelectOption value="Second option">Second option</SelectOption>
 </Story>
 
 <Story name="With Value" args={{ placeholder: 'Default option', value: 'Option' }}>
-  <SelectOption label="Option" value="Option" />
-  <SelectOption label="Second option" value="Second option" />
+  <SelectOption value="Option">Option</SelectOption>
+  <SelectOption value="Second option">Second option</SelectOption>
 </Story>
