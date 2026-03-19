@@ -18,5 +18,5 @@
   <PaginationNumber page={2} url="#page-2" />
   <PaginationNumber page={3} url="#page-3" />
   <PaginationNumber page={4} url="#page-4" />
-  <PaginationNumber page={5} url="#page-5" disabled/>
+  <PaginationNumber page={5} url="#page-5" />
 </Story>
