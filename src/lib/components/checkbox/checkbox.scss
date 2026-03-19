@@ -1,0 +1,114 @@
+@use '../../assets.scss' as *;
+
+.checkbox {
+  // Local variables mapped to design tokens so Figma variable modes can be applied centrally.
+  --checkbox-size: 16px;
+  --checkbox-radius: var(--nds-radius-sm);
+  --checkbox-gap: var(--nds-spacing-xs);
+  --checkbox-border: var(--nds-neutral-medium);
+  --checkbox-bg: var(--nds-neutral-low);
+  --checkbox-bg-hover: var(--nds-brand-low);
+  --checkbox-border-hover: var(--nds-brand-primary);
+  --checkbox-bg-checked: var(--nds-brand-primary);
+  --checkbox-bg-checked-hover: var(--nds-brand-high);
+  --checkbox-border-checked: var(--nds-brand-primary);
+  --checkbox-border-checked-hover: var(--nds-brand-high);
+  --checkbox-mark: var(--nds-icon);
+  --checkbox-focus-ring: var(--nds-interaction-low);
+  --checkbox-label: var(--nds-neutral-high);
+  --checkbox-label-disabled: var(--nds-disabled-high);
+  --checkbox-bg-disabled: var(--nds-disabled-low);
+  --checkbox-border-disabled: var(--nds-disabled-medium);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--checkbox-gap);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__control {
+    position: relative;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    border: var(--nds-border-thin) solid var(--checkbox-border);
+    border-radius: var(--checkbox-radius);
+    background-color: var(--checkbox-bg);
+    transition: border-color 120ms ease, background-color 120ms ease;
+    flex-shrink: 0;
+  }
+
+  &__mark {
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border-right: var(--nds-border-medium) solid var(--checkbox-mark);
+    border-bottom: var(--nds-border-medium) solid var(--checkbox-mark);
+    transform: rotate(45deg) scale(0.85);
+    transform-origin: center;
+    opacity: 0;
+    transition: opacity 120ms ease, transform 120ms ease;
+  }
+
+  &__label {
+    @include nds-body-small;
+    color: var(--checkbox-label);
+  }
+
+  &:hover:not(.checkbox--disabled):not(.checkbox--checked) .checkbox__control {
+    border-color: var(--checkbox-border-hover);
+    background-color: var(--checkbox-bg-hover);
+  }
+
+  &--checked .checkbox__control {
+    border-color: var(--checkbox-border-checked);
+    background-color: var(--checkbox-bg-checked);
+  }
+
+  &--checked .checkbox__mark {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+
+  &--checked:hover:not(.checkbox--disabled) .checkbox__control {
+    border-color: var(--checkbox-border-checked-hover);
+    background-color: var(--checkbox-bg-checked-hover);
+  }
+
+  &__input:focus-visible + .checkbox__control {
+    outline: var(--nds-border-medium) solid var(--checkbox-focus-ring);
+    outline-offset: var(--nds-spacing-3xs);
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &--disabled .checkbox__control {
+    border-color: var(--checkbox-border-disabled);
+    background-color: var(--checkbox-bg-disabled);
+  }
+
+  &--disabled .checkbox__mark {
+    border-right-color: var(--nds-disabled-high);
+    border-bottom-color: var(--nds-disabled-high);
+  }
+
+  &--disabled .checkbox__label {
+    color: var(--checkbox-label-disabled);
+  }
+}
