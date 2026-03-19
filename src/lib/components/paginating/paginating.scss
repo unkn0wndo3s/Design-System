@@ -1,0 +1,7 @@
+@use '../../assets.scss' as *;
+
+.paginating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nds-spacing-xs);
+}
