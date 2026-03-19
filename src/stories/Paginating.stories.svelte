@@ -8,29 +8,15 @@
     component: Paginating,
     tags: ['autodocs'],
     argTypes: {
-      pages: { control: { type: 'object' } },
-      selectedPage: { control: { type: 'text' } },
-      disabled: { control: { type: 'boolean' } },
-      itemStates: { control: { type: 'object' } },
+      selectedPage: { control: { type: 'number' } },
     },
   });
 </script>
 
-<Story name="Default" args={{ pages: [1, 2, 3, 4, 5], selectedPage: 2 }} />
-
-<Story
-  name="Figma States"
-  args={{
-    pages: [1, 2, 3, 4, 5],
-    selectedPage: 2,
-    itemStates: { '3': 'Hover' },
-  }}
-/>
-
-<Story name="Custom Content">
-  <PaginationNumber label="Prev" />
-  <PaginationNumber label={1} />
-  <PaginationNumber label={2} selected />
-  <PaginationNumber label={3} />
-  <PaginationNumber label="Next" />
+<Story name="Simple" args={{ selectedPage: 2 }}>
+  <PaginationNumber page={1} url="#page-1" />
+  <PaginationNumber page={2} url="#page-2" />
+  <PaginationNumber page={3} url="#page-3" />
+  <PaginationNumber page={4} url="#page-4" />
+  <PaginationNumber page={5} url="#page-5" disabled/>
 </Story>

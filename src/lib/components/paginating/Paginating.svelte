@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
+  import { writable, type Writable } from 'svelte/store';
   import type { Snippet } from 'svelte';
   import PaginationNumber from '../paginationnumber/PaginationNumber.svelte';
 
@@ -15,6 +17,12 @@
     onpageclick?: (page: string | number, event: MouseEvent) => void;
   }
 
+  interface PaginationContext {
+    selectedPageStore?: Writable<string | number>;
+    isPageDisabled?: (page: string | number) => boolean;
+    onPageSelect?: (page: string | number, event: MouseEvent) => void;
+  }
+
   let {
     pages = [1, 2, 3, 4, 5],
     selectedPage = $bindable<string | number>(2),
@@ -25,18 +33,35 @@
     ...props
   }: Props = $props();
 
+  const selectedPageStore = writable<string | number>(selectedPage);
+
+  $effect(() => {
+    selectedPageStore.set(selectedPage);
+  });
+
   function isPageDisabled(page: string | number) {
     return disabled || itemStates[String(page)] === 'Disabled';
   }
 
+  function handlePageSelect(page: string | number, event: MouseEvent) {
+    if (isPageDisabled(page)) {
+      return;
+    }
+
+    selectedPage = page;
+    selectedPageStore.set(page);
+    onpageclick?.(page, event);
+  }
+
+  setContext('nds-pagination', {
+    selectedPageStore,
+    isPageDisabled,
+    onPageSelect: handlePageSelect,
+  } satisfies PaginationContext);
+
   function handlePageClick(page: string | number) {
     return (event: MouseEvent) => {
-      if (isPageDisabled(page)) {
-        return;
-      }
-
-      selectedPage = page;
-      onpageclick?.(page, event);
+      handlePageSelect(page, event);
     };
   }
 </script>
