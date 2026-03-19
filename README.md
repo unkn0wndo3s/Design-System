@@ -46,8 +46,7 @@ NDS aims to provide a robust set of components that are easy to implement while 
 ## Installation
 The package is currently in private Alpha. Public installation will be enabled soon.
 ```bash
-# Coming soon
-npm install nova-design-system
+npm install @unkn0wn-pkgs/nds
 ```
 ### vite configuration
 Due to the library being in Alpha, you need to prevent Vite from pre-bundling the package to avoid resolution issues with Svelte components and SCSS:
