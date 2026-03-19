@@ -1,0 +1,65 @@
+@use '../../assets.scss' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--nds-spacing-xs) var(--nds-spacing-sm);
+  border: none;
+  border-radius: var(--nds-radius-full);
+  cursor: default;
+  transition: background-color 120ms ease, color 120ms ease, outline-color 120ms ease;
+  @include nds-body-small;
+
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  &--Default {
+    background-color: var(--nds-neutral-low);
+    color: var(--nds-neutral-high);
+  }
+
+  &--Hover {
+    background-color: var(--nds-brand-low);
+    color: var(--nds-neutral-high);
+  }
+
+  &--Active {
+    background-color: var(--nds-brand-low);
+    color: var(--nds-brand-primary);
+  }
+
+  &--Selected {
+    background-color: var(--nds-brand-primary);
+    color: var(--nds-default);
+  }
+
+  &--Disabled {
+    background-color: var(--nds-disabled-low);
+    color: var(--nds-disabled-high);
+    cursor: not-allowed;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    background-color: var(--nds-brand-low);
+    color: var(--nds-neutral-high);
+  }
+
+  &:not(:disabled):active {
+    background-color: var(--nds-brand-low);
+    color: var(--nds-brand-primary);
+  }
+
+  &:not(:disabled):focus-visible {
+    outline: var(--nds-border-medium) solid var(--nds-interaction-low);
+    outline-offset: var(--nds-spacing-3xs);
+  }
+}
