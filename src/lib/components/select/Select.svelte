@@ -1,39 +1,58 @@
 <script lang="ts">
-  import SelectOption from '../selectoption/SelectOption.svelte';
+  import { setContext } from 'svelte';
+  import type { Snippet } from 'svelte';
 
   interface Props {
-    label?: string;
-    expanded?: boolean;
-    optionLabel?: string;
+    value?: string;
+    placeholder?: string;
+    children?: Snippet;
   }
 
-  const {
-    label = 'Default option',
-    expanded = false,
-    optionLabel = 'Option',
+  let {
+    value = $bindable(''),
+    placeholder = 'Default option',
+    children,
     ...props
   }: Props = $props();
+
+  let isExpanded = $state(false);
+
+  const selectedLabel = $derived(value || placeholder);
+
+  function handleToggle() {
+    isExpanded = !isExpanded;
+  }
+
+  function handleOptionSelect(nextValue: string) {
+    value = nextValue;
+    isExpanded = false;
+  }
+
+  setContext('nds-select', {
+    onOptionSelect: handleOptionSelect,
+  });
 </script>
 
 <div
   class={[
     'select',
-    expanded && 'select--expanded'
+    isExpanded && 'select--expanded'
   ].filter(Boolean).join(' ')}
   {...props}
 >
-  <div class="select__trigger" role="button" aria-expanded={expanded} tabindex="0">
-    <span class="select__label">{label}</span>
+  <button type="button" class="select__trigger" aria-expanded={isExpanded} onclick={handleToggle}>
+    <span class="select__label">{selectedLabel}</span>
     <span class={[
       'select__chevron',
-      expanded && 'select__chevron--expanded'
+      isExpanded && 'select__chevron--expanded'
     ].filter(Boolean).join(' ')} aria-hidden="true"></span>
-  </div>
+  </button>
 
-  {#if expanded}
-    <div class="select__options" role="listbox">
-      <SelectOption state="Default" label={optionLabel} />
-      <SelectOption state="Selected" label={optionLabel} />
+  {#if isExpanded}
+    <div class="select__options" role="listbox" tabindex="0">
+      {#if children}
+        {@render children()}
+      {/if}
     </div>
   {/if}
 </div>

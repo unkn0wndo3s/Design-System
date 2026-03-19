@@ -14,8 +14,10 @@
       width: 150px;
       height: 30px;
       padding: 0 var(--nds-spacing-xs);
+      border: none;
       border-radius: var(--nds-radius-sm);
       background-color: var(--nds-neutral-low);
+      cursor: pointer;
     }
 
     &__label {

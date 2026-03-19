@@ -1,18 +1,25 @@
 <script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Select from '../lib/components/select/Select.svelte';
+  import SelectOption from '../lib/components/selectoption/SelectOption.svelte';
 
   const { Story } = defineMeta({
     title: 'Components/Select',
     component: Select,
     tags: ['autodocs'],
     argTypes: {
-      label: { control: { type: 'text' } },
-      optionLabel: { control: { type: 'text' } },
-      expanded: { control: { type: 'boolean' } },
+      value: { control: { type: 'text' } },
+      placeholder: { control: { type: 'text' } },
     },
   });
 </script>
 
-<Story name="Default" args={{ label: 'Default option', expanded: false, optionLabel: 'Option' }} />
-<Story name="Expanded" args={{ label: 'Default option', expanded: true, optionLabel: 'Option' }} />
+<Story name="Default" args={{ placeholder: 'Default option', value: '' }}>
+  <SelectOption label="Option" value="Option" state="Default" />
+  <SelectOption label="Option" value="Option" state="Selected" />
+</Story>
+
+<Story name="With Value" args={{ placeholder: 'Default option', value: 'Option' }}>
+  <SelectOption label="Option" value="Option" state="Default" />
+  <SelectOption label="Second option" value="Second option" />
+</Story>

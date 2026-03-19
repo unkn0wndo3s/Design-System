@@ -3,11 +3,14 @@
 .select-option {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
   box-sizing: border-box;
   width: 150px;
   height: 30px;
   padding: 0 var(--nds-spacing-xs);
+  border: none;
   background-color: var(--nds-neutral-low);
+  cursor: pointer;
 
   &__label {
     @include nds-body-small;
