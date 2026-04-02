@@ -1,6 +1,7 @@
 # Nova Design System (NDS)
 
-Nova Design System (NDS) is a lightweight, responsive, and secure UI library built with **Svelte**. While developed primarily for internal and personal projects, the library is open-source and welcomes community contributions.
+Nova Design System (NDS) is a lightweight, responsive, and secure UI library built with **Svelte**.
+It is developed primarily for internal and personal projects and is available publicly for reference, testing, and contributions.
 
 ---
 
@@ -8,95 +9,136 @@ Nova Design System (NDS) is a lightweight, responsive, and secure UI library bui
 1. [Overview](#overview)
 2. [Project Status](#project-status)
 3. [Core Principles](#core-principles)
-4. [Component Roadmap](#component-roadmap)
+4. [Available Components](#available-components)
 5. [Installation](#installation)
 6. [Usage](#usage)
 7. [Theming and Variables](#theming-and-variables)
 8. [Contributing](#contributing)
 9. [Development and Documentation](#development-and-documentation)
+10. [License](#license)
 
 ---
 
 ## Overview
-NDS aims to provide a robust set of components that are easy to implement while maintaining high security standards and full responsiveness across all modern web platforms.
+NDS aims to provide a robust set of reusable UI components that are easy to integrate while maintaining consistency, responsiveness, and a strong focus on safety and maintainability.
 
 ## Project Status
-**Current Phase: ALPHA (In Development)** The library is currently undergoing heavy development. APIs and component structures are subject to change until the Beta release.
+**Current Phase: ALPHA**
+
+The library is still under active development. Component APIs, styling structure, and internal architecture may change before the Beta release.
 
 ## Core Principles
-* **Responsive Architecture:** All components are built with a mobile-first approach to ensure compatibility across various devices.
-* **Security-Centric:** NDS strictly avoids unsafe practices (such as raw HTML injection without sanitization) to protect applications from common vulnerabilities.
-* **Native Theming:** Features a built-in theme management system for seamless transitions between Light and Dark modes.
-* **Type Safety:** Fully written in TypeScript to provide an excellent developer experience and catch errors at compile time.
+- **Responsive Architecture:** Components are built with a mobile-first mindset and are expected to behave correctly across modern screen sizes.
+- **Security-Centric:** Unsafe patterns are avoided, especially anything that could introduce injection or untrusted rendering issues.
+- **Native Theming:** Styling is based on centralized design tokens and supports Light and Dark themes.
+- **Type Safety:** The library is written in TypeScript for stronger reliability and a better developer experience.
+- **Consistency First:** Shared tokens, naming conventions, and reusable patterns take priority over one-off styling.
 
-## Component Roadmap
+## Available Components
+The following components are currently exported by the library:
 
-### Alpha Components (Available or in progress)
-* **Actions:** Button, Dropdown, Search Bar, Toggle.
-* **Form Inputs:** Checkbox, Radio, Select.
-* **Data Display:** Badge, Table, Row, Cell, Tooltip, Paginating.
-* **Feedback:** Notifications, Loading Bar.
+### Actions
+- `Button`
+- `Toggle`
+- `Paginate`
+- `PaginationNumber`
 
-### Beta Phase Objectives
-* **Palette Refinement:** Comprehensive review and expansion of the brand and functional color systems.
-* **Token Audit:** Standardization of sizing tokens including padding, radius, and margins.
-* **Component Variants:** Introduction of multiple size and emphasis variations for existing components.
-* **Custom Iconography:** Release of a proprietary, custom-designed icon set.
+### Form Inputs
+- `Checkbox`
+- `Radio`
+- `Select`
+- `SelectOption`
+- `Search`
+- `Textarea`
+
+### Feedback
+- `Notification`
+- `LoadingBar`
+- `Tooltip`
+
+### Data Display
+- `Badge`
+
+Additional components and variants will be introduced progressively during the Alpha and Beta phases.
 
 ## Installation
-The package is currently in private Alpha. Public installation will be enabled soon.
+Install the package with npm:
+
 ```bash
 npm install @unkn0wn-pkgs/nds
 ```
-### vite configuration
-Due to the library being in Alpha, you need to prevent Vite from pre-bundling the package to avoid resolution issues with Svelte components and SCSS:
-```ts
-// vite.config.ts
-export default defineConfig({
-  optimizeDeps: {
-    exclude: ['@unkn0wn-pkgs/nds']
-  }
-});
-```
+
+No extra Vite de-optimization configuration is required anymore.
 
 ## Usage
-### Basic Component Implementation
-```html
+### Basic Component Example
+```svelte
 <script lang="ts">
-  import { Notification } from 'nova-design-system';
+  import { Notification } from '@unkn0wn-pkgs/nds';
 </script>
 
 <Notification type="warning">
   This is a warning message.
 </Notification>
 ```
-## Theming and Variables
-NDS relies on a centralized Design Token system. All styling is controlled through CSS variables (custom properties) prefixed with `--nds-`.
 
-**Implementation Rule**: To maintain design integrity, developers should never override variables locally within a component's scope. All modifications must be registered within the core system to ensure global consistency.
+### Another Example
+```svelte
+<script lang="ts">
+  import { Button } from '@unkn0wn-pkgs/nds';
+</script>
+
+<Button>
+  Click me
+</Button>
+```
+
+## Theming and Variables
+NDS relies on a centralized Design Token system.
+All styling is controlled through CSS custom properties prefixed with `--nds-`.
+
+### Rules
+- Do not hardcode colors, spacing, or radii directly inside component styles when a design token exists.
+- Do not override tokens locally in isolated component scopes unless the system explicitly supports it.
+- Keep all global token changes inside the core styling system to preserve consistency.
 
 ## Contributing
-Contributions are welcome. Whether you are reporting a bug, suggesting a feature, or submitting a Pull Request, please follow the project's coding standards.
+Contributions are welcome.
+If you want to report a bug, suggest a feature, or submit a Pull Request, follow the repository contribution rules and templates.
+
+Please read the contribution guide before opening a PR.
 
 ### Icon Contribution Policy
-By contributing a custom icon to NDS, you grant all users the right to use it freely in their projects. No mandatory attribution to the creator is required for end-users.
+By contributing a custom icon to NDS, you agree that the icon may be used inside the design system according to the repository license and contribution policy.
 
 ## Development and Documentation
-Documentation is managed via Storybook. To browse the component library locally:
+Documentation is managed with **Storybook**.
 
-1. **Clone the repository:**
+### Clone the repository
 ```bash
 git clone https://github.com/unkn0wndo3s/Design-System.git
 ```
 
-2. **Install dependacies:**
+### Install dependencies
 ```bash
 npm install
 ```
 
-3. **Launch Storybook:**
+### Launch Storybook
 ```bash
 npm run storybook
 ```
 
-_Note: A public documentation URL will be hosted alongside the Beta release._
+### Useful scripts
+```bash
+npm run check
+npm run lint
+npm run format
+npm run build
+npm run build-storybook
+```
+
+## License
+This project is **not distributed under a standard open-source license**.
+Usage, redistribution, commercial use, and derivative work rules are defined in `LICENSE.md`.
+Read that file carefully before using the library in a product or service.
