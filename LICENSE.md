@@ -2,33 +2,46 @@
 
 Copyright (c) 2026 Unkn0wn
 
-## 1. OWNERSHIP AND SCOPE
-Nova Design System (NDS), including its source code, components, documentation, and visual assets (icons, layout logic), is the property of its creator. This license applies to both public and private versions of the repository.
+## 1. Ownership and Scope
+Nova Design System (NDS), including its source code, components, documentation, and visual assets such as icons and layout logic, is the property of its creator.
+This license applies to both the public and private versions of the repository.
 
-## 2. USAGE RIGHTS AND RESTRICTIONS
+## 2. Usage Rights and Restrictions
+
 ### 2.1 Personal and Internal Use
-Usage of NDS for personal or internal projects is permitted. You may draw inspiration from NDS to build your own systems, but direct copying of the core logic, styles, or components is strictly prohibited.
+Use of NDS for personal projects and internal projects is permitted.
+You may study the project and draw inspiration from it, but direct copying of the core logic, styles, or components is prohibited unless explicitly authorized.
 
 ### 2.2 Commercial Products and Services
-- **Prior Authorization:** Using NDS in any product (website, application, or service) requires explicit written authorization from the original creator. 
-- **Exclusive Authority:** Only the original creator has the power to grant this authorization. Contributors to the project do not have the right to authorize third-party usage.
-- **Selling Products:** The sale of any website or application using NDS is prohibited unless a specific commercial agreement has been granted by the creator.
+Any use of NDS in a commercial product or service requires explicit written authorization from the original creator.
+Only the original creator may grant that authorization.
+Contributors do not have the authority to grant usage rights to third parties.
 
-## 3. MODIFICATIONS AND CONTRIBUTIONS
-- **Centralized Workflow:** Any modification to the library must go through the official GitHub Issues or Pull Request process.
-- **Copyleft (Share-Alike):** Any authorized modifications or derivative works of NDS must be distributed under this same license. You cannot re-license modified versions of NDS.
+Selling a website, application, service, or product that uses NDS is prohibited unless a specific commercial agreement has been granted by the creator.
 
-## 4. ASSETS AND ICONOGRAPHY
-- **Beta and Beyond:** All icons introduced from the Beta version onwards belong exclusively to the NDS project.
-- **Library-Only Use:** These icons are only authorized for use through the NDS library. Any external use (downloading and using them in other projects, software, or media) is strictly prohibited.
+## 3. Modifications and Contributions
+All modifications to the library must go through the official GitHub workflow, including Issues and Pull Requests.
 
-## 5. DISCLAIMER OF WARRANTY AND LIABILITY
-- **"As-Is" Basis:** This library is provided "as is" without any warranty. 
-- **Bugs:** If a bug is found, an Issue must be opened on the official repository. The creator will make reasonable efforts to resolve reported bugs.
-- **No Liability:** Under no circumstances shall the creator be held liable for any data loss, damages, or legal issues resulting from the use or inability to use this library.
+Any authorized modification or derivative work of NDS must remain under this same license.
+Re-licensing modified versions under a different license is prohibited.
 
-## 6. TERMINATION
-Failure to comply with these terms will result in the immediate termination of your right to use the library and may lead to legal action for intellectual property infringement.
+## 4. Assets and Iconography
+Icons and visual assets introduced into NDS remain part of the project.
+Unless explicitly authorized, these assets may only be used through the NDS library itself.
+External reuse, extraction, redistribution, or standalone use of these assets is prohibited.
+
+## 5. Disclaimer of Warranty and Liability
+This library is provided on an **"as is"** basis, without warranty of any kind.
+
+If a bug or issue is found, it should be reported through the official repository.
+The creator may choose to fix reported issues but is under no obligation to do so within any specific timeframe.
+
+Under no circumstances shall the creator be held liable for any loss of data, damages, service interruption, legal issue, or other consequence resulting from the use or inability to use the library.
+
+## 6. Termination
+Failure to comply with this license results in immediate termination of any right to use the library.
+The creator reserves the right to take action in case of intellectual property infringement or unauthorized use.
 
 ---
-For authorization requests, please open an Issue or contact the creator directly.
+
+For authorization requests, please open an Issue on the official repository or contact the creator directly.
