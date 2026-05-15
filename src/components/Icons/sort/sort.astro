@@ -32,7 +32,6 @@ else                                           raw = '';
 
 const classes = ['nds-icon-sort', className].filter(Boolean).join(' ');
 const svg = raw
-  .replace(/fill="#[A-Fa-f0-9]{3,8}"/g, 'fill="currentColor"')
   .replace('<svg ', `<svg class="${classes}" aria-hidden="${label ? 'false' : 'true'}" ${label ? `aria-label="${label}" role="img"` : ''} `);
 ---
 
