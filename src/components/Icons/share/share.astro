@@ -1,0 +1,27 @@
+---
+import share16  from './svgs/share-16.svg?raw';
+import share24  from './svgs/share-24.svg?raw';
+import share32  from './svgs/share-32.svg?raw';
+
+export interface Props {
+  size:        16 | 24 | 32;
+  label?:       string;
+  class?:       string;
+}
+
+const { size = 24, label, class: className } = Astro.props;
+
+let raw: string;
+if      (size === 16 )  raw = share16;
+else if (size === 24 )  raw = share24;
+else if (size === 32 )  raw = share32;
+else                   raw = ''; // Fallback to a blank string if no match is found, though this should not happen due to the type constraints on size.
+
+
+const classes = ['nds-icon-share', className].filter(Boolean).join(' ');
+const svg = raw
+  .replace(/fill="#[A-Fa-f0-9]{3,8}"/g, 'fill="currentColor"')
+  .replace('<svg ', `<svg class="${classes}" aria-hidden="${label ? 'false' : 'true'}" ${label ? `aria-label="${label}" role="img"` : ''} `);
+---
+
+<Fragment set:html={svg} />
