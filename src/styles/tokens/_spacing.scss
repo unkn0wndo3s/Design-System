@@ -1,0 +1,32 @@
+// ─── Base tokens (theme-independent) ──────────────────────────────────────────
+// Source: Light.tokens.json / Dark.tokens.json — Spacing, Radius, Border (same in both themes)
+
+:root {
+  --nds-none: 0;
+
+  // ── Spacing ───────────────────────────────────────────────────────────────
+  --nds-spacing-3xs: 2px;
+  --nds-spacing-2xs: 4px;
+  --nds-spacing-xs:  8px;
+  --nds-spacing-sm:  12px;
+  --nds-spacing-md:  16px;
+  --nds-spacing-lg:  24px;
+  --nds-spacing-xl:  32px;
+  --nds-spacing-2xl: 48px;
+  --nds-spacing-3xl: 64px;
+
+  // ── Radius ────────────────────────────────────────────────────────────────
+  --nds-radius-xs:   2px;
+  --nds-radius-sm:   4px;
+  --nds-radius-md:   8px;
+  --nds-radius-lg:   12px;
+  --nds-radius-xl:   16px;
+  --nds-radius-2xl:  24px;
+  --nds-radius-3xl:  32px;
+  --nds-radius-full: 9999px;
+
+  // ── Border widths ─────────────────────────────────────────────────────────
+  --nds-border-width-thin:   1px;
+  --nds-border-width-medium: 2px;
+  --nds-border-width-thick:  4px;
+}
