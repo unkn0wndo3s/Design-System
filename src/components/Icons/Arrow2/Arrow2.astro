@@ -1,0 +1,45 @@
+---
+import arrow16down  from './svgs/arrow2-16-down.svg?raw';
+import arrow16left  from './svgs/arrow2-16-left.svg?raw';
+import arrow16right from './svgs/arrow2-16-right.svg?raw';
+import arrow16up    from './svgs/arrow2-16-up.svg?raw';
+import arrow24down  from './svgs/arrow2-24-down.svg?raw';
+import arrow24left  from './svgs/arrow2-24-left.svg?raw';
+import arrow24right from './svgs/arrow2-24-right.svg?raw';
+import arrow24up    from './svgs/arrow2-24-up.svg?raw';
+import arrow32down  from './svgs/arrow2-32-down.svg?raw';
+import arrow32left  from './svgs/arrow2-32-left.svg?raw';
+import arrow32right from './svgs/arrow2-32-right.svg?raw';
+import arrow32up    from './svgs/arrow2-32-up.svg?raw';
+
+export interface Props {
+  size:        16 | 24 | 32;
+  orientation: 'up' | 'down' | 'left' | 'right';
+  label?:       string;
+  class?:       string;
+}
+
+const { size = 24, orientation = 'down', label, class: className } = Astro.props;
+
+let raw: string;
+if      (size === 16 && orientation === 'down')  raw = arrow16down;
+else if (size === 16 && orientation === 'left')  raw = arrow16left;
+else if (size === 16 && orientation === 'right') raw = arrow16right;
+else if (size === 16 && orientation === 'up')    raw = arrow16up;
+else if (size === 24 && orientation === 'down')  raw = arrow24down;
+else if (size === 24 && orientation === 'left')  raw = arrow24left;
+else if (size === 24 && orientation === 'right') raw = arrow24right;
+else if (size === 24 && orientation === 'up')    raw = arrow24up;
+else if (size === 32 && orientation === 'down')  raw = arrow32down;
+else if (size === 32 && orientation === 'left')  raw = arrow32left;
+else if (size === 32 && orientation === 'right') raw = arrow32right;
+else if (size === 32 && orientation === 'up')    raw = arrow32up;
+else                                            raw = ''; // Fallback to a blank string if no match is found, though this should not happen due to the type constraints on size and orientation.
+
+const classes = ['nds-icon-arrow2', className].filter(Boolean).join(' ');
+const svg = raw
+  .replace(/fill="#[A-Fa-f0-9]{3,8}"/g, 'fill="currentColor"')
+  .replace('<svg ', `<svg class="${classes}" aria-hidden="${label ? 'false' : 'true'}" ${label ? `aria-label="${label}" role="img"` : ''} `);
+---
+
+<Fragment set:html={svg} />

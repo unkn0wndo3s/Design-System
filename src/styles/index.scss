@@ -1,0 +1,10 @@
+@use 'tokens/colors';
+@use 'tokens/typography';
+@use 'tokens/spacing';
+
+// Global reset (opt-in)
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

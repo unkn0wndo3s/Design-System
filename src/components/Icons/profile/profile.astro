@@ -1,0 +1,28 @@
+---
+import profile16  from './svgs/profile-16.svg?raw';
+import profile24  from './svgs/profile-24.svg?raw';
+import profile32  from './svgs/profile-32.svg?raw';
+
+export interface Props {
+  size?:        16 | 24 | 32;
+  orientation?: 'up' | 'down' | 'left' | 'right';
+  label?:       string;
+  class?:       string;
+}
+
+const { size = 24, label, class: className } = Astro.props;
+
+let raw: string;
+if      (size === 16 )  raw = profile16;
+else if (size === 24 )  raw = profile24;
+else if (size === 32 )  raw = profile32;
+else                   raw = ''; // Fallback to a blank string if no match is found, though this should not happen due to the type constraints on size.
+
+
+const classes = ['nds-icon-profile', className].filter(Boolean).join(' ');
+const svg = raw
+  .replace(/fill="#[A-Fa-f0-9]{3,8}"/g, 'fill="currentColor"')
+  .replace('<svg ', `<svg class="${classes}" aria-hidden="${label ? 'false' : 'true'}" ${label ? `aria-label="${label}" role="img"` : ''} `);
+---
+
+<Fragment set:html={svg} />
