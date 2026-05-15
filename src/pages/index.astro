@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Arrow2, Profile, Share } from '../components/Icons/index.ts';
+import { Arrow2Icon, ProfileIcon, ShareIcon, SearchIcon } from '../components/Icons/index.ts';
 ---
 
 <Layout>
@@ -10,112 +10,38 @@ import { Arrow2, Profile, Share } from '../components/Icons/index.ts';
       <h2>Icon — 16 / 24 / 32</h2>
       <div class="icon-grid">
         <div class="icon-row">
-          <Arrow2 size={16} orientation="up" />
-          <Arrow2 size={16} orientation="right" />
-          <Arrow2 size={16} orientation="down" />
-          <Arrow2 size={16} orientation="left" />
+          <Arrow2Icon size={16} orientation="up" />
+          <Arrow2Icon size={16} orientation="right" />
+          <Arrow2Icon size={16} orientation="down" />
+          <Arrow2Icon size={16} orientation="left" />
         </div>
         <div class="icon-row">
-          <Arrow2 size={24} orientation="up" />
-          <Arrow2 size={24} orientation="right" />
-          <Arrow2 size={24} orientation="down" />
-          <Arrow2 size={24} orientation="left" />
+          <Arrow2Icon size={24} orientation="up" />
+          <Arrow2Icon size={24} orientation="right" />
+          <Arrow2Icon size={24} orientation="down" />
+          <Arrow2Icon size={24} orientation="left" />
         </div>
         <div class="icon-row">
-          <Arrow2 size={32} orientation="up" />
-          <Arrow2 size={32} orientation="right" />
-          <Arrow2 size={32} orientation="down" />
-          <Arrow2 size={32} orientation="left" />
+          <Arrow2Icon size={32} orientation="up" />
+          <Arrow2Icon size={32} orientation="right" />
+          <Arrow2Icon size={32} orientation="down" />
+          <Arrow2Icon size={32} orientation="left" />
         </div>
         <div class="icon-row">
-          <Profile size={16} />
-          <Profile size={24} />
-          <Profile size={32} />
+          <ProfileIcon size={16} />
+          <ProfileIcon size={24} />
+          <ProfileIcon size={32} />
         </div>
         <div class="icon-row">
-          <Share size={16} />
-          <Share size={24} />
-          <Share size={32} />
-      </div>
-    </section>
-  </main>
-</Layout>
-
-<style>
-  main {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: var(--nds-spacing-xl) var(--nds-spacing-md);
-  }
-
-  h1 {
-    font-size: var(--nds-type-display-small-size);
-    font-weight: var(--nds-type-display-small-weight);
-    line-height: var(--nds-type-display-small-line-height);
-    letter-spacing: var(--nds-type-display-small-letter-spacing);
-    margin-bottom: var(--nds-spacing-xl);
-  }
-
-  h2 {
-    font-size: var(--nds-type-heading-small-size);
-    font-weight: var(--nds-type-heading-small-weight);
-    line-height: var(--nds-type-heading-small-line-height);
-    letter-spacing: var(--nds-type-heading-small-letter-spacing);
-    color: var(--nds-text-muted);
-    margin-bottom: var(--nds-spacing-md);
-  }
-
-  section {
-    margin-bottom: var(--nds-spacing-2xl);
-  }
-
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--nds-spacing-sm);
-  }
-
-  .icon-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--nds-spacing-xs);
-  }
-
-  .icon-row {
-    display: flex;
-    align-items: center;
-    gap: var(--nds-spacing-lg);
-  }
-
-  .icon-name {
-    font-size: var(--nds-type-body-small-size);
-    color: var(--nds-text-muted);
-    width: 100px;
-    flex-shrink: 0;
-  }
-
-  .icon-sizes {
-    display: flex;
-    align-items: center;
-    gap: var(--nds-spacing-md);
-    color: var(--nds-default);
-  }
-</style>
-          <Arrow2 size={16} orientation="left" />
+          <ShareIcon size={16} />
+          <ShareIcon size={24} />
+          <ShareIcon size={32} />
         </div>
         <div class="icon-row">
-          <Arrow2 size={24} orientation="up" />
-          <Arrow2 size={24} orientation="right" />
-          <Arrow2 size={24} orientation="down" />
-          <Arrow2 size={24} orientation="left" />
-        </div>
-        <div class="icon-row">
-          <Arrow2 size={32} orientation="up" />
-          <Arrow2 size={32} orientation="right" />
-          <Arrow2 size={32} orientation="down" />
-          <Arrow2 size={32} orientation="left" />
-        </div>
+          <SearchIcon size={16} />
+          <SearchIcon size={24} />
+          <SearchIcon size={32} />
+          </div>
       </div>
     </section>
   </main>
