@@ -7,11 +7,20 @@ import {
   SearchIcon, SettingsIcon, ShareIcon, ShieldIcon, SortIcon, StatsIcon,
   UploadIcon,
 } from '../components/Icons/index.ts';
+import Notification from '../components/Notifications/notification.astro';
 ---
 
 <Layout>
   <main>
     <h1>Nova Design System</h1>
+    <section>
+      <h2>Notifications — Error / Warning / Success / Info</h2>
+      <div style="max-width: 400px;">
+        <Notification type="error">
+            An error occurred during the operation. Please try again.
+        </Notification>
+      </div>
+    </section>
     <section>
       <h2>Icon — 16 / 24 / 32</h2>
       <div class="icon-grid">
