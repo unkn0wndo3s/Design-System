@@ -1,0 +1,26 @@
+---
+import check16 from './svgs/check-16.svg?raw';
+import check24 from './svgs/check-24.svg?raw';
+import check32 from './svgs/check-32.svg?raw';
+
+export interface Props {
+  size:   16 | 24 | 32;
+  label?: string;
+  class?: string;
+}
+
+const { size = 24, label, class: className } = Astro.props;
+
+let raw: string;
+if      (size === 16) raw = check16;
+else if (size === 24) raw = check24;
+else if (size === 32) raw = check32;
+else                  raw = '';
+
+const classes = ['nds-icon-check', className].filter(Boolean).join(' ');
+const svg = raw
+  .replace(/fill="#[A-Fa-f0-9]{3,8}"/g, 'fill="currentColor"')
+  .replace('<svg ', `<svg class="${classes}" aria-hidden="${label ? 'false' : 'true'}" ${label ? `aria-label="${label}" role="img"` : ''} `);
+---
+
+<Fragment set:html={svg} />

@@ -1,0 +1,26 @@
+---
+import plus16 from './svgs/plus-16.svg?raw';
+import plus24 from './svgs/plus-24.svg?raw';
+import plus32 from './svgs/plus-32.svg?raw';
+
+export interface Props {
+  size:   16 | 24 | 32;
+  label?: string;
+  class?: string;
+}
+
+const { size = 24, label, class: className } = Astro.props;
+
+let raw: string;
+if      (size === 16) raw = plus16;
+else if (size === 24) raw = plus24;
+else if (size === 32) raw = plus32;
+else                  raw = '';
+
+const classes = ['nds-icon-plus', className].filter(Boolean).join(' ');
+const svg = raw
+  .replace(/fill="#[A-Fa-f0-9]{3,8}"/g, 'fill="currentColor"')
+  .replace('<svg ', `<svg class="${classes}" aria-hidden="${label ? 'false' : 'true'}" ${label ? `aria-label="${label}" role="img"` : ''} `);
+---
+
+<Fragment set:html={svg} />

@@ -1,0 +1,39 @@
+---
+import sort16ascend  from './svgs/sort-16-ascend.svg?raw';
+import sort16default from './svgs/sort-16-default.svg?raw';
+import sort16descend from './svgs/sort-16-descend.svg?raw';
+import sort24ascend  from './svgs/sort-24-ascend.svg?raw';
+import sort24default from './svgs/sort-24-default.svg?raw';
+import sort24descend from './svgs/sort-24-descend.svg?raw';
+import sort32ascend  from './svgs/sort-32-ascend.svg?raw';
+import sort32default from './svgs/sort-32-default.svg?raw';
+import sort32descend from './svgs/sort-32-descend.svg?raw';
+
+export interface Props {
+  size:     16 | 24 | 32;
+  variant:  'ascend' | 'default' | 'descend';
+  label?:   string;
+  class?:   string;
+}
+
+const { size = 24, variant = 'default', label, class: className } = Astro.props;
+
+let raw: string;
+if      (size === 16 && variant === 'ascend')  raw = sort16ascend;
+else if (size === 16 && variant === 'default') raw = sort16default;
+else if (size === 16 && variant === 'descend') raw = sort16descend;
+else if (size === 24 && variant === 'ascend')  raw = sort24ascend;
+else if (size === 24 && variant === 'default') raw = sort24default;
+else if (size === 24 && variant === 'descend') raw = sort24descend;
+else if (size === 32 && variant === 'ascend')  raw = sort32ascend;
+else if (size === 32 && variant === 'default') raw = sort32default;
+else if (size === 32 && variant === 'descend') raw = sort32descend;
+else                                           raw = '';
+
+const classes = ['nds-icon-sort', className].filter(Boolean).join(' ');
+const svg = raw
+  .replace(/fill="#[A-Fa-f0-9]{3,8}"/g, 'fill="currentColor"')
+  .replace('<svg ', `<svg class="${classes}" aria-hidden="${label ? 'false' : 'true'}" ${label ? `aria-label="${label}" role="img"` : ''} `);
+---
+
+<Fragment set:html={svg} />
