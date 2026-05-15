@@ -3,3 +3,4 @@ export { default as ProfileIcon } from './profile/profile.astro';
 export { default as ShareIcon } from './share/share.astro';
 export { default as SearchIcon } from './search/search.astro';
 export { default as CloseIcon } from './close/close.astro';
+export { default as UploadIcon } from './upload/upload.astro';
