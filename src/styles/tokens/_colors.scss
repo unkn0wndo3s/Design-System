@@ -1,164 +1,57 @@
-// ─── Semantic color tokens — Light & Dark ────────────────────────────────────
-// Source: Light.tokens.json / Dark.tokens.json (Figma export)
-// Usage : --nds-<category>-<variant>
-
 @mixin _light {
-  // ── Base ──────────────────────────────────────────────────────────────────
-  --nds-default:  #1C1C1A;
-  --nds-icon:     #1C1C1A;
-  --nds-overlay:  rgba(28, 28, 26, 0.60);
-  --nds-scrim:    rgba(28, 28, 26, 0.35);
-
-  // ── Brand ─────────────────────────────────────────────────────────────────
-  --nds-brand-primary: #534AB7;
-  --nds-brand-high:    #3C3489;
-  --nds-brand-medium:  #7F77DD;
-  --nds-brand-low:     #EEEDFE;
-
-  // ── Neutral ───────────────────────────────────────────────────────────────
-  --nds-neutral-high:   #2C2C2A;
-  --nds-neutral-medium: #888780;
-  --nds-neutral-low:    #F1EFE8;
-
-  // ── Correct ───────────────────────────────────────────────────────────────
+  --nds-text: #050A0A;
+  --nds-neutral: #7C8282;
+  --nds-disabled: #C2D4D4;
+  --nds-background: #F4FBFB;
+  --nds-primary: #43C9D0;
+  --nds-secondary: #71EAEA;
+  --nds-accent: #05D1D1;
+  
   --nds-correct-high:   #3B6D11;
   --nds-correct-medium: #639922;
   --nds-correct-low:    #EAF3DE;
 
-  // ── Error ─────────────────────────────────────────────────────────────────
   --nds-error-high:   #A32D2D;
   --nds-error-medium: #E24B4A;
   --nds-error-low:    #FCEBEB;
 
-  // ── Warning ───────────────────────────────────────────────────────────────
   --nds-warning-high:   #854F0B;
   --nds-warning-medium: #BA7517;
   --nds-warning-low:    #FAEEDA;
 
-  // ── Info ──────────────────────────────────────────────────────────────────
   --nds-info-high:   #185FA5;
   --nds-info-medium: #378ADD;
   --nds-info-low:    #E6F1FB;
 
-  // ── Interaction ───────────────────────────────────────────────────────────
-  --nds-interaction-high:   #26215C;
-  --nds-interaction-medium: #534AB7;
-  --nds-interaction-low:    #CECBF6;
-
-  // ── Disabled ──────────────────────────────────────────────────────────────
-  --nds-disabled-high:   #B4B2A9;
-  --nds-disabled-medium: #D3D1C7;
-  --nds-disabled-low:    #F1EFE8;
-
-  // ── Overlay (alpha) ───────────────────────────────────────────────────────
-  --nds-overlay-high:   rgba(0, 0, 0, 0.72);
-  --nds-overlay-medium: rgba(0, 0, 0, 0.40);
-  --nds-overlay-low:    rgba(0, 0, 0, 0.16);
-
-  // ── Focus ─────────────────────────────────────────────────────────────────
-  --nds-focus-ring: #534AB7;
-
-  // ── Text ──────────────────────────────────────────────────────────────────
-  --nds-text-muted:       #888780;
-  --nds-text-placeholder: #B4B2A9;
-  --nds-text-link:        #534AB7;
-  --nds-text-on-brand:    #F4F2EF;
-
-  // ── Border colors ─────────────────────────────────────────────────────────
-  --nds-border-high:   #B4B2A9;
-  --nds-border-medium: #D3D1C7;
-  --nds-border-low:    #F1EFE8;
-
-  // ── Component backgrounds ─────────────────────────────────────────────────
-  --nds-component-low:    #ECEAE3;
-  --nds-component-medium: #F8F7F4;
-  --nds-component-high:   #FFFFFF;
-
-  // ── Page backgrounds ──────────────────────────────────────────────────────
-  --nds-page-low:    #F4F2EF;
-  --nds-page-medium: #ECEAE3;
-  --nds-page-high:   #E4E2DB;
 }
 
 @mixin _dark {
-  // ── Base ──────────────────────────────────────────────────────────────────
-  --nds-default: #F4F2EF;
-  --nds-icon:    #F4F2EF;
-  --nds-overlay: rgba(0, 0, 0, 0.75);
-  --nds-scrim:   rgba(0, 0, 0, 0.50);
+  
+  --nds-text: #F5FAFA;
+  --nds-neutral: #5A7878;
+  --nds-disabled: #7C8282;
+  --nds-background: #040B0B;
+  --nds-primary: #2FB5BC;
+  --nds-secondary: #288181;
+  --nds-accent: #2EFAFA;
 
-  // ── Brand ─────────────────────────────────────────────────────────────────
-  --nds-brand-primary: #7F77DD;
-  --nds-brand-high:    #AFA9EC;
-  --nds-brand-medium:  #534AB7;
-  --nds-brand-low:     #26215C;
-
-  // ── Neutral ───────────────────────────────────────────────────────────────
-  --nds-neutral-high:   #F1EFE8;
-  --nds-neutral-medium: #888780;
-  --nds-neutral-low:    #2C2C2A;
-
-  // ── Correct ───────────────────────────────────────────────────────────────
   --nds-correct-high:   #97C459;
   --nds-correct-medium: #97C459;
   --nds-correct-low:    #173404;
 
-  // ── Error ─────────────────────────────────────────────────────────────────
   --nds-error-high:   #F09595;
   --nds-error-medium: #A32D2D;
   --nds-error-low:    #501313;
 
-  // ── Warning ───────────────────────────────────────────────────────────────
   --nds-warning-high:   #EF9F27;
   --nds-warning-medium: #EF9F27;
   --nds-warning-low:    #412402;
 
-  // ── Info ──────────────────────────────────────────────────────────────────
   --nds-info-high:   #85B7EB;
   --nds-info-medium: #85B7EB;
   --nds-info-low:    #042C53;
 
-  // ── Interaction ───────────────────────────────────────────────────────────
-  --nds-interaction-high:   #AFA9EC;
-  --nds-interaction-medium: #7F77DD;
-  --nds-interaction-low:    #26215C;
-
-  // ── Disabled ──────────────────────────────────────────────────────────────
-  --nds-disabled-high:   #5F5E5A;
-  --nds-disabled-medium: #444441;
-  --nds-disabled-low:    #2C2C2A;
-
-  // ── Overlay (alpha) ───────────────────────────────────────────────────────
-  --nds-overlay-high:   rgba(255, 255, 255, 0.80);
-  --nds-overlay-medium: rgba(255, 255, 255, 0.50);
-  --nds-overlay-low:    rgba(255, 255, 255, 0.24);
-
-  // ── Focus ─────────────────────────────────────────────────────────────────
-  --nds-focus-ring: #7F77DD;
-
-  // ── Text ──────────────────────────────────────────────────────────────────
-  --nds-text-muted:       #888780;
-  --nds-text-placeholder: #5F5E5A;
-  --nds-text-link:        #7F77DD;
-  --nds-text-on-brand:    #1C1C1A;
-
-  // ── Border colors ─────────────────────────────────────────────────────────
-  --nds-border-high:   #5F5E5A;
-  --nds-border-medium: #444441;
-  --nds-border-low:    #2C2C2A;
-
-  // ── Component backgrounds ─────────────────────────────────────────────────
-  --nds-component-low:    #222220;
-  --nds-component-medium: #2A2A28;
-  --nds-component-high:   #333330;
-
-  // ── Page backgrounds ──────────────────────────────────────────────────────
-  --nds-page-low:    #1C1C1A;
-  --nds-page-medium: #242422;
-  --nds-page-high:   #2C2C2A;
 }
-
-// ─── Apply themes ─────────────────────────────────────────────────────────────
 
 :root,
 [data-theme="light"] {

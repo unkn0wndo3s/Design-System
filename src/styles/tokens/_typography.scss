@@ -1,112 +1,49 @@
-// ─── Typography tokens ────────────────────────────────────────────────────────
-// Font: Geist (Vercel) — https://vercel.com/font
-// Values: size in px, line-height in px, letter-spacing as em
+@import url('https://fonts.googleapis.com/css?family=Intel%20One%20Mono:700|Intel%20One%20Mono:400');
 
-:root {
-  // ── Font families ─────────────────────────────────────────────────────────
-  --nds-font-family-base: 'Geist', system-ui, -apple-system, sans-serif;
-  --nds-font-family-mono: 'Geist Mono', 'JetBrains Mono', monospace;
-
-  // ── Font weights ──────────────────────────────────────────────────────────
-  --nds-font-weight-medium:   500;
-  --nds-font-weight-semibold: 600;
-  --nds-font-weight-bold:     700;
-
-  // ── Body ──────────────────────────────────────────────────────────────────
-  --nds-type-body-small-size:           12px;
-  --nds-type-body-small-weight:         var(--nds-font-weight-medium);
-  --nds-type-body-small-line-height:    10px;
-  --nds-type-body-small-letter-spacing: 0.015em;
-
-  --nds-type-body-medium-size:           14px;
-  --nds-type-body-medium-weight:         var(--nds-font-weight-medium);
-  --nds-type-body-medium-line-height:    10px;
-  --nds-type-body-medium-letter-spacing: 0.015em;
-
-  --nds-type-body-large-size:           16px;
-  --nds-type-body-large-weight:         var(--nds-font-weight-medium);
-  --nds-type-body-large-line-height:    12px;
-  --nds-type-body-large-letter-spacing: 0.015em;
-
-  // ── Heading ───────────────────────────────────────────────────────────────
-  --nds-type-heading-small-size:           20px;
-  --nds-type-heading-small-weight:         var(--nds-font-weight-semibold);
-  --nds-type-heading-small-line-height:    15px;
-  --nds-type-heading-small-letter-spacing: 0.014em;
-
-  --nds-type-heading-medium-size:           24px;
-  --nds-type-heading-medium-weight:         var(--nds-font-weight-semibold);
-  --nds-type-heading-medium-line-height:    18px;
-  --nds-type-heading-medium-letter-spacing: 0.013em;
-
-  // ── Display ───────────────────────────────────────────────────────────────
-  --nds-type-display-small-size:           36px;
-  --nds-type-display-small-weight:         var(--nds-font-weight-bold);
-  --nds-type-display-small-line-height:    30px;
-  --nds-type-display-small-letter-spacing: 0.012em;
-
-  --nds-type-display-medium-size:           48px;
-  --nds-type-display-medium-weight:         var(--nds-font-weight-bold);
-  --nds-type-display-medium-line-height:    38px;
-  --nds-type-display-medium-letter-spacing: 0.011em;
+@mixin text-sm {
+  font-size: 0.600rem;
+  font-family: 'Intel One Mono';
+  font-weight: 400;
 }
 
-// ─── SASS mixins ──────────────────────────────────────────────────────────────
-// Usage: @use 'path/to/tokens/typography' as typo;
-//        @include typo.body-small;
-
-@mixin body-small {
-  font-family: var(--nds-font-family-base);
-  font-size: var(--nds-type-body-small-size);
-  font-weight: var(--nds-type-body-small-weight);
-  line-height: var(--nds-type-body-small-line-height);
-  letter-spacing: var(--nds-type-body-small-letter-spacing);
+@mixin text-base {
+  font-size: 0.8rem;
+  font-family: 'Intel One Mono';
+  font-weight: 400;
 }
 
-@mixin body-medium {
-  font-family: var(--nds-font-family-base);
-  font-size: var(--nds-type-body-medium-size);
-  font-weight: var(--nds-type-body-medium-weight);
-  line-height: var(--nds-type-body-medium-line-height);
-  letter-spacing: var(--nds-type-body-medium-letter-spacing);
+@mixin text-label {
+  font-size: 0.8rem;
+  font-family: 'Intel One Mono';
+  font-weight: 700;
 }
 
-@mixin body-large {
-  font-family: var(--nds-font-family-base);
-  font-size: var(--nds-type-body-large-size);
-  font-weight: var(--nds-type-body-large-weight);
-  line-height: var(--nds-type-body-large-line-height);
-  letter-spacing: var(--nds-type-body-large-letter-spacing);
+@mixin text-xl {
+  font-size: 1.066rem;
+  font-family: 'Intel One Mono';
+  font-weight: 700;
 }
 
-@mixin heading-small {
-  font-family: var(--nds-font-family-base);
-  font-size: var(--nds-type-heading-small-size);
-  font-weight: var(--nds-type-heading-small-weight);
-  line-height: var(--nds-type-heading-small-line-height);
-  letter-spacing: var(--nds-type-heading-small-letter-spacing);
+@mixin text-2xl {
+  font-size: 1.421rem;
+  font-family: 'Intel One Mono';
+  font-weight: 700;
 }
 
-@mixin heading-medium {
-  font-family: var(--nds-font-family-base);
-  font-size: var(--nds-type-heading-medium-size);
-  font-weight: var(--nds-type-heading-medium-weight);
-  line-height: var(--nds-type-heading-medium-line-height);
-  letter-spacing: var(--nds-type-heading-medium-letter-spacing);
+@mixin text-3xl {
+  font-size: 1.894rem;
+  font-family: 'Intel One Mono';
+  font-weight: 700;
 }
 
-@mixin display-small {
-  font-family: var(--nds-font-family-base);
-  font-size: var(--nds-type-display-small-size);
-  font-weight: var(--nds-type-display-small-weight);
-  line-height: var(--nds-type-display-small-line-height);
-  letter-spacing: var(--nds-type-display-small-letter-spacing);
+@mixin text-4xl {
+  font-size: 2.525rem;
+  font-family: 'Intel One Mono';
+  font-weight: 700;
 }
 
-@mixin display-medium {
-  font-family: var(--nds-font-family-base);
-  font-size: var(--nds-type-display-medium-size);
-  font-weight: var(--nds-type-display-medium-weight);
-  line-height: var(--nds-type-display-medium-line-height);
-  letter-spacing: var(--nds-type-display-medium-letter-spacing);
+@mixin text-5xl {
+  font-size: 3.366rem;
+  font-family: 'Intel One Mono';
+  font-weight: 700;
 }
