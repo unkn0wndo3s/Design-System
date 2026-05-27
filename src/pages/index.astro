@@ -15,9 +15,18 @@ import Notification from '../components/Notifications/notification.astro';
     <h1>Nova Design System</h1>
     <section>
       <h2>Notifications — Error / Warning / Success / Info</h2>
-      <div style="max-width: 400px;">
+      <div style="max-width: 400px; display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
         <Notification type="error">
             An error occurred during the operation. Please try again.
+        </Notification>
+        <Notification type="success">
+            The operation was completed successfully.
+        </Notification>
+        <Notification type="warning">
+            A warning occurred during the operation. Please check the details.
+        </Notification>
+        <Notification type="info">
+            Information about the operation.
         </Notification>
       </div>
     </section>
@@ -173,7 +182,12 @@ import Notification from '../components/Notifications/notification.astro';
   </main>
 </Layout>
 
-<style>
+<style lang="scss" scoped>
+
+  body {
+    background-color: var(--nds-background);
+    color: var(--nds-text);
+  }
   main {
     max-width: 900px;
     margin: 0 auto;
@@ -218,6 +232,7 @@ import Notification from '../components/Notifications/notification.astro';
     display: flex;
     align-items: center;
     gap: var(--nds-spacing-lg);
+    color: var(--nds-text);
   }
 
   .icon-name {
