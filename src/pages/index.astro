@@ -10,7 +10,7 @@ import {
 } from '../components/Icons/index.ts';
 import Notification from '../components/Notifications/notification.astro';
 
-const initialChecked = false;
+const initialChecked = true;
 ---
 
 <Layout>
@@ -196,12 +196,22 @@ const initialChecked = false;
     const toggle = document.getElementById('my-toggle') as any;
     const stateLabel = document.getElementById('toggle-state');
 
-    toggle?.addEventListener('change', (e: CustomEvent) => {
-        const { checked, name } = e.detail;
+    // Défaut: thème sombre
+    if (!document.documentElement.hasAttribute('data-theme')) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    if (stateLabel) stateLabel.textContent = 'Thème : Sombre';
 
-        if (stateLabel) {
-            stateLabel.textContent = `State: ${checked ? 'Checked' : 'Unchecked'}`;
-        }
+    toggle?.addEventListener('change', (e: CustomEvent) => {
+      const { checked } = e.detail;
+
+      if (checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if (stateLabel) stateLabel.textContent = 'Thème : Sombre';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        if (stateLabel) stateLabel.textContent = 'Thème : Clair';
+      }
     });
 </script>
 
@@ -211,6 +221,7 @@ const initialChecked = false;
     background-color: var(--nds-background);
     color: var(--nds-text);
   }
+  
   main {
     max-width: 900px;
     margin: 0 auto;

@@ -1,14 +1,16 @@
 ---
+import { boolean } from 'astro:schema';
+
 export interface Props {
-    checked?: boolean;
+    'data-checked': boolean;
     name?: string;
     id: string;
 }
 
-const { checked = false, name = 'toggle', id} = Astro.props;
+const { 'data-checked': dataChecked = 'false', name = 'toggle', id } = Astro.props;
 ---
 
-<toggle-switch data-checked={checked} data-name={name} id={id}>
+<toggle-switch data-checked={dataChecked} data-name={name} id={id}>
     <div class="toggle">
         <div class="toggle-switch"></div>
     </div>
