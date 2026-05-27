@@ -20,7 +20,6 @@ const initialChecked = false;
       <h2>Toggle</h2>
       <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
         <Toggle data-checked={initialChecked} data-name="notifications" id="my-toggle" />
-        <!-- ✅ Valeur initiale rendue statiquement, le script prend le relais ensuite -->
         <p id="toggle-state">State: {initialChecked ? 'Checked' : 'Unchecked'}</p>
       </div>
     </section>
