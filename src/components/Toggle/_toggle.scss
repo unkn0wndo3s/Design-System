@@ -1,0 +1,33 @@
+.toggle {
+    background-color: var(--nds-disabled);
+    border-radius: var(--nds-radius-full);
+    padding: var(--nds-spacing-2xs);
+    width: 50px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    transition: background-color 160ms ease;
+    position: relative;
+    &-switch {
+        color: var(--nds-text);
+        width: 15px;
+        height: 15px;
+        background-color: var(--nds-text);
+        border-radius: var(--nds-radius-full);
+        position: absolute;
+        left: var(--nds-spacing-2xs);
+        top: 50%;
+        transform: translateY(-50%);
+        transition: left 160ms ease, background-color 160ms ease, transform 160ms ease;
+    }
+    &-active {
+        display: flex;
+        justify-content: right;
+        background-color: var(--nds-primary);
+        .toggle-switch {
+            left: calc(100% - var(--nds-spacing-2xs) - 15px);
+        }
+    }
+}

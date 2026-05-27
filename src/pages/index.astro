@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Toggle from '../components/Toggle/toggle.astro';
 import {
   Arrow2Icon, BinIcon, BurgerIcon, CalendarIcon, CheckIcon, CloseIcon,
   CodeIcon, CubeIcon, DownloadIcon, FilterIcon, HelpIcon, HomeIcon,
@@ -8,11 +9,21 @@ import {
   UploadIcon,
 } from '../components/Icons/index.ts';
 import Notification from '../components/Notifications/notification.astro';
+
+const initialChecked = false;
 ---
 
 <Layout>
   <main>
     <h1>Nova Design System</h1>
+    <section>
+      <h2>Toggle</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
+        <Toggle data-checked={initialChecked} data-name="notifications" id="my-toggle" />
+        <!-- ✅ Valeur initiale rendue statiquement, le script prend le relais ensuite -->
+        <p id="toggle-state">State: {initialChecked ? 'Checked' : 'Unchecked'}</p>
+      </div>
+    </section>
     <section>
       <h2>Notifications — Error / Warning / Success / Info</h2>
       <div style="max-width: 400px; display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
@@ -181,6 +192,19 @@ import Notification from '../components/Notifications/notification.astro';
     </section>
   </main>
 </Layout>
+
+<script>
+    const toggle = document.getElementById('my-toggle') as any;
+    const stateLabel = document.getElementById('toggle-state');
+
+    toggle?.addEventListener('change', (e: CustomEvent) => {
+        const { checked, name } = e.detail;
+
+        if (stateLabel) {
+            stateLabel.textContent = `State: ${checked ? 'Checked' : 'Unchecked'}`;
+        }
+    });
+</script>
 
 <style lang="scss" scoped>
 

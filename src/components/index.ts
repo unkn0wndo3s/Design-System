@@ -2,3 +2,4 @@
 
 export * from './Icons/index.ts';
 export { default as Notification } from './Notifications/notification.astro';
+export { default as Toggle }       from './Toggle/toggle.astro';
