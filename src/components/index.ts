@@ -8,3 +8,6 @@ export { default as TabItem }      from './Tabs/tabItem.astro';
 export { default as TabContent }   from './Tabs/tabContent.astro';
 export { default as Button }       from './Button/button.astro';
 export { default as Link }         from './Link/link.astro';
+export { default as ListItem }     from './ListItem/listItem.astro';
+export { default as ListItemTitle } from './ListItem/listItemTitle.astro';
+export { default as ListItemSubtitle } from './ListItem/listItemSubtitle.astro';
