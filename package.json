@@ -1,7 +1,8 @@
 {
-  "name": "nova-design-system",
+  "name": "@unkn0wndo3s/nova-design-system",
   "type": "module",
   "version": "0.1.0",
+  "main": "./src/index.ts",
   "description": "Nova Design System — Astro component library",
   "engines": {
     "node": ">=22.12.0"
@@ -17,8 +18,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "barrel": "node scripts/generate-barrel.mjs"
+    "astro": "astro"
   },
   "dependencies": {
     "astro": "^6.3.8"
