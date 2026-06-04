@@ -1,0 +1,30 @@
+@use '../../styles/tokens/typography' as *;
+
+.link { 
+  text-decoration: none;
+  color: var(--nds-primary);
+  @include text-base;
+    &:hover {
+        color: var(--nds-text);
+        opacity: 0.25;
+    }
+    &:active {
+        color: var(--nds-text);
+        opacity: 0.25;
+    }
+  &__container {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: var(--nds-border-width-medium) dashed var(--nds-secondary);
+    &:hover {
+      background-color: var(--nds-secondary);
+      border-bottom: var(--nds-border-width-medium) dashed var(--nds-accent);
+    }
+    &:active {
+      background-color: var(--nds-primary);
+      border-bottom: var(--nds-border-width-medium) dashed var(--nds-secondary);
+    }
+  }
+}

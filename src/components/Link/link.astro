@@ -1,0 +1,16 @@
+---
+export interface Props {
+  url:        string;
+  blank?:      boolean;
+}
+const { url, blank } = Astro.props;
+---
+<div class='link__container'>
+  <a href={url} class='link' { ...(blank && { target: '_blank', rel: 'noopener noreferrer' }) }>
+    <slot/>
+  </a>
+</div>
+
+<style lang="scss">
+@use './link';
+</style>

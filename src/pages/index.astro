@@ -6,6 +6,7 @@ import Tab from '../components/Tabs/tab.astro';
 import TabItem from '../components/Tabs/tabItem.astro';
 import TabContent from '../components/Tabs/tabContent.astro';
 import Button from '../components/Button/button.astro';
+import Link from '../components/Link/link.astro';
 import {
   Arrow2Icon, BinIcon, BurgerIcon, CalendarIcon, CheckIcon, CloseIcon,
   CodeIcon, CubeIcon, DownloadIcon, FilterIcon, HelpIcon, HomeIcon,
@@ -20,6 +21,13 @@ const initialChecked = true;
 <Layout>
   <main>
     <h1>Nova Design System</h1>
+    <section>
+      <h2>Link</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
+        <Link url="https://example.com">Example Link</Link>
+        <Link url="https://example.com" blank={true}>Example Link (opens in new tab)</Link>
+      </div>
+    </section>
     <section>
       <h2>Button</h2>
       <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
