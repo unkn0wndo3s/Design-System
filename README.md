@@ -1,165 +1,159 @@
 # Nova Design System (NDS)
 
-Nova Design System (NDS) is a lightweight, responsive, and secure UI library built with **Svelte**.
-It is developed primarily for internal and personal projects and is available publicly for reference, testing, and contributions.
+Nova Design System (NDS) is a lightweight, responsive UI component library built with **Astro**. It is developed primarily for internal and personal projects, and is publicly available for reference and contributions.
 
 ---
 
 ## Table of Contents
+
 1. [Overview](#overview)
 2. [Project Status](#project-status)
 3. [Core Principles](#core-principles)
 4. [Available Components](#available-components)
-5. [Installation](#installation)
-6. [Usage](#usage)
-7. [Theming and Variables](#theming-and-variables)
-8. [Contributing](#contributing)
-9. [Development and Documentation](#development-and-documentation)
-10. [License](#license)
+5. [Design Tokens](#design-tokens)
+6. [Installation](#installation)
+7. [Usage](#usage)
+8. [Development](#development)
+9. [License](#license)
 
 ---
 
 ## Overview
-NDS aims to provide a robust set of reusable UI components that are easy to integrate while maintaining consistency, responsiveness, and a strong focus on safety and maintainability.
+
+NDS provides a focused set of reusable Astro components with centralized design tokens, light/dark theming, and a strong focus on consistency and maintainability. The component documentation and showcase are also built with Astro.
 
 ## Project Status
-**Current Phase: ALPHA**
 
-The library is still under active development. Component APIs, styling structure, and internal architecture may change before the Beta release.
+> **ALPHA** — The library is under active development. Component APIs, token naming, and internal architecture may change before a stable release.
 
 ## Core Principles
-- **Responsive Architecture:** Components are built with a mobile-first mindset and are expected to behave correctly across modern screen sizes.
-- **Security-Centric:** Unsafe patterns are avoided, especially anything that could introduce injection or untrusted rendering issues.
-- **Native Theming:** Styling is based on centralized design tokens and supports Light and Dark themes.
-- **Type Safety:** The library is written in TypeScript for stronger reliability and a better developer experience.
-- **Consistency First:** Shared tokens, naming conventions, and reusable patterns take priority over one-off styling.
+
+- **Responsive Architecture:** Components are built mobile-first and work correctly across modern screen sizes.
+- **Security-Centric:** Unsafe patterns (injection, untrusted rendering) are avoided by design.
+- **Native Theming:** All styling relies on centralized design tokens and supports Light and Dark modes.
+- **Type Safety:** Written in TypeScript for stronger reliability and a better developer experience.
+- **Consistency First:** Shared tokens, naming conventions, and reusable patterns take priority over one-off styles.
 
 ## Available Components
 
-### Actions
-- `Button`
-- `Toggle`
+These are the components currently implemented in `src/components/`:
 
-### Navigation
-- `Navbar`
-- `Sidebar`
-- `Tabs`
-- `Breadcrumb`
-- `Paginate`
-- `Stepper`
+| Component | Category |
+|---|---|
+| `Button` | Actions |
+| `Toggle` | Actions |
+| `Tabs` / `Tab` / `TabItem` / `TabContent` | Navigation |
+| `Link` | Layout |
+| `ListItem` | Data Display |
+| `Notifications` | Feedback |
+| `Icons` | Utility |
 
-### Form
-- `Checkbox`
-- `Radio`
-- `Select`
-- `SelectOption`
-- `Search`
-- `Input`
-- `File Upload`
-- `Date Picker`
-- `Slider`
-- `Numeric Stepper`
+> Many components listed in earlier versions of this README (Navbar, Sidebar, Card, Modal, etc.) are planned but not yet implemented.
 
-### Data Display
-- `Badge`
-- `Avatar`
-- `Card`
-- `Table`
-- `Row`
-- `Cell`
-- `List Item`
+## Design Tokens
 
-### Overlay
-- `Modal`
-- `Dropdown`
-- `Tooltip`
+All styling is controlled via CSS custom properties prefixed with `--nds-`, defined in `src/styles/tokens/`:
 
-### Feedback
-- `Notification` *(error / warning / info / success)*
-- `Loading Bar`
+| File | Contents |
+|---|---|
+| `_colors.scss` | Color palette and semantic colors (`success`, `warning`, `error`, `info`) |
+| `_spacing.scss` | Base spacing scale, border radius, and border width |
+| `_typography.scss` | Font families, sizes, and weights |
 
-### Layout
-- `Divider`
-- `Link`
+**Rules:**
+- Never hardcode colors, spacing, or radii in component styles when a token exists.
+- Never override tokens locally in component scope unless explicitly supported.
+- All global token changes must go through the core styling system.
 
 ## Installation
-Install the package with npm:
 
 ```bash
-npm install @unkn0wn-pkgs/nds
+npm install @unkn0wndo3s/nova-design-system
 ```
 
 No extra Vite de-optimization configuration is required.
 
 ## Usage
-### Basic Component Example
-```svelte
-<script lang="ts">
-  import { Notification } from '@unkn0wn-pkgs/nds';
-</script>
 
-<Notification type="warning">
+Import components directly from the package:
+
+```astro
+---
+import { Button } from '@unkn0wndo3s/nova-design-system';
+---
+
+<Button>Click me</Button>
+```
+
+```astro
+---
+import { Notifications } from '@unkn0wndo3s/nova-design-system';
+---
+
+<Notifications type="warning">
   This is a warning message.
-</Notification>
+</Notifications>
 ```
 
-### Another Example
-```svelte
-<script lang="ts">
-  import { Button } from '@unkn0wn-pkgs/nds';
-</script>
-
-<Button>
-  Click me
-</Button>
-```
-
-## Theming and Variables
-NDS relies on a centralized Design Token system.
-All styling is controlled through CSS custom properties prefixed with `--nds-`.
-
-### Rules
-- Do not hardcode colors, spacing, or radii directly inside component styles when a design token exists.
-- Do not override tokens locally in isolated component scopes unless the system explicitly supports it.
-- Keep all global token changes inside the core styling system to preserve consistency.
-
-## Contributing
-Contributions are welcome.
-If you want to report a bug, suggest a feature, or submit a Pull Request, follow the repository contribution rules and templates.
-
-Please read the contribution guide before opening a PR.
-
-### Icon Contribution Policy
-By contributing a custom icon to NDS, you agree that the icon may be used inside the design system according to the repository license and contribution policy.
-
-## Development and Documentation
-Documentation is managed with **Storybook**.
+## Development
 
 ### Clone the repository
+
 ```bash
-git clone https://github.com/unkn0wndo3s/Design-System.git
+git clone https://git.novaprojects.dev/unkn0wn/nova-design-system.git
 ```
 
 ### Install dependencies
+
 ```bash
 npm install
 ```
 
-### Launch Storybook
+### Start the dev server
+
 ```bash
-npm run storybook
+npm run dev
 ```
 
 ### Useful scripts
+
 ```bash
-npm run check
-npm run lint
-npm run format
-npm run build
-npm run build-storybook
+npm run build    # Build the project
+npm run check    # Type checking
+npm run lint     # Lint the codebase
+npm run format   # Format code
 ```
 
+### Project Structure
+
+```
+src/
+├── components/       # Astro components
+│   ├── Button/
+│   ├── Icons/
+│   ├── Link/
+│   ├── ListItem/
+│   ├── Notifications/
+│   ├── Tabs/
+│   ├── Toggle/
+│   └── index.ts
+├── layouts/          # Astro layouts
+├── pages/            # Documentation pages
+├── styles/
+│   ├── tokens/
+│   │   ├── _colors.scss
+│   │   ├── _spacing.scss
+│   │   └── _typography.scss
+│   └── index.scss
+└── index.ts
+```
+
+## Contributing
+
+Contributions are welcome. To report a bug, suggest a feature, or open a Pull Request, follow the repository contribution rules and templates.
+
+**Icon Contribution Policy:** By contributing a custom icon to NDS, you agree that it may be used within the design system under the repository license and contribution policy.
+
 ## License
-This project is **not distributed under a standard open-source license**.
-Usage, redistribution, commercial use, and derivative work rules are defined in `LICENSE.md`.
-Read that file carefully before using the library in a product or service.
+
+This project is **not distributed under a standard open-source license**. Usage, redistribution, commercial use, and derivative work rules are defined in `LICENSE.md`. Read that file carefully before using the library in a product or service.
