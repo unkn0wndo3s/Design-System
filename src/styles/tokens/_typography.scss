@@ -1,49 +1,51 @@
 @import url('https://fonts.googleapis.com/css?family=Intel%20One%20Mono:700|Intel%20One%20Mono:400');
 
+$font-mono: 'Intel One Mono', monospace;
+
 @mixin text-sm {
   font-size: 0.600rem;
-  font-family: 'Intel One Mono';
+  font-family: $font-mono;
   font-weight: 400;
 }
 
 @mixin text-base {
   font-size: 0.8rem;
-  font-family: 'Intel One Mono';
+  font-family: $font-mono;
   font-weight: 400;
 }
 
 @mixin text-label {
   font-size: 0.8rem;
-  font-family: 'Intel One Mono';
+  font-family: $font-mono;
   font-weight: 700;
 }
 
 @mixin text-xl {
   font-size: 1.066rem;
-  font-family: 'Intel One Mono';
+  font-family: $font-mono;
   font-weight: 700;
 }
 
 @mixin text-2xl {
   font-size: 1.421rem;
-  font-family: 'Intel One Mono';
+  font-family: $font-mono;
   font-weight: 700;
 }
 
 @mixin text-3xl {
   font-size: 1.894rem;
-  font-family: 'Intel One Mono';
+  font-family: $font-mono;
   font-weight: 700;
 }
 
 @mixin text-4xl {
   font-size: 2.525rem;
-  font-family: 'Intel One Mono';
+  font-family: $font-mono;
   font-weight: 700;
 }
 
 @mixin text-5xl {
   font-size: 3.366rem;
-  font-family: 'Intel One Mono';
+  font-family: $font-mono;
   font-weight: 700;
 }
