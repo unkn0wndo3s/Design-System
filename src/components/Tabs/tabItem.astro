@@ -1,0 +1,41 @@
+---
+export interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<div
+  class="tab__item"
+  data-tab-item={id}
+  role="tab"
+  aria-selected="false"
+  tabindex="0"
+>
+  <slot />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tab-item]').forEach((item) => {
+    function notify() {
+      const group = item.closest('[data-tab-group]');
+      if (!group) return;
+      group.dispatchEvent(new CustomEvent('tab-item:click', {
+        detail: { itemId: item.dataset.tabItem },
+      }));
+    }
+
+    item.addEventListener('click', notify);
+    item.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        notify();
+      }
+    });
+  });
+</script>
+
+<style lang="scss">
+@use './tab';
+</style>

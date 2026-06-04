@@ -1,6 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Notification from '../components/Notifications/notification.astro';
 import Toggle from '../components/Toggle/toggle.astro';
+import Tab from '../components/Tabs/tab.astro';
+import TabItem from '../components/Tabs/tabItem.astro';
+import TabContent from '../components/Tabs/tabContent.astro';
 import {
   Arrow2Icon, BinIcon, BurgerIcon, CalendarIcon, CheckIcon, CloseIcon,
   CodeIcon, CubeIcon, DownloadIcon, FilterIcon, HelpIcon, HomeIcon,
@@ -8,7 +12,6 @@ import {
   SearchIcon, SettingsIcon, ShareIcon, ShieldIcon, SortIcon, StatsIcon,
   UploadIcon,
 } from '../components/Icons/index.ts';
-import Notification from '../components/Notifications/notification.astro';
 
 const initialChecked = true;
 ---
@@ -16,6 +19,27 @@ const initialChecked = true;
 <Layout>
   <main>
     <h1>Nova Design System</h1>
+    <section>
+      <h2>Tabs</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
+        <Tab id="my-tab" defaultActive="images">
+          <TabItem id="images">images</TabItem>
+          <TabItem id="videos">Videos</TabItem>
+          <TabItem id="docs">Documents</TabItem>
+        </Tab>
+        <TabContent id="my-tab" itemId="images">
+          <p>my images</p>
+        </TabContent>
+
+        <TabContent id="my-tab" itemId="videos">
+          <p>Video player here</p>
+        </TabContent>
+
+        <TabContent id="my-tab" itemId="docs">
+          <p>Document list here</p>
+        </TabContent>
+      </div>
+    </section>
     <section>
       <h2>Toggle</h2>
       <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">

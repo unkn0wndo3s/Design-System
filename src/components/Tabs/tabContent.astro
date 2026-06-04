@@ -1,0 +1,21 @@
+---
+export interface Props {
+  id: string;
+  itemId: string;
+}
+
+const { id, itemId } = Astro.props;
+---
+
+<div
+  data-tab-content
+  data-tab-id={id}
+  data-tab-item-id={itemId}
+  hidden
+>
+  <slot />
+</div>
+
+<style lang="scss">
+@use './tab';
+</style>

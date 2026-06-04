@@ -1,0 +1,54 @@
+---
+export interface Props {
+  id: string;
+  defaultActive?: string;
+}
+
+const { id, defaultActive } = Astro.props;
+---
+
+<div class="tab" data-tab-group id={id} data-default-active={defaultActive}>
+  <slot />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tab-group]').forEach((group) => {
+    const defaultActive = group.dataset.defaultActive;
+
+    function setActive(itemId: string) {
+      const groupId = group.id;
+
+      group.querySelectorAll<HTMLElement>('[data-tab-item]').forEach((item) => {
+        item.classList.toggle('tab__item--active', item.dataset.tabItem === itemId);
+        item.setAttribute('aria-selected', String(item.dataset.tabItem === itemId));
+      });
+
+      document.querySelectorAll<HTMLElement>(`[data-tab-content][data-tab-id="${groupId}"]`).forEach((content) => {
+        content.hidden = content.dataset.tabItemId !== itemId;
+      });
+
+      group.dispatchEvent(new CustomEvent('tab:change', {
+        detail: { itemId },
+        bubbles: true,
+      }));
+    }
+
+    const firstItem = group.querySelector<HTMLElement>('[data-tab-item]');
+    const initialId = defaultActive ?? firstItem?.dataset.tabItem ?? '';
+    if (initialId) setActive(initialId);
+
+    group.addEventListener('tab-item:click', (e: Event) => {
+      setActive((e as CustomEvent<{ itemId: string }>).detail.itemId);
+    });
+
+    group.addEventListener('tab:set', (e: Event) => {
+      setActive((e as CustomEvent<{ itemId: string }>).detail.itemId);
+    });
+
+    (group as any).setActiveTab = (itemId: string) => setActive(itemId);
+  });
+</script>
+
+<style lang="scss">
+@use './tab';
+</style>

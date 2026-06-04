@@ -3,3 +3,6 @@
 export * from './Icons/index.ts';
 export { default as Notification } from './Notifications/notification.astro';
 export { default as Toggle }       from './Toggle/toggle.astro';
+export { default as Tab }          from './Tabs/tab.astro';
+export { default as TabItem }      from './Tabs/tabItem.astro';
+export { default as TabContent }   from './Tabs/tabContent.astro';
