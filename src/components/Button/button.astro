@@ -1,0 +1,15 @@
+---
+export interface Props {
+  type:        'primary' | 'secondary';
+  disabled?:   boolean;
+}
+const { type, disabled = false } = Astro.props;
+---
+
+<div class={`button button__${type} ${disabled ? 'button--disabled' : ''}`}>
+  <slot/>
+</div>
+
+<style lang="scss">
+@use './_button.scss';
+</style>

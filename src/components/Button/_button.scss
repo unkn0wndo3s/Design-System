@@ -1,0 +1,37 @@
+@use '../../styles/tokens/typography' as *;
+
+.button { 
+  width: fit-content;
+  padding: var(--nds-spacing-sm) var(--nds-spacing-md);
+  border-radius: var(--nds-radius-sm);
+  @include text-base;
+  cursor: pointer;
+  &__primary {
+    background-color: var(--nds-primary);
+    color: var(--nds-text);
+    &:hover:not(.button--disabled) {
+      background-color: var(--nds-secondary);
+    }
+    &:active:not(.button--disabled) {
+      background-color: var(--nds-accent);
+      color: var(--nds-background);
+    }
+  }
+  &__secondary {
+    border: var(--nds-border-width-medium) solid;
+    border-color: var(--nds-primary);
+    color: var(--nds-primary);
+    &:hover:not(.button--disabled) {
+      border-color: var(--nds-secondary);
+    }
+    &:active:not(.button--disabled) {
+      border-color: var(--nds-accent);
+      color: var(--nds-accent);
+    }
+  }
+  &--disabled {
+    cursor: not-allowed;
+    background-color: var(--nds-disabled);
+    color: var(--nds-neutral);
+  }
+}

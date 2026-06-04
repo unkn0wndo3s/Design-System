@@ -6,3 +6,4 @@ export { default as Toggle }       from './Toggle/toggle.astro';
 export { default as Tab }          from './Tabs/tab.astro';
 export { default as TabItem }      from './Tabs/tabItem.astro';
 export { default as TabContent }   from './Tabs/tabContent.astro';
+export { default as Button }       from './Button/button.astro';
