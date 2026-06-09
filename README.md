@@ -24,7 +24,7 @@ NDS provides a focused set of reusable Astro components with centralized design 
 
 ## Project Status
 
-> **ALPHA** — The library is under active development. Component APIs, token naming, and internal architecture may change before a stable release.
+> **ALPHA** — The library is under active development. Current version: `0.03.0`. Component APIs, token naming, and internal architecture may change before a stable release.
 
 ## Core Principles
 
@@ -42,13 +42,15 @@ These are the components currently implemented in `src/components/`:
 |---|---|
 | `Button` | Actions |
 | `Toggle` | Actions |
-| `Tabs` / `Tab` / `TabItem` / `TabContent` | Navigation |
+| `NumericStepper` | Actions |
+| `Tab` / `TabItem` / `TabContent` | Navigation |
 | `Link` | Layout |
-| `ListItem` | Data Display |
-| `Notifications` | Feedback |
+| `ListItem` / `ListItemTitle` / `ListItemSubtitle` | Data Display |
+| `Notification` | Feedback |
+| `LoadingBar` | Feedback |
 | `Icons` | Utility |
 
-> Many components listed in earlier versions of this README (Navbar, Sidebar, Card, Modal, etc.) are planned but not yet implemented.
+> Components such as Navbar, Sidebar, Card, and Modal are planned but not yet implemented.
 
 ## Design Tokens
 
@@ -66,6 +68,8 @@ All styling is controlled via CSS custom properties prefixed with `--nds-`, defi
 - All global token changes must go through the core styling system.
 
 ## Installation
+
+Requires **Node.js >= 22.12.0**.
 
 ```bash
 npm install @unkn0wndo3s/nova-design-system
@@ -87,12 +91,12 @@ import { Button } from '@unkn0wndo3s/nova-design-system';
 
 ```astro
 ---
-import { Notifications } from '@unkn0wndo3s/nova-design-system';
+import { Notification } from '@unkn0wndo3s/nova-design-system';
 ---
 
-<Notifications type="warning">
+<Notification type="warning">
   This is a warning message.
-</Notifications>
+</Notification>
 ```
 
 ## Development
@@ -119,26 +123,26 @@ npm run dev
 
 ```bash
 npm run build    # Build the project
-npm run check    # Type checking
-npm run lint     # Lint the codebase
-npm run format   # Format code
+npm run preview  # Preview the production build
 ```
 
 ### Project Structure
 
 ```
 src/
-├── components/       # Astro components
+├── components/           # Astro components
 │   ├── Button/
 │   ├── Icons/
 │   ├── Link/
 │   ├── ListItem/
+│   ├── LoadingBar/
 │   ├── Notifications/
 │   ├── Tabs/
 │   ├── Toggle/
+│   ├── numericStepper/
 │   └── index.ts
-├── layouts/          # Astro layouts
-├── pages/            # Documentation pages
+├── layouts/              # Astro layouts
+├── pages/                # Documentation pages
 ├── styles/
 │   ├── tokens/
 │   │   ├── _colors.scss
