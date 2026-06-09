@@ -34,4 +34,7 @@
     background-color: var(--nds-disabled);
     color: var(--nds-neutral);
   }
+  &--icon {
+  padding: var(--nds-spacing-2xs) var(--nds-spacing-xs);
+  }
 }

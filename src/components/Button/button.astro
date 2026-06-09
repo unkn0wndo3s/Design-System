@@ -2,11 +2,12 @@
 export interface Props {
   type:        'primary' | 'secondary';
   disabled?:   boolean;
+  icon?: boolean;
 }
-const { type, disabled = false } = Astro.props;
+const { type, disabled = false, icon = false } = Astro.props;
 ---
 
-<div class={`button button__${type} ${disabled ? 'button--disabled' : ''}`}>
+<div class={`button button__${type} ${disabled ? 'button--disabled' : ''} ${icon ? 'button--icon' : ''}`}>
   <slot/>
 </div>
 
