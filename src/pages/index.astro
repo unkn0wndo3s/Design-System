@@ -11,6 +11,7 @@ import ListItem from '../components/ListItem/listItem.astro';
 import ListItemTitle from '../components/ListItem/listItemTitle.astro';
 import ListItemSubtitle from '../components/ListItem/listItemSubtitle.astro';
 import LoadingBar from '../components/LoadingBar/loadingBar.astro';
+import NumericStepper from '../components/numericStepper/numericStepper.astro';
 import {
   Arrow2Icon, BinIcon, BurgerIcon, CalendarIcon, CheckIcon, CloseIcon,
   CodeIcon, CubeIcon, DownloadIcon, FilterIcon, HelpIcon, HomeIcon,
@@ -25,6 +26,20 @@ const initialChecked = true;
 <Layout>
   <main>
     <h1>Nova Design System</h1>
+    <section>
+      <h2>Numeric Stepper</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
+        <NumericStepper min={-15} max={10} value={5} step={5} id="my-numeric-stepper"/>
+      </div>
+    </section>
+    <section>
+      <h2>Loading Bar</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
+        <LoadingBar type="known" percentage={75} width="500px" />
+        <LoadingBar type="unknown" width="500px" />
+      </div>
+      </div>
+    </section>
     <section>
       <h2>Loading Bar</h2>
       <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
