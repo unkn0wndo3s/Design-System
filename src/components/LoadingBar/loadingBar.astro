@@ -1,0 +1,19 @@
+---
+export interface Props {
+  type:        'known' | 'unknown';
+  percentage?: number;
+  width?:      string;
+}
+const { type, percentage, width } = Astro.props;
+---
+<div class='loading-bar loading-bar--${type}' style={width ? `width: ${width}` : undefined}>
+  {type === 'known' && percentage !== undefined ? (
+    <div class='loading-bar__progress' style={`width: ${percentage}%`}></div>
+  ) : (
+    <div  class='loading-bar__unknown'></div>
+  )}
+</div>
+
+<style lang="scss">
+@use './loadingBar';
+</style>

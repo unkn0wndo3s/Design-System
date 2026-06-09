@@ -11,3 +11,4 @@ export { default as Link }         from './Link/link.astro';
 export { default as ListItem }     from './ListItem/listItem.astro';
 export { default as ListItemTitle } from './ListItem/listItemTitle.astro';
 export { default as ListItemSubtitle } from './ListItem/listItemSubtitle.astro';
+export { default as LoadingBar }    from './LoadingBar/loadingBar.astro';
