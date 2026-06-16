@@ -24,7 +24,7 @@ NDS provides a focused set of reusable Astro components with centralized design 
 
 ## Project Status
 
-> **ALPHA** — The library is under active development. Current version: `0.03.0`. Component APIs, token naming, and internal architecture may change before a stable release.
+> **ALPHA** — The library is under active development. Current version: `0.05.0`. Component APIs, token naming, and internal architecture may change before a stable release.
 
 ## Core Principles
 
@@ -43,12 +43,14 @@ These are the components currently implemented in `src/components/`:
 | `Button` | Actions |
 | `Toggle` | Actions |
 | `NumericStepper` | Actions |
+| `Select` / `SelectOption` | Actions |
+| `Avatar` | Data Display |
 | `Tab` / `TabItem` / `TabContent` | Navigation |
-| `Link` | Layout |
+| `Link` | Navigation |
 | `ListItem` / `ListItemTitle` / `ListItemSubtitle` | Data Display |
 | `Notification` | Feedback |
 | `LoadingBar` | Feedback |
-| `Icons` | Utility |
+| `Icons` — `Arrow2Icon`, `BinIcon`, `BurgerIcon`, `CalendarIcon`, `CheckIcon`, `CloseIcon`, `CodeIcon`, `CubeIcon`, `DownloadIcon`, `FilterIcon`, `HelpIcon`, `HomeIcon`, `LinkIcon`, `MinusIcon`, `MoreIcon`, `OverviewIcon`, `PlusIcon`, `ProfileIcon`, `SearchIcon`, `SettingsIcon`, `ShareIcon`, `ShieldIcon`, `SortIcon`, `StatsIcon`, `UploadIcon` | Utility |
 
 > Components such as Navbar, Sidebar, Card, and Modal are planned but not yet implemented.
 
@@ -131,16 +133,18 @@ npm run preview  # Preview the production build
 ```
 src/
 ├── components/           # Astro components
+│   ├── Avatar/
 │   ├── Button/
 │   ├── Icons/
 │   ├── Link/
 │   ├── ListItem/
 │   ├── LoadingBar/
 │   ├── Notifications/
+│   ├── Select/
 │   ├── Tabs/
 │   ├── Toggle/
 │   ├── numericStepper/
-│   └── index.ts
+│   └── index.ts          # Auto-generated barrel — do not edit manually
 ├── layouts/              # Astro layouts
 ├── pages/                # Documentation pages
 ├── styles/
