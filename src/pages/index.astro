@@ -20,6 +20,8 @@ import {
   SearchIcon, SettingsIcon, ShareIcon, ShieldIcon, SortIcon, StatsIcon,
   UploadIcon,
 } from '../components/Icons/index.ts';
+import Select from '../components/Select/select.astro';
+import SelectOption from '../components/Select/selectOption.astro';
 
 const initialChecked = true;
 ---
@@ -27,6 +29,25 @@ const initialChecked = true;
 <Layout>
   <main>
     <h1>Nova Design System</h1>
+    <section>
+      <h2>Select</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
+        <Select default="option3">
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+          <SelectOption value="option3" >Option 3</SelectOption>
+          <SelectOption value="option4" >Option 4</SelectOption>
+          <SelectOption value="option5" >Option 5</SelectOption>
+          <SelectOption value="option6" >Option 6</SelectOption>
+          <SelectOption value="option7" >Option 7</SelectOption>
+          <SelectOption value="option8" >Option 8</SelectOption>
+          <SelectOption value="option9" disabled>Option 9</SelectOption>
+        </Select>
+        <Select disabled>
+          <SelectOption value="option1">Option 1</SelectOption>
+        </Select>
+      </div>
+    </section>
     <section>
       <h2>Avatar</h2>
       <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">

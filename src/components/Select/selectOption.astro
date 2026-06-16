@@ -1,0 +1,32 @@
+---
+export interface Props {
+  value: string;
+  disabled?: boolean;
+}
+const { value, disabled = false } = Astro.props;
+---
+
+<li
+  data-nds-option
+  data-value={value}
+  role="option"
+  aria-selected="false"
+  aria-disabled={disabled ? 'true' : undefined}
+  class={`select-option ${disabled ? 'select-option__disabled' : ''}`}
+>
+  <slot />
+</li>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const option = (e.target as HTMLElement).closest<HTMLElement>('[data-nds-option]');
+    if (!option || option.getAttribute('aria-disabled') === 'true') return;
+
+    const select = option.closest<any>('nds-select');
+    select?.select(option);
+  });
+</script>
+
+<style lang="scss">
+@use './selectOption.scss';
+</style>

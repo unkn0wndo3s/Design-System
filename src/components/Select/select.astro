@@ -1,0 +1,136 @@
+---
+import Arrow2 from '../Icons/Arrow2/Arrow2.astro';
+
+export interface Props {
+  default?: string;
+  disabled?: boolean;
+  value?: string;
+}
+const { default: defaultValue, disabled = false, value } = Astro.props;
+---
+
+<nds-select
+  data-default={defaultValue}
+  data-value={value}
+  data-disabled={disabled ? 'true' : undefined}
+  class={`select ${disabled ? 'select--disabled' : ''}`}
+>
+  <button
+    class="select__trigger"
+    type="button"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    disabled={disabled}
+  >
+    <span class="select__label"></span><span class="select__arrow select__arrow--closed">
+      <Arrow2 size={16} orientation="left" />
+    </span>
+    <span class="select__arrow select__arrow--open select__arrow--hidden">
+      <Arrow2 size={16} orientation="down" />
+    </span>
+  </button>
+
+  <ul class="select__dropdown" role="listbox">
+    <slot />
+  </ul>
+</nds-select>
+
+<style lang="scss">
+@use './select.scss';
+</style>
+
+<script>
+  class NdsSelect extends HTMLElement {
+    private _value: string | null = null;
+
+    connectedCallback() {
+      const trigger = this.querySelector<HTMLButtonElement>('.select__trigger')!;
+
+      requestAnimationFrame(() => {
+        const options = this.getOptions();
+
+        const initial = this.dataset.value ?? this.dataset.default ?? null;
+        const match = options.find(o => o.dataset.value === initial);
+        this.select(match ?? options[0] ?? null, { silent: true });
+
+        trigger.addEventListener('click', () => this.toggle());
+
+        document.addEventListener('click', (e) => {
+          if (!this.contains(e.target as Node)) this.close();
+        });
+
+        this.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') this.close();
+        });
+
+        const observer = new MutationObserver(() => {
+          const newVal = this.dataset.value ?? null;
+          if (newVal !== this._value) {
+            const match = this.getOptions().find(o => o.dataset.value === newVal);
+            this.select(match ?? this.getOptions()[0] ?? null, { silent: true });
+          }
+        });
+        observer.observe(this, { attributes: true, attributeFilter: ['data-value'] });
+      });
+    }
+
+    getOptions(): HTMLElement[] {
+      return Array.from(this.querySelectorAll<HTMLElement>('[data-nds-option]'));
+    }
+
+    select(option: HTMLElement | null, { silent = false } = {}) {
+      if (!option) return;
+
+      this.getOptions().forEach(o => {
+        o.setAttribute('aria-selected', 'false');
+        o.classList.remove('select-option__selected');
+      });
+
+      option.setAttribute('aria-selected', 'true');
+      option.classList.add('select-option__selected');
+
+      const value = option.dataset.value ?? option.textContent?.trim() ?? '';
+      const label = option.textContent?.trim() ?? '';
+
+      this._value = value;
+
+      const labelEl = this.querySelector<HTMLElement>('.select__label');
+      if (labelEl) labelEl.textContent = label;
+
+      this.close();
+
+      if (!silent) {
+        this.dispatchEvent(new CustomEvent('nds:change', {
+          detail: { value, label },
+          bubbles: true,
+        }));
+      }
+    }
+
+    toggle() {
+      this.isOpen() ? this.close() : this.open();
+    }
+
+    open() {
+  this.classList.add('select--open');
+  this.querySelector('.select__trigger')?.setAttribute('aria-expanded', 'true');
+  this.querySelector('.select__dropdown')?.removeAttribute('hidden');
+  this.querySelector('.select__arrow--closed')?.classList.add('select__arrow--hidden');
+  this.querySelector('.select__arrow--open')?.classList.remove('select__arrow--hidden');
+}
+
+close() {
+  this.classList.remove('select--open');
+  this.querySelector('.select__trigger')?.setAttribute('aria-expanded', 'false');
+  this.querySelector('.select__dropdown')?.setAttribute('hidden', '');
+  this.querySelector('.select__arrow--closed')?.classList.remove('select__arrow--hidden');
+  this.querySelector('.select__arrow--open')?.classList.add('select__arrow--hidden');
+}
+
+    isOpen() {
+      return this.classList.contains('select--open');
+    }
+  }
+
+  customElements.define('nds-select', NdsSelect);
+</script>

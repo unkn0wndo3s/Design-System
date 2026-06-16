@@ -1,0 +1,71 @@
+@use '../../styles/tokens/typography' as *;
+
+.select {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--nds-spacing-xs) var(--nds-spacing-md);
+    background-color: var(--nds-neutral);
+    color: var(--nds-text);
+    border: none;
+    border-radius: var(--nds-radius-sm);
+    cursor: pointer;
+    width: 100%;
+    gap: var(--nds-spacing-xs);
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--nds-neutral) 85%, var(--nds-text));
+    }
+  }
+
+  &__label {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + var(--nds-spacing-2xs));
+    left: 0;
+    right: 0;
+    background-color: var(--nds-neutral);
+    border-radius: var(--nds-radius-sm);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+    overflow: hidden;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &--disabled {
+  opacity: 0.5;
+
+  .select__trigger {
+    background-color: var(--nds-disabled);
+    cursor: not-allowed;
+  }
+}
+}

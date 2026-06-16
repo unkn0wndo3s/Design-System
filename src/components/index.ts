@@ -14,3 +14,5 @@ export { default as ListItemSubtitle } from './ListItem/listItemSubtitle.astro';
 export { default as LoadingBar }    from './LoadingBar/loadingBar.astro';
 export { default as NumericStepper } from './numericStepper/numericStepper.astro';
 export { default as Avatar } from './Avatar/avatar.astro';
+export { default as Select } from './Select/select.astro';
+export { default as SelectOption } from './Select/selectOption.astro';
