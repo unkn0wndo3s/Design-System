@@ -12,6 +12,7 @@ import ListItemTitle from '../components/ListItem/listItemTitle.astro';
 import ListItemSubtitle from '../components/ListItem/listItemSubtitle.astro';
 import LoadingBar from '../components/LoadingBar/loadingBar.astro';
 import NumericStepper from '../components/numericStepper/numericStepper.astro';
+import Avatar from '../components/Avatar/avatar.astro';
 import {
   Arrow2Icon, BinIcon, BurgerIcon, CalendarIcon, CheckIcon, CloseIcon,
   CodeIcon, CubeIcon, DownloadIcon, FilterIcon, HelpIcon, HomeIcon,
@@ -27,17 +28,16 @@ const initialChecked = true;
   <main>
     <h1>Nova Design System</h1>
     <section>
-      <h2>Numeric Stepper</h2>
+      <h2>Avatar</h2>
       <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <NumericStepper min={-15} max={10} value={5} step={5} id="my-numeric-stepper"/>
+        <Avatar image="https://static.vecteezy.com/system/resources/thumbnails/057/068/323/small/single-fresh-red-strawberry-on-table-green-background-food-fruit-sweet-macro-juicy-plant-image-photo.jpg" name="John Doe" type="photo"/>
+        <Avatar name="Jane Smith" type="initials"/>
       </div>
     </section>
     <section>
-      <h2>Loading Bar</h2>
+      <h2>Numeric Stepper</h2>
       <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <LoadingBar type="known" percentage={75} width="500px" />
-        <LoadingBar type="unknown" width="500px" />
-      </div>
+        <NumericStepper min={-15} max={10} value={5} step={5} id="my-numeric-stepper"/>
       </div>
     </section>
     <section>
