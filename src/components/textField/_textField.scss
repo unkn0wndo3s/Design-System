@@ -1,0 +1,30 @@
+@use '../../styles/tokens/typography' as *;
+
+.textField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nds-spacing-xs);
+  &__textarea {
+    background-color: var(--nds-color-background);
+    border: var(--nds-border-width-thin) solid var(--nds-text);
+    border-radius: var(--nds-radius-sm);
+    padding: var(--nds-spacing-sm) var(--nds-spacing-xs) ;
+    @include text-base;
+    color: var(--nds-text);
+    min-height: 50px;
+    max-width: 100%;
+  }
+  &__charCount {
+    @include text-sm;
+    color: var(--nds-text-muted);
+    text-align: left;
+  }
+  &__input {
+    background-color: var(--nds-color-background);
+    border: var(--nds-border-width-thin) solid var(--nds-text);
+    border-radius: var(--nds-radius-sm);
+    padding: var(--nds-spacing-sm) var(--nds-spacing-xs) ;
+    @include text-base;
+    color: var(--nds-text);
+  }
+}

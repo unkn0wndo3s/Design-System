@@ -1,0 +1,65 @@
+---
+export interface Props {
+  id?: string;
+  label?: string;
+  type?: 'text' | 'email' | 'password' | 'textarea';
+  placeholder?: string;
+  min?: number;
+  max?: number;
+  value?: number;
+  step?: number;
+}
+
+const { id, label, type = 'text', placeholder, min, max, value, step } = Astro.props;
+const charCounter = 0;
+---
+
+<div
+  class="textField"
+  id={id}
+>
+  {label && <label for={id}>{label}</label>}
+  {type === 'textarea' ? (
+    <div>
+      <textarea
+        id={id}
+        placeholder={placeholder}
+        maxlength={max}
+        class="textField__textarea"
+      ></textarea>
+      {max && (
+        <div class="textField__charCount">
+          <span id={`${id}-charCount`}>{charCounter}</span> / {max}
+        </div>
+      )}
+    </div>
+  ) : (
+    <input
+      id={id}
+      type={type}
+      placeholder={placeholder}
+      min={min}
+      max={max}
+      value={value}
+      step={step}
+      class="textField__input"
+    />
+  )}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.textField').forEach((field) => {
+    const textarea = field.querySelector<HTMLTextAreaElement>('.textField__textarea');
+    const counter = field.querySelector<HTMLElement>('[id$="-charCount"]');
+
+    if (!textarea || !counter) return;
+
+    textarea.addEventListener('input', () => {
+      counter.textContent = String(textarea.value.length);
+    });
+  });
+</script>
+
+<style lang="scss">
+@use './textField';
+</style>

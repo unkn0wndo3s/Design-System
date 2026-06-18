@@ -15,6 +15,7 @@ import NumericStepper from '../components/numericStepper/numericStepper.astro';
 import Avatar from '../components/Avatar/avatar.astro';
 import Select from '../components/Select/select.astro';
 import SelectOption from '../components/Select/selectOption.astro';
+import TextField from '../components/textField/textField.astro';
 import {
   Arrow2Icon, BinIcon, BurgerIcon, CalendarIcon, CheckIcon, CloseIcon,
   CodeIcon, CubeIcon, DownloadIcon, FilterIcon, HelpIcon, HomeIcon,
@@ -29,6 +30,14 @@ const initialChecked = true;
 <Layout>
   <main>
     <h1>Nova Design System</h1>
+    <section>
+      <h2>TextField</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
+        <TextField label="Email" type="email" placeholder="Enter your email" />
+        <TextField label="Password" type="password" placeholder="Enter your password" />
+        <TextField label="Textarea" type="textarea" placeholder="Enter your message" max={100} />
+      </div>
+    </section>
     <section>
       <h2>Select</h2>
       <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
