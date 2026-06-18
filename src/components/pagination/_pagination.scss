@@ -1,0 +1,6 @@
+@use '../../styles/tokens/typography' as *;
+
+.pagination {
+    display: flex;
+    gap: var(--nds-spacing-sm);
+}

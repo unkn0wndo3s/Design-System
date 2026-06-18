@@ -1,0 +1,26 @@
+@use '../../styles/tokens/typography' as *;
+
+.pagination-number {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--nds-radius-full);
+  &:hover:not(.pagination-number__disabled):not(.pagination-number__selected) {
+    background-color: var(--nds-secondary);
+    cursor: pointer;
+  }
+  &:active:not(.pagination-number__disabled):not(.pagination-number__selected) {
+    background-color: var(--nds-accent);
+    cursor: pointer;
+  }
+  &__disabled {
+    background-color: var(--nds-disabled);
+    cursor: not-allowed;
+  }
+  &__selected {
+    background-color: var(--nds-primary);
+    cursor: pointer;
+  }
+}

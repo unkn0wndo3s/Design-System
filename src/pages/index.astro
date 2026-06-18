@@ -16,6 +16,8 @@ import Avatar from '../components/Avatar/avatar.astro';
 import Select from '../components/Select/select.astro';
 import SelectOption from '../components/Select/selectOption.astro';
 import TextField from '../components/textField/textField.astro';
+import Pagination from '../components/pagination/pagination.astro';
+import PaginationNumber from '../components/pagination/paginationNumber.astro';
 import {
   Arrow2Icon, BinIcon, BurgerIcon, CalendarIcon, CheckIcon, CloseIcon,
   CodeIcon, CubeIcon, DownloadIcon, FilterIcon, HelpIcon, HomeIcon,
@@ -30,6 +32,18 @@ const initialChecked = true;
 <Layout>
   <main>
     <h1>Nova Design System</h1>
+    <section>
+      <h2>Pagination</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
+        <Pagination defaultPage={3}>
+          <PaginationNumber>1</PaginationNumber>
+          <PaginationNumber>2</PaginationNumber>
+          <PaginationNumber>3</PaginationNumber>
+          <PaginationNumber>4</PaginationNumber>
+          <PaginationNumber disabled>5</PaginationNumber>
+        </Pagination>
+      </div>
+    </section>
     <section>
       <h2>TextField</h2>
       <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
