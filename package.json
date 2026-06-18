@@ -1,7 +1,7 @@
 {
   "name": "@unkn0wndo3s/nova-design-system",
   "type": "module",
-  "version": "0.05.0",
+  "version": "0.06.0",
   "main": "./src/index.ts",
   "description": "Nova Design System — Astro component library",
   "engines": {
