@@ -1,15 +1,44 @@
 ---
 export interface Props {
-  type:        'primary' | 'secondary';
-  disabled?:   boolean;
-  icon?: boolean;
+  type?:     'primary' | 'secondary' | 'ghost' | 'danger';
+  size?:     'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  icon?:     boolean;
+  href?:     string;
+  htmlType?: 'button' | 'submit' | 'reset';
 }
-const { type, disabled = false, icon = false } = Astro.props;
+const {
+  type = 'primary',
+  size = 'md',
+  disabled = false,
+  icon = false,
+  href,
+  htmlType = 'button',
+  ...rest
+} = Astro.props;
+
+const classes = [
+  'button',
+  `button__${type}`,
+  `button--${size}`,
+  icon ? 'button--icon' : '',
+  disabled ? 'button--disabled' : '',
+].filter(Boolean).join(' ');
+
+const Tag = href ? 'a' : 'button';
 ---
 
-<div class={`button button__${type} ${disabled ? 'button--disabled' : ''} ${icon ? 'button--icon' : ''}`}>
-  <slot/>
-</div>
+<Tag
+  class={classes}
+  href={href}
+  type={href ? undefined : htmlType}
+  aria-disabled={disabled ? 'true' : undefined}
+  {...rest}
+>
+  <slot name="icon-left" />
+  <slot />
+  <slot name="icon-right" />
+</Tag>
 
 <style lang="scss">
 @use './_button.scss';

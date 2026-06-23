@@ -1,6 +1,6 @@
 ---
 import Button from '../Button/button.astro';
-import { Arrow2Icon } from '../Icons';
+import { MinusIcon, PlusIcon } from '../Icons';
 
 export interface Props {
   id: string;
@@ -23,16 +23,16 @@ const { id, min, max, value = 0, step = 1 } = Astro.props;
   data-step={step}
 >
   <span class="numeric-stepper__control" data-action="increment">
-    <Button type="secondary" icon={true}>
-      <Arrow2Icon size={24} orientation="up" />
+    <Button type="ghost" icon={true}>
+      <MinusIcon size={24} />
     </Button>
   </span>
-
+  
   <p class="numeric-stepper__value">{value}</p>
-
+  
   <span class="numeric-stepper__control" data-action="decrement">
-    <Button type="secondary" icon={true}>
-      <Arrow2Icon size={24} orientation="down" />
+    <Button type="ghost" icon={true}>
+      <PlusIcon size={24} />
     </Button>
   </span>
 </div>
@@ -113,5 +113,5 @@ const { id, min, max, value = 0, step = 1 } = Astro.props;
 </script>
 
 <style lang="scss">
-@use './numericStepper';
+  @use "./numericStepper";
 </style>

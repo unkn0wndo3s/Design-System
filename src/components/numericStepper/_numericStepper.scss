@@ -1,14 +1,44 @@
-@use '../../styles/tokens/typography' as *;
+@use "../../styles/tokens/typography" as *;
 
 .numeric-stepper {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
-  gap: var(--nds-spacing-xs);
+  gap: 0;
+  border: var(--nds-border-width-thin) solid var(--nds-border-strong);
+  border-radius: var(--nds-radius-md);
+  background-color: var(--nds-surface);
+  overflow: hidden;
   width: fit-content;
-  & p {
-    @include text-xl;
+  height: fit-content;
+
+  &__button {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--nds-text);
+    transition: background-color 120ms ease;
+    &:hover:not(:disabled) {
+      background-color: var(--nds-surface-hover);
+    }
+    &:disabled {
+      color: var(--nds-disabled);
+      cursor: not-allowed;
+    }
+  }
+  &__value {
+    width: 48px;
+    text-align: center;
+    @include text-label;
+    color: var(--nds-text);
+    padding: 0;
     margin: 0;
-    
+    border: none;
+    outline: none;
+    background: transparent;
   }
 }
