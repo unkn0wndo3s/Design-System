@@ -1,23 +1,30 @@
 ---
 import { CloseIcon } from "../Icons";
 
-
 export interface Props {
-  type:        'info' | 'success' | 'warning' | 'error';
+  type: "info" | "success" | "warning" | "error";
 }
-const notificationUUID  = `notification-${Math.random().toString(36).substr(2, 9)}`;
+const notificationUUID = `notification-${Math.random().toString(36).slice(2, 11)}`;
 const { type } = Astro.props;
 ---
 
-<div class={`notification notification__${type}`} role="alert" id={notificationUUID}>
-  <div class=`notification__${type}__content`>
+<div
+  class={`notification notification__${type}`}
+  role="alert"
+  id={notificationUUID}
+>
+  <div class={`notification__${type}__content`}>
     <slot />
   </div>
-  <button class={`notification__${type}__close`} aria-label="Close notification" onclick={`document.getElementById('${notificationUUID}')?.remove()`}>
+  <button
+    class={`notification__${type}__close`}
+    aria-label="Close notification"
+    onclick={`document.getElementById('${notificationUUID}')?.remove()`}
+  >
     <CloseIcon size={16} label="Close notification" />
   </button>
 </div>
 
 <style lang="scss">
-@use './_notification.scss';
+  @use "./_notification.scss";
 </style>

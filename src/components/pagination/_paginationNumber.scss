@@ -1,26 +1,30 @@
-@use '../../styles/tokens/typography' as *;
+@use "../../styles/tokens/typography" as *;
 
 .pagination-number {
-  width: 30px;
-  height: 30px;
-  display: flex;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 var(--nds-spacing-2xs);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--nds-radius-full);
+  border-radius: var(--nds-radius-md);
+  cursor: pointer;
+  @include text-label;
+  color: var(--nds-text);
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 120ms ease;
+  user-select: none;
   &:hover:not(.pagination-number__disabled):not(.pagination-number__selected) {
-    background-color: var(--nds-secondary);
-    cursor: pointer;
-  }
-  &:active:not(.pagination-number__disabled):not(.pagination-number__selected) {
-    background-color: var(--nds-accent);
-    cursor: pointer;
-  }
-  &__disabled {
-    background-color: var(--nds-disabled);
-    cursor: not-allowed;
+    border-color: var(--nds-border-strong);
+    background-color: var(--nds-surface-hover);
   }
   &__selected {
     background-color: var(--nds-primary);
-    cursor: pointer;
+    color: var(--nds-on-primary);
+  }
+  &__disabled {
+    color: var(--nds-disabled);
+    cursor: not-allowed;
   }
 }

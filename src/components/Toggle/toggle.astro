@@ -1,8 +1,6 @@
 ---
-import { boolean } from 'astro:schema';
-
 export interface Props {
-    'data-checked': boolean;
+    'data-checked'?: boolean | string;
     name?: string;
     id: string;
 }
@@ -10,7 +8,7 @@ export interface Props {
 const { 'data-checked': dataChecked = 'false', name = 'toggle', id } = Astro.props;
 ---
 
-<toggle-switch data-checked={dataChecked} data-name={name} id={id}>
+<toggle-switch data-checked={String(dataChecked)} data-name={name} id={id}>
     <div class="toggle">
         <div class="toggle-switch"></div>
     </div>
@@ -35,7 +33,7 @@ const { 'data-checked': dataChecked = 'false', name = 'toggle', id } = Astro.pro
 
             this.dispatchEvent(new CustomEvent('change', {
                 detail: { checked: this._checked, name: this.dataset.name },
-                bubbles: true, 
+                bubbles: true,
                 composed: true,
             }));
         }

@@ -1,23 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Notification from '../components/Notifications/notification.astro';
+
+// Core
+import Button from '../components/Button/button.astro';
+import Badge from '../components/Badge/badge.astro';
+import Avatar from '../components/Avatar/avatar.astro';
+
+// Forms
 import Toggle from '../components/Toggle/toggle.astro';
+import Checkbox from '../components/Checkbox/checkbox.astro';
+import Radio from '../components/Radio/radio.astro';
+import TextField from '../components/textField/textField.astro';
+import Select from '../components/Select/select.astro';
+import SelectOption from '../components/Select/selectOption.astro';
+import NumericStepper from '../components/numericStepper/numericStepper.astro';
+
+// Navigation
 import Tab from '../components/Tabs/tab.astro';
 import TabItem from '../components/Tabs/tabItem.astro';
 import TabContent from '../components/Tabs/tabContent.astro';
-import Button from '../components/Button/button.astro';
 import Link from '../components/Link/link.astro';
+import Breadcrumb from '../components/Breadcrumb/breadcrumb.astro';
+import BreadcrumbItem from '../components/Breadcrumb/breadcrumbItem.astro';
+import Pagination from '../components/pagination/pagination.astro';
+import PaginationNumber from '../components/pagination/paginationNumber.astro';
+import Navbar from '../components/Navbar/navbar.astro';
+import Sidebar from '../components/Sidebar/sidebar.astro';
+import SidebarItem from '../components/Sidebar/sidebarItem.astro';
+
+// Data
+import Card from '../components/Card/card.astro';
 import ListItem from '../components/ListItem/listItem.astro';
 import ListItemTitle from '../components/ListItem/listItemTitle.astro';
 import ListItemSubtitle from '../components/ListItem/listItemSubtitle.astro';
+
+// Feedback
+import Notification from '../components/Notifications/notification.astro';
 import LoadingBar from '../components/LoadingBar/loadingBar.astro';
-import NumericStepper from '../components/numericStepper/numericStepper.astro';
-import Avatar from '../components/Avatar/avatar.astro';
-import Select from '../components/Select/select.astro';
-import SelectOption from '../components/Select/selectOption.astro';
-import TextField from '../components/textField/textField.astro';
-import Pagination from '../components/pagination/pagination.astro';
-import PaginationNumber from '../components/pagination/paginationNumber.astro';
+import Tooltip from '../components/Tooltip/tooltip.astro';
+import Modal from '../components/Modal/modal.astro';
+
 import {
   Arrow2Icon, BinIcon, BurgerIcon, CalendarIcon, CheckIcon, CloseIcon,
   CodeIcon, CubeIcon, DownloadIcon, FilterIcon, HelpIcon, HomeIcon,
@@ -26,15 +48,204 @@ import {
   UploadIcon,
 } from '../components/Icons/index.ts';
 
-const initialChecked = true;
+const tones = ['primary', 'neutral', 'success', 'warning', 'error', 'info'] as const;
+const buttonTypes = ['primary', 'secondary', 'ghost', 'danger'] as const;
+const sizes = ['sm', 'md', 'lg'] as const;
+const libraryIcons = [
+  ['Profile', ProfileIcon], ['Search', SearchIcon], ['Settings', SettingsIcon],
+  ['Home', HomeIcon], ['Overview', OverviewIcon], ['Stats', StatsIcon],
+  ['Share', ShareIcon], ['Shield', ShieldIcon], ['Download', DownloadIcon],
+  ['Upload', UploadIcon], ['Filter', FilterIcon], ['Bin', BinIcon],
+  ['Burger', BurgerIcon], ['Calendar', CalendarIcon], ['Check', CheckIcon],
+  ['Close', CloseIcon], ['Code', CodeIcon], ['Cube', CubeIcon],
+  ['Help', HelpIcon], ['Link', LinkIcon], ['Minus', MinusIcon],
+  ['More', MoreIcon], ['Plus', PlusIcon], ['Sort', SortIcon],
+] as const;
 ---
 
 <Layout>
-  <main>
-    <h1>Nova Design System</h1>
-    <section>
+  <div class="gallery">
+    <header class="gallery__head">
+      <div class="gallery__brand">
+        <span class="gallery__mark"></span>
+        <span class="gallery__name">Nova Design System</span>
+        <Badge type="primary" variant="soft">v0.06</Badge>
+      </div>
+      <Button type="secondary" size="sm" id="theme-toggle">Toggle theme</Button>
+    </header>
+
+    <!-- BUTTON -->
+    <section class="block" id="button">
+      <h2>Button</h2>
+      <p class="block__desc">Variants, sizes, icon and disabled states.</p>
+      <div class="vgroup"><span class="vgroup__label">Variants × md</span><div class="vgroup__body">
+        {buttonTypes.map((t) => <Button type={t} size="md">{t[0].toUpperCase() + t.slice(1)}</Button>)}
+      </div></div>
+      <div class="vgroup"><span class="vgroup__label">Sizes (primary)</span><div class="vgroup__body">
+        {sizes.map((s) => <Button type="primary" size={s}>Size {s}</Button>)}
+      </div></div>
+      <div class="vgroup"><span class="vgroup__label">With icon · icon-only</span><div class="vgroup__body">
+        <Button type="primary" size="md"><PlusIcon slot="icon-left" size={16} />New service</Button>
+        <Button type="secondary" size="md">Filter<FilterIcon slot="icon-right" size={16} /></Button>
+        <Button type="ghost" size="md" icon={true}><MoreIcon size={18} /></Button>
+      </div></div>
+      <div class="vgroup"><span class="vgroup__label">Disabled</span><div class="vgroup__body">
+        {buttonTypes.map((t) => <Button type={t} size="md" disabled>{t}</Button>)}
+      </div></div>
+    </section>
+
+    <!-- BADGE -->
+    <section class="block" id="badge">
+      <h2>Badge</h2>
+      <p class="block__desc">Tones × soft / solid.</p>
+      <div class="vgroup"><span class="vgroup__label">Soft</span><div class="vgroup__body">
+        {tones.map((t) => <Badge type={t} variant="soft">{t}</Badge>)}
+      </div></div>
+      <div class="vgroup"><span class="vgroup__label">Solid</span><div class="vgroup__body">
+        {tones.map((t) => <Badge type={t} variant="solid">{t}</Badge>)}
+      </div></div>
+    </section>
+
+    <!-- SELECTION CONTROLS -->
+    <section class="block" id="controls">
+      <h2>Toggle · Checkbox · Radio</h2>
+      <p class="block__desc">Selection controls in every state.</p>
+      <div class="vgroup"><span class="vgroup__label">Toggle — off / on</span><div class="vgroup__body">
+        <Toggle id="tg-off" />
+        <Toggle id="tg-on" data-checked={true} />
+      </div></div>
+      <div class="vgroup"><span class="vgroup__label">Checkbox</span><div class="vgroup__body">
+        <Checkbox id="cb1">Unchecked</Checkbox>
+        <Checkbox id="cb2" checked>Checked</Checkbox>
+        <Checkbox id="cb3" checked disabled>Disabled</Checkbox>
+      </div></div>
+      <div class="vgroup"><span class="vgroup__label">Radio group</span><div class="vgroup__body" style="flex-direction:column;align-items:flex-start;">
+        <Radio id="rb1" name="plan" checked>On-demand</Radio>
+        <Radio id="rb2" name="plan">Reserved</Radio>
+        <Radio id="rb3" name="plan" disabled>Spot</Radio>
+      </div></div>
+    </section>
+
+    <!-- TEXTFIELD -->
+    <section class="block" id="textfield">
+      <h2>TextField</h2>
+      <p class="block__desc">Text, email, password, textarea.</p>
+      <div class="vgroup"><span class="vgroup__label">Fields</span><div class="vgroup__body" style="flex-direction:column;align-items:stretch;max-width:360px;">
+        <TextField label="Service name" placeholder="api-gateway" />
+        <TextField label="Email" type="email" placeholder="you@nova.dev" />
+        <TextField label="Password" type="password" placeholder="••••••••" />
+        <TextField label="Message" type="textarea" placeholder="Type here…" max={120} />
+      </div></div>
+    </section>
+
+    <!-- SELECT -->
+    <section class="block" id="select">
+      <h2>Select</h2>
+      <p class="block__desc">Default and disabled.</p>
+      <div class="vgroup"><span class="vgroup__label">Select</span><div class="vgroup__body">
+        <Select default="option3">
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+          <SelectOption value="option3">Option 3</SelectOption>
+          <SelectOption value="option4">Option 4</SelectOption>
+          <SelectOption value="option5" disabled>Option 5</SelectOption>
+        </Select>
+        <Select disabled>
+          <SelectOption value="option1">Disabled</SelectOption>
+        </Select>
+      </div></div>
+    </section>
+
+    <!-- NUMERIC STEPPER -->
+    <section class="block" id="stepper">
+      <h2>Numeric stepper</h2>
+      <p class="block__desc">Increment / decrement control.</p>
+      <div class="vgroup"><span class="vgroup__label">Stepper</span><div class="vgroup__body">
+        <NumericStepper min={-15} max={10} value={5} step={5} id="ns1" />
+      </div></div>
+    </section>
+
+    <!-- AVATAR -->
+    <section class="block" id="avatar">
+      <h2>Avatar</h2>
+      <p class="block__desc">Photo and initials.</p>
+      <div class="vgroup"><span class="vgroup__label">Types</span><div class="vgroup__body">
+        <Avatar type="photo" name="John Doe" image="https://i.pravatar.cc/80?img=12" />
+        <Avatar type="initials" name="Ava Stone" />
+        <Avatar type="initials" name="Jane Smith" />
+      </div></div>
+    </section>
+
+    <!-- LOADING BAR -->
+    <section class="block" id="loading">
+      <h2>Loading bar</h2>
+      <p class="block__desc">Determinate and indeterminate.</p>
+      <div class="vgroup"><span class="vgroup__label">Known 75% · indeterminate</span><div class="vgroup__body" style="flex-direction:column;align-items:stretch;">
+        <LoadingBar type="known" percentage={75} width="100%" />
+        <LoadingBar type="unknown" width="100%" />
+      </div></div>
+    </section>
+
+    <!-- LIST ITEM -->
+    <section class="block" id="listitem">
+      <h2>List item</h2>
+      <p class="block__desc">Title and subtitle rows.</p>
+      <div class="vgroup"><span class="vgroup__label">List</span><div class="vgroup__body" style="flex-direction:column;align-items:stretch;">
+        <ListItem>
+          <ListItemTitle>api-gateway</ListItemTitle>
+          <ListItemSubtitle>Edge routing · eu-west-1</ListItemSubtitle>
+        </ListItem>
+        <ListItem>
+          <ListItemTitle>postgres-main</ListItemTitle>
+          <ListItemSubtitle>Database · eu-west-1</ListItemSubtitle>
+        </ListItem>
+      </div></div>
+    </section>
+
+    <!-- LINK -->
+    <section class="block" id="link">
+      <h2>Link</h2>
+      <p class="block__desc">Inline and external.</p>
+      <div class="vgroup"><span class="vgroup__label">Links</span><div class="vgroup__body">
+        <Link url="https://example.com">Documentation</Link>
+        <Link url="https://example.com" blank={true}>Open dashboard</Link>
+      </div></div>
+    </section>
+
+    <!-- TABS -->
+    <section class="block" id="tabs">
+      <h2>Tabs</h2>
+      <p class="block__desc">Underline tabs with panels.</p>
+      <div class="vgroup"><span class="vgroup__label">Tabs</span><div class="vgroup__body" style="flex-direction:column;align-items:stretch;">
+        <Tab id="gallery-tab" defaultActive="images">
+          <TabItem id="images">Images</TabItem>
+          <TabItem id="videos">Videos</TabItem>
+          <TabItem id="docs">Documents</TabItem>
+        </Tab>
+        <TabContent id="gallery-tab" itemId="images"><p>🖼️ Image gallery content.</p></TabContent>
+        <TabContent id="gallery-tab" itemId="videos"><p>🎬 Video player here.</p></TabContent>
+        <TabContent id="gallery-tab" itemId="docs"><p>📄 Document list here.</p></TabContent>
+      </div></div>
+    </section>
+
+    <!-- BREADCRUMB -->
+    <section class="block" id="breadcrumb">
+      <h2>Breadcrumb</h2>
+      <p class="block__desc">Hierarchical navigation.</p>
+      <div class="vgroup"><span class="vgroup__label">Breadcrumb</span><div class="vgroup__body">
+        <Breadcrumb>
+          <BreadcrumbItem href="/">Home</BreadcrumbItem>
+          <BreadcrumbItem href="/services">Services</BreadcrumbItem>
+          <BreadcrumbItem current>api-gateway</BreadcrumbItem>
+        </Breadcrumb>
+      </div></div>
+    </section>
+
+    <!-- PAGINATION -->
+    <section class="block" id="pagination">
       <h2>Pagination</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
+      <p class="block__desc">Page numbers with disabled edges.</p>
+      <div class="vgroup"><span class="vgroup__label">Pagination</span><div class="vgroup__body">
         <Pagination defaultPage={3}>
           <PaginationNumber>1</PaginationNumber>
           <PaginationNumber>2</PaginationNumber>
@@ -42,364 +253,192 @@ const initialChecked = true;
           <PaginationNumber>4</PaginationNumber>
           <PaginationNumber disabled>5</PaginationNumber>
         </Pagination>
-      </div>
+      </div></div>
     </section>
-    <section>
-      <h2>TextField</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <TextField label="Email" type="email" placeholder="Enter your email" />
-        <TextField label="Password" type="password" placeholder="Enter your password" />
-        <TextField label="Textarea" type="textarea" placeholder="Enter your message" max={100} />
-      </div>
-    </section>
-    <section>
-      <h2>Select</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <Select default="option3">
-          <SelectOption value="option1">Option 1</SelectOption>
-          <SelectOption value="option2">Option 2</SelectOption>
-          <SelectOption value="option3" >Option 3</SelectOption>
-          <SelectOption value="option4" >Option 4</SelectOption>
-          <SelectOption value="option5" >Option 5</SelectOption>
-          <SelectOption value="option6" >Option 6</SelectOption>
-          <SelectOption value="option7" >Option 7</SelectOption>
-          <SelectOption value="option8" >Option 8</SelectOption>
-          <SelectOption value="option9" disabled>Option 9</SelectOption>
-        </Select>
-        <Select disabled>
-          <SelectOption value="option1">Option 1</SelectOption>
-        </Select>
-      </div>
-    </section>
-    <section>
-      <h2>Avatar</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <Avatar image="https://static.vecteezy.com/system/resources/thumbnails/057/068/323/small/single-fresh-red-strawberry-on-table-green-background-food-fruit-sweet-macro-juicy-plant-image-photo.jpg" name="John Doe" type="photo"/>
-        <Avatar name="Jane Smith" type="initials"/>
-      </div>
-    </section>
-    <section>
-      <h2>Numeric Stepper</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <NumericStepper min={-15} max={10} value={5} step={5} id="my-numeric-stepper"/>
-      </div>
-    </section>
-    <section>
-      <h2>Loading Bar</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <LoadingBar type="known" percentage={75} width="500px" />
-        <LoadingBar type="unknown" width="500px" />
-      </div>
-    </section>
-    <section>
-      <h2>List Item</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <ListItem>
-          <ListItemTitle>List Item Title</ListItemTitle>
-          <ListItemSubtitle>List Item Subtitle</ListItemSubtitle>
-        </ListItem>
-      </div>
-    </section>
-    <section>
-      <h2>Link</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <Link url="https://example.com">Example Link</Link>
-        <Link url="https://example.com" blank={true}>Example Link (opens in new tab)</Link>
-      </div>
-    </section>
-    <section>
-      <h2>Button</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <Button type="primary">Primary Button</Button>
-        <Button type="secondary">Secondary Button</Button>
-        <Button type="primary" disabled>disabled</Button>
-      </div>
-    </section>
-    <section>
-      <h2>Tabs</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <Tab id="my-tab" defaultActive="images">
-          <TabItem id="images">images</TabItem>
-          <TabItem id="videos">Videos</TabItem>
-          <TabItem id="docs">Documents</TabItem>
-        </Tab>
-        <TabContent id="my-tab" itemId="images">
-          <p>my images</p>
-        </TabContent>
 
-        <TabContent id="my-tab" itemId="videos">
-          <p>Video player here</p>
-        </TabContent>
+    <!-- NOTIFICATION -->
+    <section class="block" id="notification">
+      <h2>Notification</h2>
+      <p class="block__desc">Info, success, warning and error.</p>
+      <div class="vgroup"><span class="vgroup__label">All types</span><div class="vgroup__body" style="flex-direction:column;align-items:stretch;max-width:440px;">
+        <Notification type="info">Information about the operation.</Notification>
+        <Notification type="success">The operation completed successfully.</Notification>
+        <Notification type="warning">A warning occurred. Please check the details.</Notification>
+        <Notification type="error">An error occurred. Please try again.</Notification>
+      </div></div>
+    </section>
 
-        <TabContent id="my-tab" itemId="docs">
-          <p>Document list here</p>
-        </TabContent>
-      </div>
+    <!-- TOOLTIP -->
+    <section class="block" id="tooltip">
+      <h2>Tooltip</h2>
+      <p class="block__desc">Four positions — hover the buttons.</p>
+      <div class="vgroup"><span class="vgroup__label">Positions</span><div class="vgroup__body">
+        <Tooltip label="Tooltip top" position="top"><Button type="secondary" size="md">Top</Button></Tooltip>
+        <Tooltip label="Tooltip bottom" position="bottom"><Button type="secondary" size="md">Bottom</Button></Tooltip>
+        <Tooltip label="Tooltip left" position="left"><Button type="secondary" size="md">Left</Button></Tooltip>
+        <Tooltip label="Tooltip right" position="right"><Button type="secondary" size="md">Right</Button></Tooltip>
+      </div></div>
     </section>
-    <section>
-      <h2>Toggle</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <Toggle data-checked={initialChecked} data-name="notifications" id="my-toggle" />
-        <p id="toggle-state">State: {initialChecked ? 'Checked' : 'Unchecked'}</p>
-      </div>
+
+    <!-- CARD -->
+    <section class="block" id="card">
+      <h2>Card</h2>
+      <p class="block__desc">With cover, plain and with footer.</p>
+      <div class="vgroup"><span class="vgroup__label">Cards</span><div class="vgroup__body" style="align-items:flex-start;">
+        <Card title="api-gateway" subtitle="Edge routing · 99.98% uptime">
+          <div slot="footer"><Badge type="success" variant="soft">Live</Badge></div>
+        </Card>
+        <Card title="Quick note" subtitle="A plain card without a cover image." />
+        <Card title="Deploy" subtitle="Ship build 4821 to production.">
+          <div slot="footer">
+            <Button type="ghost" size="sm">Cancel</Button>
+            <Button type="primary" size="sm">Deploy</Button>
+          </div>
+        </Card>
+      </div></div>
     </section>
-    <section>
-      <h2>Notifications — Error / Warning / Success / Info</h2>
-      <div style="max-width: 400px; display: flex; flex-direction: column; gap: var(--nds-spacing-md);">
-        <Notification type="error">
-            An error occurred during the operation. Please try again.
-        </Notification>
-        <Notification type="success">
-            The operation was completed successfully.
-        </Notification>
-        <Notification type="warning">
-            A warning occurred during the operation. Please check the details.
-        </Notification>
-        <Notification type="info">
-            Information about the operation.
-        </Notification>
-      </div>
+
+    <!-- APP CHROME -->
+    <section class="block" id="chrome">
+      <h2>Navbar · Sidebar</h2>
+      <p class="block__desc">App chrome.</p>
+      <div class="vgroup"><span class="vgroup__label">Navbar</span><div class="vgroup__body" style="align-items:stretch;">
+        <Navbar brand="Nova">
+          <a class="navbar__link navbar__link--active" href="#">Services</a>
+          <a class="navbar__link" href="#">Incidents</a>
+          <a class="navbar__link" href="#">Settings</a>
+          <Avatar slot="right" type="initials" name="Ava Stone" />
+        </Navbar>
+      </div></div>
+      <div class="vgroup"><span class="vgroup__label">Sidebar</span><div class="vgroup__body">
+        <Sidebar header="Nova">
+          <SidebarItem href="#" active><OverviewIcon slot="icon" size={18} />Overview</SidebarItem>
+          <SidebarItem href="#"><StatsIcon slot="icon" size={18} />Metrics</SidebarItem>
+          <SidebarItem href="#"><ShieldIcon slot="icon" size={18} />Security</SidebarItem>
+          <SidebarItem href="#"><SettingsIcon slot="icon" size={18} />Settings</SidebarItem>
+        </Sidebar>
+      </div></div>
     </section>
-    <section>
-      <h2>Icon — 16 / 24 / 32</h2>
-      <div class="icon-grid">
-        <div class="icon-row">
-          <Arrow2Icon size={16} orientation="up" />
-          <Arrow2Icon size={16} orientation="right" />
-          <Arrow2Icon size={16} orientation="down" />
-          <Arrow2Icon size={16} orientation="left" />
-        </div>
-        <div class="icon-row">
-          <Arrow2Icon size={24} orientation="up" />
-          <Arrow2Icon size={24} orientation="right" />
-          <Arrow2Icon size={24} orientation="down" />
-          <Arrow2Icon size={24} orientation="left" />
-        </div>
-        <div class="icon-row">
-          <Arrow2Icon size={32} orientation="up" />
-          <Arrow2Icon size={32} orientation="right" />
-          <Arrow2Icon size={32} orientation="down" />
-          <Arrow2Icon size={32} orientation="left" />
-        </div>
-        <div class="icon-row">
-          <ProfileIcon size={16} />
-          <ProfileIcon size={24} />
-          <ProfileIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <ShareIcon size={16} />
-          <ShareIcon size={24} />
-          <ShareIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <SearchIcon size={16} />
-          <SearchIcon size={24} />
-          <SearchIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <CloseIcon size={16} />
-          <CloseIcon size={24} />
-          <CloseIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <UploadIcon size={16} />
-          <UploadIcon size={24} />
-          <UploadIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <BinIcon size={16} />
-          <BinIcon size={24} />
-          <BinIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <BurgerIcon size={16} />
-          <BurgerIcon size={24} />
-          <BurgerIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <CalendarIcon size={16} />
-          <CalendarIcon size={24} />
-          <CalendarIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <CheckIcon size={16} />
-          <CheckIcon size={24} />
-          <CheckIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <CodeIcon size={16} />
-          <CodeIcon size={24} />
-          <CodeIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <CubeIcon size={16} />
-          <CubeIcon size={24} />
-          <CubeIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <DownloadIcon size={16} />
-          <DownloadIcon size={24} />
-          <DownloadIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <FilterIcon size={16} />
-          <FilterIcon size={24} />
-          <FilterIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <HelpIcon size={16} />
-          <HelpIcon size={24} />
-          <HelpIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <HomeIcon size={16} />
-          <HomeIcon size={24} />
-          <HomeIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <LinkIcon size={16} />
-          <LinkIcon size={24} />
-          <LinkIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <MinusIcon size={16} />
-          <MinusIcon size={24} />
-          <MinusIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <MoreIcon size={16} />
-          <MoreIcon size={24} />
-          <MoreIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <OverviewIcon size={16} />
-          <OverviewIcon size={24} />
-          <OverviewIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <PlusIcon size={16} />
-          <PlusIcon size={24} />
-          <PlusIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <SettingsIcon size={16} />
-          <SettingsIcon size={24} />
-          <SettingsIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <ShieldIcon size={16} />
-          <ShieldIcon size={24} />
-          <ShieldIcon size={32} />
-        </div>
-        <div class="icon-row">
-          <SortIcon size={16} variant="default" />
-          <SortIcon size={16} variant="ascend" />
-          <SortIcon size={16} variant="descend" />
-          <SortIcon size={24} variant="default" />
-          <SortIcon size={24} variant="ascend" />
-          <SortIcon size={24} variant="descend" />
-          <SortIcon size={32} variant="default" />
-          <SortIcon size={32} variant="ascend" />
-          <SortIcon size={32} variant="descend" />
-        </div>
-        <div class="icon-row">
-          <StatsIcon size={16} />
-          <StatsIcon size={24} />
-          <StatsIcon size={32} />
-        </div>
-      </div>
+
+    <!-- MODAL -->
+    <section class="block" id="modal">
+      <h2>Modal</h2>
+      <p class="block__desc">Overlay dialog.</p>
+      <div class="vgroup"><span class="vgroup__label">Dialog</span><div class="vgroup__body">
+        <Button type="primary" size="md" data-modal-open="demo-modal">Open modal</Button>
+      </div></div>
+      <Modal id="demo-modal" title="Confirm deploy">
+        Ship build 4821 to production? This rolls out to all edge regions.
+        <Fragment slot="footer">
+          <Button type="ghost" size="md" data-modal-close>Cancel</Button>
+          <Button type="primary" size="md" data-modal-close>Deploy</Button>
+        </Fragment>
+      </Modal>
     </section>
-  </main>
+
+    <!-- ICONS -->
+    <section class="block" id="icons">
+      <h2>Icons</h2>
+      <p class="block__desc">Library at 24px, plus arrow orientations and sizes.</p>
+      <div class="vgroup"><span class="vgroup__label">Arrow — orientations × 16/24/32</span><div class="vgroup__body">
+        {[16, 24, 32].map((s) => (
+          <span class="icon-line">
+            <Arrow2Icon size={s} orientation="up" />
+            <Arrow2Icon size={s} orientation="right" />
+            <Arrow2Icon size={s} orientation="down" />
+            <Arrow2Icon size={s} orientation="left" />
+          </span>
+        ))}
+      </div></div>
+      <div class="vgroup"><span class="vgroup__label">Library (24px)</span><div class="vgroup__body" style="display:block;">
+        <div class="icon-grid">
+          {libraryIcons.map(([name, Icon]) => (
+            <div class="icon-cell"><Icon size={24} /><span>{name}</span></div>
+          ))}
+        </div>
+      </div></div>
+      <div class="vgroup"><span class="vgroup__label">Sizes — 16 / 24 / 32</span><div class="vgroup__body">
+        {[SearchIcon, SettingsIcon, ShareIcon, DownloadIcon].map((Icon) => (
+          <span class="icon-line">
+            <Icon size={16} /><Icon size={24} /><Icon size={32} />
+          </span>
+        ))}
+      </div></div>
+    </section>
+  </div>
 </Layout>
 
 <script>
-    const toggle = document.getElementById('my-toggle') as any;
-    const stateLabel = document.getElementById('toggle-state');
-
-    // Défaut: thème sombre
-    if (!document.documentElement.hasAttribute('data-theme')) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-    if (stateLabel) stateLabel.textContent = 'Thème : Sombre';
-
-    toggle?.addEventListener('change', (e: CustomEvent) => {
-      const { checked } = e.detail;
-
-      if (checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        if (stateLabel) stateLabel.textContent = 'Thème : Sombre';
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        if (stateLabel) stateLabel.textContent = 'Thème : Clair';
-      }
-    });
+  // Theme toggle (persisted)
+  const KEY = 'nova-theme';
+  const saved = localStorage.getItem(KEY);
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const next = dark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem(KEY, next);
+  });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  @use '../styles/tokens/typography' as *;
 
-  body {
-    background-color: var(--nds-background);
-    color: var(--nds-text);
-  }
-  
-  main {
-    max-width: 900px;
+  .gallery {
+    max-width: 1000px;
     margin: 0 auto;
-    padding: var(--nds-spacing-xl) var(--nds-spacing-md);
+    padding: var(--nds-spacing-xl) var(--nds-spacing-lg) var(--nds-spacing-3xl);
   }
 
-  h1 {
-    font-size: var(--nds-type-h1-size);
-    font-weight: var(--nds-type-h1-weight);
-    line-height: var(--nds-type-h1-line-height);
-    letter-spacing: var(--nds-type-h1-letter-spacing);
-    margin-bottom: var(--nds-spacing-xl);
-  }
-
-  h2 {
-    font-size: var(--nds-type-h2-size);
-    font-weight: var(--nds-type-h2-weight);
-    line-height: var(--nds-type-h2-line-height);
-    letter-spacing: var(--nds-type-h2-letter-spacing);
-    color: var(--nds-text-muted);
-    margin-bottom: var(--nds-spacing-md);
-  }
-
-  section {
-    margin-bottom: var(--nds-spacing-2xl);
-  }
-
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--nds-spacing-sm);
-  }
-
-  .icon-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--nds-spacing-xs);
-  }
-
-  .icon-row {
+  .gallery__head {
     display: flex;
     align-items: center;
-    gap: var(--nds-spacing-lg);
-    color: var(--nds-text);
-  }
-
-  .icon-name {
-    font-size: var(--nds-type-body-small-size);
-    color: var(--nds-text-muted);
-    width: 100px;
-    flex-shrink: 0;
-  }
-
-  .icon-sizes {
-    display: flex;
-    align-items: center;
+    justify-content: space-between;
     gap: var(--nds-spacing-md);
-    color: var(--nds-default);
+    margin-bottom: var(--nds-spacing-2xl);
+    padding-bottom: var(--nds-spacing-md);
+    border-bottom: var(--nds-border-width-thin) solid var(--nds-border);
+  }
+  .gallery__brand { display: flex; align-items: center; gap: var(--nds-spacing-xs); }
+  .gallery__mark {
+    width: 26px; height: 26px; border-radius: var(--nds-radius-md);
+    background: linear-gradient(135deg, var(--nds-primary), var(--nds-accent));
+  }
+  .gallery__name { @include text-xl; }
+
+  .block { margin-bottom: var(--nds-spacing-2xl); scroll-margin-top: var(--nds-spacing-lg); }
+  .block > h2 { @include text-2xl; margin: 0 0 var(--nds-spacing-3xs); }
+  .block__desc { color: var(--nds-neutral); @include text-base; margin: 0 0 var(--nds-spacing-lg); }
+
+  .vgroup {
+    border: var(--nds-border-width-thin) solid var(--nds-border);
+    border-radius: var(--nds-radius-lg);
+    background: var(--nds-surface);
+    overflow: hidden;
+    & + & { margin-top: var(--nds-spacing-md); }
+  }
+  .vgroup__label {
+    display: block;
+    @include text-sm; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--nds-neutral);
+    padding: var(--nds-spacing-xs) var(--nds-spacing-md);
+    border-bottom: var(--nds-border-width-thin) solid var(--nds-border);
+    background: color-mix(in srgb, var(--nds-text) 2.5%, var(--nds-surface));
+  }
+  .vgroup__body {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: var(--nds-spacing-md);
+    padding: var(--nds-spacing-lg) var(--nds-spacing-md);
+  }
+
+  .icon-line { display: inline-flex; align-items: center; gap: var(--nds-spacing-md); color: var(--nds-text); }
+  .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: var(--nds-spacing-xs); width: 100%; }
+  .icon-cell {
+    display: flex; flex-direction: column; align-items: center; gap: var(--nds-spacing-xs);
+    padding: var(--nds-spacing-md) var(--nds-spacing-xs);
+    border: var(--nds-border-width-thin) solid var(--nds-border);
+    border-radius: var(--nds-radius-md);
+    color: var(--nds-text);
+    span { @include text-sm; color: var(--nds-neutral); font-family: var(--nds-font-mono); }
   }
 </style>

@@ -1,33 +1,40 @@
-@use '../../styles/tokens/typography' as *;
+@use "../../styles/tokens/typography" as *;
 
 .tab {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--nds-spacing-xs);
-    justify-content: center;
-    width: fit-content;
-
-    &__item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: fit-content;
-        cursor: pointer;
-        padding: var(--nds-spacing-2xs);
-        @include text-base;
-
-        &--active {
-            color: var(--nds-primary);
-
-            &::after {
-                content: '';
-                display: block;
-                width: 120%;
-                height: 1px;
-                background-color: var(--nds-primary);
-                border-radius: var(--nds-radius-sm);
-            }
-        }
+  display: flex;
+  align-items: stretch;
+  gap: var(--nds-spacing-2xs);
+  border-bottom: 1px solid var(--nds-border);
+  width: fit-content;
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--nds-spacing-2xs);
+    padding: var(--nds-spacing-xs) var(--nds-spacing-sm);
+    cursor: pointer;
+    @include text-label;
+    color: var(--nds-neutral);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition:
+      color 130ms ease,
+      border-color 130ms ease;
+    &:hover {
+      color: var(--nds-text);
     }
+    &--active {
+      color: var(--nds-text);
+      border-bottom-color: var(--nds-primary);
+    }
+  }
+}
+.tab__content {
+  padding-top: var(--nds-spacing-md);
+  @include text-base;
+  color: var(--nds-text);
+  &[hidden] {
+    display: none;
+  }
 }

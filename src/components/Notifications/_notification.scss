@@ -1,61 +1,50 @@
-@use '../../styles/tokens/typography' as *;
+@use "../../styles/tokens/typography" as *;
 
 .notification {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
-  padding: var(--nds-spacing-sm) var(--nds-spacing-xs) ;
-  border-radius: var(--nds-radius-md);
-  @include text-sm;
-  &__error {
-    background-color: var(--nds-error-low);
-    &__close {
-      background: transparent;
-      border: none;
-      color: var(--nds-error-medium);
-      cursor: pointer;
-    }
-    &__content {
-      color: var(--nds-error-high);
-    }
-  }
-  
-  &__success {
-    background-color: var(--nds-success-low);
-    &__close {
-      background: transparent;
-      border: none;
-      color: var(--nds-success-medium);
-      cursor: pointer;
-    }
-    &__content {
-      color: var(--nds-success-high);
-    }
-  }
-  
-  &__warning {
-    background-color: var(--nds-warning-low);
-    &__close {
-      background: transparent;
-      border: none;
-      color: var(--nds-warning-medium);
-      cursor: pointer;
-    }
-    &__content {
-      color: var(--nds-warning-high);
-    }
-  }
-  
+  gap: var(--nds-spacing-sm);
+  padding: var(--nds-spacing-sm) var(--nds-spacing-md);
+  border-radius: var(--nds-radius-lg);
+  background-color: var(--nds-surface);
+  box-shadow: var(--nds-shadow-md);
+  border-left: 3px solid var(--nds-info-medium);
+  @include text-base;
+  max-width: 400px;
   &__info {
-    background-color: var(--nds-info-low);
-    &__close {
-      background: transparent;
-      border: none;
-      color: var(--nds-info-medium);
-      cursor: pointer;
-    }
-    &__content {
-      color: var(--nds-info-high);
+    border-left-color: var(--nds-info-medium);
+  }
+  &__success {
+    border-left-color: var(--nds-success-medium);
+  }
+  &__warning {
+    border-left-color: var(--nds-warning-medium);
+  }
+  &__error {
+    border-left-color: var(--nds-error-medium);
+  }
+  &__info__content,
+  &__success__content,
+  &__warning__content,
+  &__error__content {
+    color: var(--nds-text);
+    flex: 1;
+  }
+  &__info__close,
+  &__success__close,
+  &__warning__close,
+  &__error__close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    color: var(--nds-neutral);
+    padding: 0;
+    border-radius: var(--nds-radius-sm);
+    transition: color 120ms ease;
+    &:hover {
+      color: var(--nds-text);
     }
   }
 }

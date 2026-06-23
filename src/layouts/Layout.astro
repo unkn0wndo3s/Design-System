@@ -1,29 +1,17 @@
 ---
 import '../styles/index.scss';
+interface Props { title?: string; }
+const { title = 'Nova Design System' } = Astro.props;
 ---
-
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Nova Design System</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		min-height: 100%;
-		font-family: var(--nds-font-family-base);
-		background-color: var(--nds-page-low);
-		color: var(--nds-default);
-	}
-</style>

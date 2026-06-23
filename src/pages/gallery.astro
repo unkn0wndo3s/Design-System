@@ -1,0 +1,1144 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Button from "../components/Button/button.astro";
+import Badge from "../components/Badge/badge.astro";
+import Avatar from "../components/Avatar/avatar.astro";
+import Toggle from "../components/Toggle/toggle.astro";
+import Checkbox from "../components/Checkbox/checkbox.astro";
+import Radio from "../components/Radio/radio.astro";
+import TextField from "../components/textField/textField.astro";
+import Select from "../components/Select/select.astro";
+import SelectOption from "../components/Select/selectOption.astro";
+import NumericStepper from "../components/numericStepper/numericStepper.astro";
+import Tab from "../components/Tabs/tab.astro";
+import TabItem from "../components/Tabs/tabItem.astro";
+import TabContent from "../components/Tabs/tabContent.astro";
+import Link from "../components/Link/link.astro";
+import Breadcrumb from "../components/Breadcrumb/breadcrumb.astro";
+import BreadcrumbItem from "../components/Breadcrumb/breadcrumbItem.astro";
+import Pagination from "../components/pagination/pagination.astro";
+import PaginationNumber from "../components/pagination/paginationNumber.astro";
+import Navbar from "../components/Navbar/navbar.astro";
+import Sidebar from "../components/Sidebar/sidebar.astro";
+import SidebarItem from "../components/Sidebar/sidebarItem.astro";
+import Card from "../components/Card/card.astro";
+import ListItem from "../components/ListItem/listItem.astro";
+import ListItemTitle from "../components/ListItem/listItemTitle.astro";
+import ListItemSubtitle from "../components/ListItem/listItemSubtitle.astro";
+import Notification from "../components/Notifications/notification.astro";
+import LoadingBar from "../components/LoadingBar/loadingBar.astro";
+import Tooltip from "../components/Tooltip/tooltip.astro";
+import Modal from "../components/Modal/modal.astro";
+
+import {
+  Arrow2Icon,
+  BinIcon,
+  BurgerIcon,
+  CalendarIcon,
+  CheckIcon,
+  CloseIcon,
+  CodeIcon,
+  CubeIcon,
+  DownloadIcon,
+  FilterIcon,
+  HelpIcon,
+  HomeIcon,
+  LinkIcon,
+  MinusIcon,
+  MoreIcon,
+  OverviewIcon,
+  PlusIcon,
+  ProfileIcon,
+  SearchIcon,
+  SettingsIcon,
+  ShareIcon,
+  ShieldIcon,
+  SortIcon,
+  StatsIcon,
+  UploadIcon,
+} from "../components/Icons/index.ts";
+
+const tones = [
+  "primary",
+  "neutral",
+  "success",
+  "warning",
+  "error",
+  "info",
+] as const;
+const btnTypes = ["primary", "secondary", "ghost", "danger"] as const;
+const sizes = ["sm", "md", "lg"] as const;
+const notifTypes = ["info", "success", "warning", "error"] as const;
+const notifMessages: Record<string, string> = {
+  info: "Information about the operation.",
+  success: "The operation completed successfully.",
+  warning: "A warning occurred. Please check the details.",
+  error: "An error occurred. Please try again.",
+};
+const tooltipPositions = ["top", "bottom", "left", "right"] as const;
+const iconLib = [
+  { name: "Arrow2", Icon: Arrow2Icon },
+  { name: "Bin", Icon: BinIcon },
+  { name: "Burger", Icon: BurgerIcon },
+  { name: "Calendar", Icon: CalendarIcon },
+  { name: "Check", Icon: CheckIcon },
+  { name: "Close", Icon: CloseIcon },
+  { name: "Code", Icon: CodeIcon },
+  { name: "Cube", Icon: CubeIcon },
+  { name: "Download", Icon: DownloadIcon },
+  { name: "Filter", Icon: FilterIcon },
+  { name: "Help", Icon: HelpIcon },
+  { name: "Home", Icon: HomeIcon },
+  { name: "Link", Icon: LinkIcon },
+  { name: "Minus", Icon: MinusIcon },
+  { name: "More", Icon: MoreIcon },
+  { name: "Overview", Icon: OverviewIcon },
+  { name: "Plus", Icon: PlusIcon },
+  { name: "Profile", Icon: ProfileIcon },
+  { name: "Search", Icon: SearchIcon },
+  { name: "Settings", Icon: SettingsIcon },
+  { name: "Share", Icon: ShareIcon },
+  { name: "Shield", Icon: ShieldIcon },
+  { name: "Sort", Icon: SortIcon },
+  { name: "Stats", Icon: StatsIcon },
+  { name: "Upload", Icon: UploadIcon },
+] as const;
+
+const tokenColors = [
+  "text",
+  "neutral",
+  "background",
+  "surface",
+  "surface-2",
+  "border",
+  "primary",
+  "secondary",
+  "accent",
+  "primary-soft",
+  "success-medium",
+  "warning-medium",
+  "error-medium",
+  "info-medium",
+];
+const spacingScale = [
+  ["3xs", "2"],
+  ["2xs", "4"],
+  ["xs", "8"],
+  ["sm", "12"],
+  ["md", "16"],
+  ["lg", "24"],
+  ["xl", "32"],
+  ["2xl", "48"],
+  ["3xl", "64"],
+];
+const radiusScale = ["xs", "sm", "md", "lg", "xl", "2xl", "full"];
+---
+
+<Layout title="Nova Design System — Gallery">
+  <div class="g-page">
+    <header class="g-topbar">
+      <div class="g-brand">
+        <span class="g-mark"></span>
+        <span class="g-name">Nova Design System</span>
+        <Badge type="primary" variant="soft">v0.06</Badge>
+      </div>
+      <Button type="secondary" size="sm" id="theme-btn">Toggle theme</Button>
+    </header>
+
+    <div class="g-layout">
+      <nav class="g-rail">
+        <p class="g-rail__head">Nova DS</p>
+        <a href="#foundations">Foundations</a>
+        <a href="#buttons">Button</a>
+        <a href="#badges">Badge</a>
+        <a href="#controls">Toggle · Check · Radio</a>
+        <a href="#textfield">TextField</a>
+        <a href="#select">Select</a>
+        <a href="#stepper">Numeric stepper</a>
+        <a href="#avatar">Avatar</a>
+        <a href="#loading">Loading bar</a>
+        <a href="#listitem">List item</a>
+        <a href="#link">Link</a>
+        <a href="#tabs">Tabs</a>
+        <a href="#breadcrumb">Breadcrumb</a>
+        <a href="#pagination">Pagination</a>
+        <a href="#notification">Notification</a>
+        <a href="#tooltip">Tooltip</a>
+        <a href="#card">Card</a>
+        <a href="#chrome">Navbar · Sidebar</a>
+        <a href="#modal">Modal</a>
+        <a href="#icons">Icons</a>
+      </nav>
+
+      <main class="g-content">
+        <!-- ── FOUNDATIONS ── -->
+        <section id="foundations" class="blk">
+          <h2>Foundations</h2>
+          <p class="blk__desc">
+            Design tokens — type, color, spacing, radius, elevation.
+          </p>
+
+          <div class="vg">
+            <span class="vg__lbl"
+              >Type scale — Intel One Mono (display) · Geist (UI)</span
+            >
+            <div class="vg__body type-scale">
+              <div class="type-row">
+                <span class="type-tag">text-5xl</span><span class="disp t5xl"
+                  >Nova 52px</span>
+              </div>
+              <div class="type-row">
+                <span class="type-tag">text-4xl</span><span class="disp t4xl"
+                  >Nova 40px</span>
+              </div>
+              <div class="type-row">
+                <span class="type-tag">text-3xl</span><span class="disp t3xl"
+                  >Nova 30px</span>
+              </div>
+              <div class="type-row">
+                <span class="type-tag">text-2xl</span><span class="disp t2xl"
+                  >Nova 22px</span>
+              </div>
+              <div class="type-row">
+                <span class="type-tag">text-xl</span><span class="disp txl"
+                  >Nova 18px</span>
+              </div>
+              <div class="type-row">
+                <span class="type-tag">text-lg</span><span class="sans tlg"
+                  >Nova 16px</span>
+              </div>
+              <div class="type-row">
+                <span class="type-tag">text-base</span><span class="sans tbase"
+                  >Nova 14px</span>
+              </div>
+              <div class="type-row">
+                <span class="type-tag">text-label</span><span
+                  class="sans tlabel">Nova 13px 600</span>
+              </div>
+              <div class="type-row">
+                <span class="type-tag">text-sm</span><span class="sans tsm"
+                  >Nova 12px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Color tokens (adapt to theme)</span>
+            <div class="vg__body swatch-row">
+              {
+                tokenColors.map((t) => (
+                  <div class="swatch">
+                    <div
+                      class="swatch-chip"
+                      style={`background:var(--nds-${t})`}
+                    />
+                    <span class="swatch-name">{t}</span>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Spacing scale</span>
+            <div
+              class="vg__body"
+              style="flex-direction:column;align-items:flex-start;gap:8px;"
+            >
+              {
+                spacingScale.map(([n, px]) => (
+                  <div class="sp-row">
+                    <span class="sp-label">
+                      spacing-{n} · {px}px
+                    </span>
+                    <div class="sp-bar" style={`width:${px}px`} />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Radius scale</span>
+            <div class="vg__body">
+              {
+                radiusScale.map((n) => (
+                  <div
+                    class="rad-chip"
+                    style={`border-radius:var(--nds-radius-${n})`}
+                  >
+                    <span>{n}</span>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Elevation</span>
+            <div class="vg__body">
+              {
+                (["sm", "md", "lg"] as const).map((n) => (
+                  <div
+                    class="elev-chip"
+                    style={`box-shadow:var(--nds-shadow-${n})`}
+                  >
+                    shadow-{n}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <!-- ── BUTTON ── -->
+        <section id="buttons" class="blk">
+          <h2>Button</h2>
+          <p class="blk__desc">Variants, sizes, icon and disabled states.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Variants × md</span>
+            <div class="vg__body">
+              {
+                btnTypes.map((t) => (
+                  <Button type={t} size="md">
+                    {t[0].toUpperCase() + t.slice(1)}
+                  </Button>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Sizes (primary)</span>
+            <div class="vg__body">
+              {
+                sizes.map((s) => (
+                  <Button type="primary" size={s}>
+                    Size {s}
+                  </Button>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">With icon · icon-only</span>
+            <div class="vg__body">
+              <Button type="primary" size="md"
+                ><PlusIcon slot="icon-left" size={16} />New service</Button
+              >
+              <Button type="secondary" size="md"
+                >Filter<FilterIcon slot="icon-right" size={16} /></Button
+              >
+              <Button type="ghost" size="md" icon={true}
+                ><MoreIcon size={18} /></Button
+              >
+              <Button type="primary" size="md" icon={true}
+                ><DownloadIcon size={18} /></Button
+              >
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Disabled</span>
+            <div class="vg__body">
+              {
+                btnTypes.map((t) => (
+                  <Button type={t} size="md" disabled>
+                    {t}
+                  </Button>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <!-- ── BADGE ── -->
+        <section id="badges" class="blk">
+          <h2>Badge</h2>
+          <p class="blk__desc">Tones × soft / solid.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Soft</span>
+            <div class="vg__body">
+              {
+                tones.map((t) => (
+                  <Badge type={t} variant="soft">
+                    {t}
+                  </Badge>
+                ))
+              }
+            </div>
+          </div>
+          <div class="vg">
+            <span class="vg__lbl">Solid</span>
+            <div class="vg__body">
+              {
+                tones.map((t) => (
+                  <Badge type={t} variant="solid">
+                    {t}
+                  </Badge>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <!-- ── CONTROLS ── -->
+        <section id="controls" class="blk">
+          <h2>Toggle · Checkbox · Radio</h2>
+          <p class="blk__desc">Selection controls in every state.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Toggle — off / on</span>
+            <div class="vg__body">
+              <Toggle id="tg-off" />
+              <Toggle id="tg-on" data-checked={true} />
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl"
+              >Checkbox — unchecked / checked / disabled</span
+            >
+            <div class="vg__body">
+              <Checkbox id="cb1">Unchecked</Checkbox>
+              <Checkbox id="cb2" checked>Checked</Checkbox>
+              <Checkbox id="cb3" checked disabled>Disabled</Checkbox>
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Radio group</span>
+            <div
+              class="vg__body"
+              style="flex-direction:column;align-items:flex-start;"
+            >
+              <Radio id="rb1" name="plan" checked>On-demand</Radio>
+              <Radio id="rb2" name="plan">Reserved</Radio>
+              <Radio id="rb3" name="plan" disabled>Spot</Radio>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── TEXTFIELD ── -->
+        <section id="textfield" class="blk">
+          <h2>TextField</h2>
+          <p class="blk__desc">Text, email, password, textarea.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Fields</span>
+            <div
+              class="vg__body"
+              style="flex-direction:column;align-items:stretch;max-width:380px;"
+            >
+              <TextField label="Service name" placeholder="api-gateway" />
+              <TextField
+                label="Email"
+                type="email"
+                placeholder="you@nova.dev"
+              />
+              <TextField
+                label="Password"
+                type="password"
+                placeholder="••••••••"
+              />
+              <TextField
+                label="Message"
+                type="textarea"
+                placeholder="Type here…"
+                max={120}
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- ── SELECT ── -->
+        <section id="select" class="blk">
+          <h2>Select</h2>
+          <p class="blk__desc">Default and disabled.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Select</span>
+            <div class="vg__body">
+              <Select default="option3">
+                <SelectOption value="option1">Option 1</SelectOption>
+                <SelectOption value="option2">Option 2</SelectOption>
+                <SelectOption value="option3">Option 3</SelectOption>
+                <SelectOption value="option4">Option 4</SelectOption>
+                <SelectOption value="option5" disabled>Option 5</SelectOption>
+              </Select>
+              <Select disabled>
+                <SelectOption value="d">Disabled</SelectOption>
+              </Select>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── NUMERIC STEPPER ── -->
+        <section id="stepper" class="blk">
+          <h2>Numeric stepper</h2>
+          <p class="blk__desc">Increment / decrement control.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Stepper</span>
+            <div class="vg__body">
+              <NumericStepper min={-15} max={10} value={5} step={5} id="ns1" />
+            </div>
+          </div>
+        </section>
+
+        <!-- ── AVATAR ── -->
+        <section id="avatar" class="blk">
+          <h2>Avatar</h2>
+          <p class="blk__desc">Photo and initials.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Types</span>
+            <div class="vg__body">
+              <Avatar
+                type="photo"
+                name="John Doe"
+                image="https://i.pravatar.cc/80?img=12"
+              />
+              <Avatar type="initials" name="Ava Stone" />
+              <Avatar type="initials" name="Jane Smith" />
+            </div>
+          </div>
+        </section>
+
+        <!-- ── LOADING BAR ── -->
+        <section id="loading" class="blk">
+          <h2>Loading bar</h2>
+          <p class="blk__desc">Determinate and indeterminate.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Known 75% · indeterminate</span>
+            <div
+              class="vg__body"
+              style="flex-direction:column;align-items:stretch;width:100%"
+            >
+              <LoadingBar type="known" percentage={75} width="100%" />
+              <LoadingBar type="unknown" width="100%" />
+            </div>
+          </div>
+        </section>
+
+        <!-- ── LIST ITEM ── -->
+        <section id="listitem" class="blk">
+          <h2>List item</h2>
+          <p class="blk__desc">Title and subtitle rows.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">List</span>
+            <div
+              class="vg__body"
+              style="flex-direction:column;align-items:stretch;padding:0;gap:0;"
+            >
+              <ListItem>
+                <ListItemTitle>api-gateway</ListItemTitle>
+                <ListItemSubtitle>Edge routing · eu-west-1</ListItemSubtitle>
+              </ListItem>
+              <ListItem>
+                <ListItemTitle>postgres-main</ListItemTitle>
+                <ListItemSubtitle>Database · eu-west-1</ListItemSubtitle>
+              </ListItem>
+              <ListItem>
+                <ListItemTitle>redis-cache</ListItemTitle>
+                <ListItemSubtitle>Cache · eu-west-1</ListItemSubtitle>
+              </ListItem>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── LINK ── -->
+        <section id="link" class="blk">
+          <h2>Link</h2>
+          <p class="blk__desc">Inline and external.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Links</span>
+            <div class="vg__body">
+              <Link url="https://example.com">Documentation</Link>
+              <Link url="https://example.com" blank={true}
+                >Open dashboard ↗</Link
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- ── TABS ── -->
+        <section id="tabs" class="blk">
+          <h2>Tabs</h2>
+          <p class="blk__desc">Underline tabs with panels (interactive).</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Tabs + content</span>
+            <div
+              class="vg__body"
+              style="flex-direction:column;align-items:stretch;"
+            >
+              <Tab id="g-tab" defaultActive="images">
+                <TabItem id="images">Images</TabItem>
+                <TabItem id="videos">Videos</TabItem>
+                <TabItem id="docs">Documents</TabItem>
+              </Tab>
+              <TabContent id="g-tab" itemId="images"
+                ><p>🖼️ Image gallery content.</p></TabContent
+              >
+              <TabContent id="g-tab" itemId="videos"
+                ><p>🎬 Video player here.</p></TabContent
+              >
+              <TabContent id="g-tab" itemId="docs"
+                ><p>📄 Document list here.</p></TabContent
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- ── BREADCRUMB ── -->
+        <section id="breadcrumb" class="blk">
+          <h2>Breadcrumb</h2>
+          <p class="blk__desc">Hierarchical navigation.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Breadcrumb</span>
+            <div class="vg__body">
+              <Breadcrumb>
+                <BreadcrumbItem href="/">Home</BreadcrumbItem>
+                <BreadcrumbItem href="/services">Services</BreadcrumbItem>
+                <BreadcrumbItem current>api-gateway</BreadcrumbItem>
+              </Breadcrumb>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── PAGINATION ── -->
+        <section id="pagination" class="blk">
+          <h2>Pagination</h2>
+          <p class="blk__desc">Page numbers with disabled edges.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Pagination</span>
+            <div class="vg__body">
+              <Pagination defaultPage={3}>
+                <PaginationNumber>1</PaginationNumber>
+                <PaginationNumber>2</PaginationNumber>
+                <PaginationNumber>3</PaginationNumber>
+                <PaginationNumber>4</PaginationNumber>
+                <PaginationNumber disabled>5</PaginationNumber>
+              </Pagination>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── NOTIFICATION ── -->
+        <section id="notification" class="blk">
+          <h2>Notification</h2>
+          <p class="blk__desc">Info, success, warning and error.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">All types</span>
+            <div
+              class="vg__body"
+              style="flex-direction:column;align-items:stretch;max-width:460px;"
+            >
+              {
+                notifTypes.map((t) => (
+                  <Notification type={t}>{notifMessages[t]}</Notification>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <!-- ── TOOLTIP ── -->
+        <section id="tooltip" class="blk">
+          <h2>Tooltip</h2>
+          <p class="blk__desc">Four positions — hover the buttons.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Positions</span>
+            <div class="vg__body">
+              {
+                tooltipPositions.map((pos) => (
+                  <Tooltip label={`Tooltip ${pos}`} position={pos}>
+                    <Button type="secondary" size="md">
+                      {pos[0].toUpperCase() + pos.slice(1)}
+                    </Button>
+                  </Tooltip>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <!-- ── CARD ── -->
+        <section id="card" class="blk">
+          <h2>Card</h2>
+          <p class="blk__desc">With cover, plain and with footer actions.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Cover · plain · with footer</span>
+            <div class="vg__body" style="align-items:flex-start;">
+              <Card
+                title="api-gateway"
+                subtitle="Edge routing · 99.98% uptime"
+                cover="/peak.jpg"
+              >
+                <div slot="footer">
+                  <Badge type="success" variant="soft">Live</Badge>
+                </div>
+              </Card>
+              <Card
+                title="Quick note"
+                subtitle="A plain card without a cover image."
+              />
+              <Card title="Deploy" subtitle="Ship build 4821 to production.">
+                <div slot="footer" style="display:flex;gap:8px;">
+                  <Button type="ghost" size="sm">Cancel</Button>
+                  <Button type="primary" size="sm">Deploy</Button>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── APP CHROME ── -->
+        <section id="chrome" class="blk">
+          <h2>Navbar · Sidebar</h2>
+          <p class="blk__desc">App chrome.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Navbar</span>
+            <div class="vg__body" style="align-items:stretch;padding:0;">
+              <Navbar brand="Nova">
+                <a class="navbar__link navbar__link--active" href="#"
+                  >Services</a
+                >
+                <a class="navbar__link" href="#">Incidents</a>
+                <a class="navbar__link" href="#">Settings</a>
+                <Avatar slot="right" type="initials" name="Ava Stone" />
+              </Navbar>
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Sidebar</span>
+            <div class="vg__body">
+              <Sidebar header="Nova">
+                <SidebarItem href="#" active
+                  ><OverviewIcon slot="icon" size={18} />Overview</SidebarItem
+                >
+                <SidebarItem href="#"
+                  ><StatsIcon slot="icon" size={18} />Metrics</SidebarItem
+                >
+                <SidebarItem href="#"
+                  ><ShieldIcon slot="icon" size={18} />Security</SidebarItem
+                >
+                <SidebarItem href="#"
+                  ><SettingsIcon slot="icon" size={18} />Settings</SidebarItem
+                >
+              </Sidebar>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── MODAL ── -->
+        <section id="modal" class="blk">
+          <h2>Modal</h2>
+          <p class="blk__desc">
+            Overlay dialog — click to open, Escape or overlay to close.
+          </p>
+
+          <div class="vg">
+            <span class="vg__lbl">Dialog</span>
+            <div class="vg__body">
+              <Button type="primary" size="md" data-modal-open="gallery-modal"
+                >Open modal</Button
+              >
+            </div>
+          </div>
+
+          <Modal id="gallery-modal" title="Confirm deploy">
+            Ship build 4821 to production? This rolls out to all edge regions.
+            <Fragment slot="footer">
+              <Button type="ghost" size="md" data-modal-close>Cancel</Button>
+              <Button type="primary" size="md" data-modal-close>Deploy</Button>
+            </Fragment>
+          </Modal>
+        </section>
+
+        <!-- ── ICONS ── -->
+        <section id="icons" class="blk">
+          <h2>Icons</h2>
+          <p class="blk__desc">25 line icons at 16 / 24 / 32 px.</p>
+
+          <div class="vg">
+            <span class="vg__lbl">Arrow2 — orientations × 16 / 24 / 32</span>
+            <div class="vg__body">
+              {
+                ([16, 24, 32] as const).map((s) => (
+                  <span class="icon-line">
+                    <Arrow2Icon size={s} orientation="up" />
+                    <Arrow2Icon size={s} orientation="right" />
+                    <Arrow2Icon size={s} orientation="down" />
+                    <Arrow2Icon size={s} orientation="left" />
+                  </span>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Library — 25 icons at 24px</span>
+            <div class="vg__body" style="display:block;">
+              <div class="icon-grid">
+                {
+                  iconLib.map(({ name, Icon }) => (
+                    <div class="icon-cell">
+                      <Icon size={24} />
+                      <span>{name}</span>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="vg">
+            <span class="vg__lbl">Sizes — 16 / 24 / 32</span>
+            <div class="vg__body">
+              {
+                [SearchIcon, SettingsIcon, ShareIcon, DownloadIcon].map(
+                  (Icon) => (
+                    <span class="icon-line">
+                      <>
+                        <Icon size={16} />
+                        <Icon size={24} />
+                        <Icon size={32} />
+                      </>
+                    </span>
+                  ),
+                )
+              }
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Persisted theme toggle
+  const KEY = "nova-theme";
+  const saved = localStorage.getItem(KEY);
+  if (saved) document.documentElement.setAttribute("data-theme", saved);
+  document.getElementById("theme-btn")?.addEventListener("click", () => {
+    const dark = document.documentElement.getAttribute("data-theme") === "dark";
+    const next = dark ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem(KEY, next);
+  });
+
+  // Smooth rail nav
+  document.querySelectorAll(".g-rail a").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = document.querySelector(
+        (a as HTMLAnchorElement).getAttribute("href")!,
+      );
+      target?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+</script>
+
+<style lang="scss">
+  @use "../styles/tokens/typography" as *;
+
+  .g-page {
+    min-height: 100vh;
+    background-color: var(--nds-background);
+    color: var(--nds-text);
+  }
+
+  // ── Topbar ──
+  .g-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--nds-spacing-md);
+    padding: 12px var(--nds-spacing-lg);
+    border-bottom: var(--nds-border-width-thin) solid var(--nds-border);
+    background: color-mix(in srgb, var(--nds-background) 85%, transparent);
+    backdrop-filter: blur(10px);
+  }
+  .g-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-spacing-xs);
+  }
+  .g-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--nds-radius-md);
+    background: linear-gradient(135deg, var(--nds-primary), var(--nds-accent));
+  }
+  .g-name {
+    @include text-xl;
+  }
+
+  // ── Layout ──
+  .g-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+
+  // ── Rail ──
+  .g-rail {
+    position: sticky;
+    top: 53px;
+    align-self: start;
+    height: calc(100vh - 53px);
+    overflow-y: auto;
+    padding: var(--nds-spacing-md) var(--nds-spacing-sm);
+    border-right: var(--nds-border-width-thin) solid var(--nds-border);
+    background: var(--nds-surface);
+    &__head {
+      @include text-label;
+      color: var(--nds-text);
+      padding: var(--nds-spacing-xs) var(--nds-spacing-xs) var(--nds-spacing-md);
+      margin: 0;
+    }
+    a {
+      display: block;
+      padding: 5px var(--nds-spacing-xs);
+      border-radius: var(--nds-radius-sm);
+      color: var(--nds-neutral);
+      text-decoration: none;
+      @include text-sm;
+      transition:
+        background-color 120ms ease,
+        color 120ms ease;
+      &:hover {
+        background: var(--nds-surface-hover);
+        color: var(--nds-text);
+      }
+    }
+  }
+
+  // ── Content ──
+  .g-content {
+    padding: var(--nds-spacing-2xl) var(--nds-spacing-2xl)
+      var(--nds-spacing-3xl);
+    max-width: 880px;
+  }
+
+  // ── Block ──
+  .blk {
+    margin-bottom: var(--nds-spacing-2xl);
+    scroll-margin-top: var(--nds-spacing-lg);
+    > h2 {
+      @include text-2xl;
+      margin: 0 0 var(--nds-spacing-3xs);
+    }
+    &__desc {
+      @include text-base;
+      color: var(--nds-neutral);
+      margin: 0 0 var(--nds-spacing-lg);
+    }
+  }
+
+  // ── Variant group ──
+  .vg {
+    border: var(--nds-border-width-thin) solid var(--nds-border);
+    border-radius: var(--nds-radius-lg);
+    overflow: hidden;
+    background: var(--nds-surface);
+    & + & {
+      margin-top: var(--nds-spacing-md);
+    }
+
+    &__lbl {
+      display: block;
+      @include text-sm;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--nds-neutral);
+      padding: var(--nds-spacing-xs) var(--nds-spacing-md);
+      border-bottom: var(--nds-border-width-thin) solid var(--nds-border);
+      background: color-mix(in srgb, var(--nds-text) 2.5%, var(--nds-surface));
+    }
+    &__body {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--nds-spacing-md);
+      padding: var(--nds-spacing-lg) var(--nds-spacing-md);
+    }
+  }
+
+  // ── Foundations specimens ──
+  .type-scale {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--nds-spacing-md);
+    padding: var(--nds-spacing-sm) var(--nds-spacing-md);
+    border-bottom: var(--nds-border-width-thin) solid var(--nds-border);
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .type-tag {
+    @include text-sm;
+    font-family: var(--nds-font-mono);
+    color: var(--nds-neutral);
+    width: 80px;
+    flex-shrink: 0;
+  }
+  .disp {
+    font-family: var(--nds-font-mono);
+    font-weight: 700;
+  }
+  .sans {
+    font-family: var(--nds-font-sans);
+  }
+  .t5xl {
+    font-size: 52px;
+  }
+  .t4xl {
+    font-size: 40px;
+  }
+  .t3xl {
+    font-size: 30px;
+  }
+  .t2xl {
+    font-size: 22px;
+  }
+  .txl {
+    font-size: 18px;
+  }
+  .tlg {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .tbase {
+    font-size: 14px;
+  }
+  .tlabel {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .tsm {
+    font-size: 12px;
+  }
+
+  .swatch-row {
+    gap: var(--nds-spacing-sm) !important;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .swatch-chip {
+    width: 80px;
+    height: 44px;
+    border-radius: var(--nds-radius-md);
+    border: var(--nds-border-width-thin) solid var(--nds-border);
+  }
+  .swatch-name {
+    @include text-sm;
+    color: var(--nds-neutral);
+    font-family: var(--nds-font-mono);
+  }
+
+  .sp-row {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-spacing-md);
+  }
+  .sp-label {
+    @include text-sm;
+    color: var(--nds-neutral);
+    font-family: var(--nds-font-mono);
+    width: 160px;
+    flex-shrink: 0;
+  }
+  .sp-bar {
+    height: 14px;
+    background: var(--nds-primary);
+    border-radius: 2px;
+  }
+
+  .rad-chip {
+    width: 72px;
+    height: 72px;
+    background: var(--nds-primary-soft);
+    border: var(--nds-border-width-thin) solid var(--nds-primary);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 6px;
+    span {
+      @include text-sm;
+      color: var(--nds-primary);
+    }
+  }
+  .elev-chip {
+    width: 130px;
+    height: 72px;
+    background: var(--nds-surface);
+    border: var(--nds-border-width-thin) solid var(--nds-border);
+    border-radius: var(--nds-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include text-sm;
+    color: var(--nds-neutral);
+    font-family: var(--nds-font-mono);
+  }
+
+  // ── Icons ──
+  .icon-line {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--nds-spacing-md);
+    color: var(--nds-text);
+  }
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: var(--nds-spacing-xs);
+    width: 100%;
+  }
+  .icon-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--nds-spacing-xs);
+    padding: var(--nds-spacing-md) var(--nds-spacing-xs);
+    border: var(--nds-border-width-thin) solid var(--nds-border);
+    border-radius: var(--nds-radius-md);
+    color: var(--nds-text);
+    span {
+      @include text-sm;
+      color: var(--nds-neutral);
+      font-family: var(--nds-font-mono);
+    }
+  }
+</style>
