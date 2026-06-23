@@ -1,0 +1,23 @@
+---
+export interface Props {
+  header?: string;
+}
+const { header = "Nova" } = Astro.props;
+---
+
+<aside class="sidebar">
+  <div class="sidebar__head">
+    <span class="sidebar__mark"></span>
+    <span class="sidebar__title">{header}</span>
+  </div>
+  <nav class="sidebar__nav">
+    <slot />
+  </nav>
+  <div class="sidebar__footer">
+    <slot name="footer" />
+  </div>
+</aside>
+
+<style lang="scss">
+  @use "./_sidebar.scss";
+</style>

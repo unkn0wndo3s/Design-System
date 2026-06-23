@@ -1,0 +1,67 @@
+@use "../../styles/tokens/typography" as *;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: var(--nds-spacing-sm);
+  background-color: var(--nds-surface);
+  border-right: var(--nds-border-width-thin) solid var(--nds-border);
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-spacing-xs);
+    padding: var(--nds-spacing-xs) var(--nds-spacing-xs) var(--nds-spacing-md);
+  }
+  &__mark {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--nds-radius-md);
+    background: linear-gradient(135deg, var(--nds-primary), var(--nds-accent));
+  }
+  &__title {
+    @include text-xl;
+    font-size: 1rem;
+    color: var(--nds-text);
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-spacing-3xs);
+    flex: 1;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-spacing-xs);
+    padding: var(--nds-spacing-xs) var(--nds-spacing-sm);
+    border-radius: var(--nds-radius-md);
+    text-decoration: none;
+    color: var(--nds-text);
+    @include text-label;
+    font-weight: 500;
+    transition:
+      background-color 120ms ease,
+      color 120ms ease;
+    &:hover {
+      background-color: var(--nds-surface-hover);
+    }
+    &--active {
+      background-color: var(--nds-primary-soft);
+      color: var(--nds-primary);
+      font-weight: 600;
+    }
+  }
+  &__item-icon {
+    display: flex;
+    flex-shrink: 0;
+  }
+  &__footer {
+    padding-top: var(--nds-spacing-sm);
+  }
+}
