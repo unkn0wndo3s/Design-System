@@ -1,0 +1,53 @@
+@use "../../styles/tokens/typography" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nds-surface);
+  border: var(--nds-border-width-thin) solid var(--nds-border);
+  border-radius: var(--nds-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--nds-shadow-sm);
+  width: fit-content;
+  transition:
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+  &:hover {
+    box-shadow: var(--nds-shadow-md);
+  }
+
+  &__cover {
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-spacing-xs);
+    padding: var(--nds-spacing-md);
+  }
+  &__title {
+    @include text-xl;
+    color: var(--nds-text);
+    margin: 0;
+  }
+  &__subtitle {
+    @include text-base;
+    color: var(--nds-neutral);
+    margin: 0;
+  }
+  &__content {
+    @include text-base;
+    color: var(--nds-text);
+    &:empty {
+      display: none;
+    }
+  }
+  &__footer {
+    margin-top: var(--nds-spacing-2xs);
+    display: flex;
+    gap: var(--nds-spacing-xs);
+  }
+}

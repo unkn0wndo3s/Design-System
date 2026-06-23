@@ -1,0 +1,19 @@
+---
+export interface Props {
+  brand?: string;
+}
+const { brand = "Nova" } = Astro.props;
+---
+
+<header class="navbar">
+  <div class="navbar__brand">
+    <span class="navbar__mark"></span>
+    <span class="navbar__title">{brand}</span>
+  </div>
+  <nav class="navbar__links"><slot /></nav>
+  <div class="navbar__right"><slot name="right" /></div>
+</header>
+
+<style lang="scss">
+  @use "./_navbar.scss";
+</style>
