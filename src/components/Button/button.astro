@@ -1,38 +1,40 @@
 ---
 export interface Props {
-  type?:     'primary' | 'secondary' | 'ghost' | 'danger';
-  size?:     'sm' | 'md' | 'lg';
+  type?: "primary" | "secondary" | "ghost" | "danger";
+  size?: "sm" | "md" | "lg";
   disabled?: boolean;
-  icon?:     boolean;
-  href?:     string;
-  htmlType?: 'button' | 'submit' | 'reset';
+  icon?: boolean;
+  href?: string;
+  htmlType?: "button" | "submit" | "reset";
 }
 const {
-  type = 'primary',
-  size = 'md',
+  type = "primary",
+  size = "md",
   disabled = false,
   icon = false,
   href,
-  htmlType = 'button',
+  htmlType = "button",
   ...rest
 } = Astro.props;
 
 const classes = [
-  'button',
+  "button",
   `button__${type}`,
   `button--${size}`,
-  icon ? 'button--icon' : '',
-  disabled ? 'button--disabled' : '',
-].filter(Boolean).join(' ');
+  icon ? "button--icon" : "",
+  disabled ? "button--disabled" : "",
+]
+  .filter(Boolean)
+  .join(" ");
 
-const Tag = href ? 'a' : 'button';
+const Tag = href ? "a" : "button";
 ---
 
 <Tag
   class={classes}
   href={href}
   type={href ? undefined : htmlType}
-  aria-disabled={disabled ? 'true' : undefined}
+  aria-disabled={disabled ? "true" : undefined}
   {...rest}
 >
   <slot name="icon-left" />
@@ -41,5 +43,5 @@ const Tag = href ? 'a' : 'button';
 </Tag>
 
 <style lang="scss">
-@use './_button.scss';
+  @use "./_button.scss";
 </style>

@@ -1,0 +1,45 @@
+@use "../../styles/tokens/typography" as *;
+
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  &__bubble {
+    position: absolute;
+    white-space: nowrap;
+    padding: var(--nds-spacing-2xs) var(--nds-spacing-xs);
+    background-color: var(--nds-text);
+    color: var(--nds-background);
+    border-radius: var(--nds-radius-sm);
+    @include text-sm;
+    font-weight: 500;
+    box-shadow: var(--nds-shadow-md);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 130ms ease;
+  }
+  &:hover &__bubble,
+  &:focus-within &__bubble {
+    opacity: 1;
+  }
+  &--top &__bubble {
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, -6px);
+  }
+  &--bottom &__bubble {
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 6px);
+  }
+  &--left &__bubble {
+    right: 100%;
+    top: 50%;
+    transform: translate(-6px, -50%);
+  }
+  &--right &__bubble {
+    left: 100%;
+    top: 50%;
+    transform: translate(6px, -50%);
+  }
+}

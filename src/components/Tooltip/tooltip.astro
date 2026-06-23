@@ -1,0 +1,16 @@
+---
+export interface Props {
+  label: string;
+  position?: "top" | "bottom" | "left" | "right";
+}
+const { label, position = "top" } = Astro.props;
+---
+
+<span class={`tooltip tooltip--${position}`}>
+  <slot />
+  <span class="tooltip__bubble" role="tooltip">{label}</span>
+</span>
+
+<style lang="scss">
+  @use "./_tooltip.scss";
+</style>

@@ -384,10 +384,16 @@ const libraryIcons = [
 <style lang="scss">
   @use '../styles/tokens/typography' as *;
 
+  body {
+    background-color: var(--nds-surface);
+    color: var(--nds-text);
+    font-family: var(--nds-font-sans);
+  }
   .gallery {
     max-width: 1000px;
     margin: 0 auto;
     padding: var(--nds-spacing-xl) var(--nds-spacing-lg) var(--nds-spacing-3xl);
+    background-color: var(--nds-surface);
   }
 
   .gallery__head {
