@@ -1,0 +1,27 @@
+@use "../../styles/tokens/typography" as *;
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--nds-spacing-xs);
+  @include text-base;
+
+  &__item {
+    text-decoration: none;
+    color: var(--nds-neutral);
+    transition: color 120ms ease;
+    &:hover {
+      color: var(--nds-text);
+    }
+    &:not(:first-child)::before {
+      content: "/";
+      color: var(--nds-disabled);
+      margin-right: var(--nds-spacing-xs);
+    }
+    &--current {
+      color: var(--nds-text);
+      font-weight: 600;
+      pointer-events: none;
+    }
+  }
+}

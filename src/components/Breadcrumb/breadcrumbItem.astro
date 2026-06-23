@@ -1,0 +1,19 @@
+---
+export interface Props {
+  href?: string;
+  current?: boolean;
+}
+const { href = "#", current = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`breadcrumb__item ${current ? "breadcrumb__item--current" : ""}`}
+  aria-current={current ? "page" : undefined}
+>
+  <slot />
+</a>
+
+<style lang="scss">
+  @use "./_breadcrumb.scss";
+</style>

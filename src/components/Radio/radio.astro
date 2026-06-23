@@ -1,0 +1,28 @@
+---
+export interface Props {
+  id: string;
+  name: string;
+  value?: string;
+  checked?: boolean;
+  disabled?: boolean;
+}
+const { id, name, value, checked = false, disabled = false } = Astro.props;
+---
+
+<label class={`radio ${disabled ? "radio--disabled" : ""}`} for={id}>
+  <input
+    type="radio"
+    id={id}
+    name={name}
+    value={value}
+    checked={checked}
+    disabled={disabled}
+    class="radio__input"
+  />
+  <span class="radio__dot" aria-hidden="true"></span>
+  <span class="radio__label"><slot /></span>
+</label>
+
+<style lang="scss">
+  @use "./_radio.scss";
+</style>

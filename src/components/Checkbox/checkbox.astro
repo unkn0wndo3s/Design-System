@@ -1,0 +1,37 @@
+---
+export interface Props {
+  id: string;
+  name?: string;
+  checked?: boolean;
+  disabled?: boolean;
+}
+const { id, name, checked = false, disabled = false } = Astro.props;
+---
+
+<label class={`checkbox ${disabled ? "checkbox--disabled" : ""}`} for={id}>
+  <input
+    type="checkbox"
+    id={id}
+    name={name}
+    checked={checked}
+    disabled={disabled}
+    class="checkbox__input"
+  />
+  <span class="checkbox__box" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M5 13l4 4L19 7"></path>
+    </svg>
+  </span>
+  <span class="checkbox__label"><slot /></span>
+</label>
+
+<style lang="scss">
+  @use "./_checkbox.scss";
+</style>

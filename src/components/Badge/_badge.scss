@@ -1,0 +1,58 @@
+@use "../../styles/tokens/typography" as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nds-spacing-2xs);
+  padding: 3px var(--nds-spacing-xs);
+  border-radius: var(--nds-radius-full);
+  @include text-sm;
+  font-weight: 600;
+  line-height: 1.2;
+  width: fit-content;
+  white-space: nowrap;
+  &__primary {
+    --c: var(--nds-primary);
+    --on: var(--nds-on-primary);
+    --soft: var(--nds-primary-soft);
+  }
+  &__neutral {
+    --c: var(--nds-neutral);
+    --on: var(--nds-surface);
+    --soft: color-mix(in srgb, var(--nds-neutral) 16%, transparent);
+  }
+  &__success {
+    --c: var(--nds-success-medium);
+    --on: #fff;
+    --soft: var(--nds-success-low);
+  }
+  &__warning {
+    --c: var(--nds-warning-medium);
+    --on: #fff;
+    --soft: var(--nds-warning-low);
+  }
+  &__error {
+    --c: var(--nds-error-medium);
+    --on: #fff;
+    --soft: var(--nds-error-low);
+  }
+  &__info {
+    --c: var(--nds-info-medium);
+    --on: #fff;
+    --soft: var(--nds-info-low);
+  }
+  &--soft {
+    background-color: var(--soft);
+    color: var(--c);
+  }
+  &--solid {
+    background-color: var(--c);
+    color: var(--on);
+  }
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--nds-radius-full);
+    background-color: currentColor;
+  }
+}

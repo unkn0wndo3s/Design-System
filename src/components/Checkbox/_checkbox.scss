@@ -1,0 +1,51 @@
+@use "../../styles/tokens/typography" as *;
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nds-spacing-xs);
+  cursor: pointer;
+  @include text-base;
+  color: var(--nds-text);
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  &__box {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--nds-border-width-medium) solid var(--nds-border-strong);
+    border-radius: var(--nds-radius-sm);
+    background-color: var(--nds-surface);
+    color: var(--nds-on-primary);
+    transition: all 130ms ease;
+    svg {
+      width: 12px;
+      height: 12px;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: all 130ms ease;
+    }
+  }
+  &__input:checked + &__box {
+    background-color: var(--nds-primary);
+    border-color: var(--nds-primary);
+    svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  &__input:focus-visible + &__box {
+    box-shadow: 0 0 0 3px var(--nds-ring);
+  }
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
