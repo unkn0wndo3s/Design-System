@@ -1,30 +1,64 @@
-@use '../../styles/tokens/typography' as *;
+@use "../../styles/tokens/typography" as *;
 
 .textField {
   display: flex;
   flex-direction: column;
-  gap: var(--nds-spacing-xs);
+  gap: var(--nds-spacing-2xs);
+  & label {
+    @include text-label;
+    color: var(--nds-text);
+  }
+  &__input,
   &__textarea {
-    background-color: var(--nds-color-background);
-    border: var(--nds-border-width-thin) solid var(--nds-text);
-    border-radius: var(--nds-radius-sm);
-    padding: var(--nds-spacing-sm) var(--nds-spacing-xs) ;
+    background-color: var(--nds-surface);
+    border: var(--nds-border-width-thin) solid var(--nds-border-strong);
+    border-radius: var(--nds-radius-md);
+    padding: 0 var(--nds-spacing-sm);
     @include text-base;
     color: var(--nds-text);
-    min-height: 50px;
-    max-width: 100%;
+    transition:
+      border-color 130ms ease,
+      box-shadow 130ms ease;
+    &::placeholder {
+      color: var(--nds-neutral);
+    }
+    &:hover {
+      border-color: var(--nds-neutral);
+    }
+    &:focus {
+      outline: none;
+      border-color: var(--nds-primary);
+      box-shadow: 0 0 0 3px var(--nds-ring);
+    }
+    &:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+  &__input {
+    height: 38px;
+  }
+  &__textarea {
+    min-height: 84px;
+    padding: var(--nds-spacing-sm);
+    resize: vertical;
+    line-height: 1.5;
   }
   &__charCount {
     @include text-sm;
-    color: var(--nds-text-muted);
-    text-align: left;
+    color: var(--nds-neutral);
+    text-align: right;
   }
-  &__input {
-    background-color: var(--nds-color-background);
-    border: var(--nds-border-width-thin) solid var(--nds-text);
-    border-radius: var(--nds-radius-sm);
-    padding: var(--nds-spacing-sm) var(--nds-spacing-xs) ;
-    @include text-base;
-    color: var(--nds-text);
+  &__error {
+    @include text-sm;
+    color: var(--nds-error-medium);
+  }
+  &--invalid &__input,
+  &--invalid &__textarea {
+    border-color: var(--nds-error-medium);
+    &:focus {
+      box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--nds-error-medium) 35%, transparent);
+    }
   }
 }
