@@ -1,7 +1,7 @@
 {
   "name": "@unkn0wndo3s/nova-design-system",
   "type": "module",
-  "version": "1.00.1",
+  "version": "1.00.2",
   "main": "./src/index.ts",
   "description": "Nova Design System — Astro component library",
   "engines": {
@@ -21,6 +21,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@lucide/astro": "^1.21.0",
     "astro": "^7.0.0"
   },
   "devDependencies": {
