@@ -1,7 +1,11 @@
-<div class='list-item__subTitle'>
-    <slot/>
-</div>
+---
+export interface Props {}
+---
+
+<p class="list-item__subtitle">
+  <slot />
+</p>
 
 <style lang="scss">
-@use './listItem';
+  @use "./_listItem.scss";
 </style>

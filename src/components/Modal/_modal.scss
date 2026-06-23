@@ -1,0 +1,78 @@
+@use "../../styles/tokens/typography" as *;
+
+.modal {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(2, 12, 12, 0.55);
+    backdrop-filter: blur(3px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: var(--nds-spacing-md);
+  }
+  &__dialog {
+    width: min(460px, 100%);
+    background-color: var(--nds-surface);
+    border: var(--nds-border-width-thin) solid var(--nds-border);
+    border-radius: var(--nds-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--nds-shadow-lg);
+    animation: nds-modal-in 180ms cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--nds-spacing-md) var(--nds-spacing-lg);
+    border-bottom: var(--nds-border-width-thin) solid var(--nds-border);
+  }
+  &__title {
+    @include text-xl;
+    color: var(--nds-text);
+  }
+  &__close {
+    background: transparent;
+    border: none;
+    color: var(--nds-neutral);
+    cursor: pointer;
+    display: flex;
+    padding: var(--nds-spacing-3xs);
+    border-radius: var(--nds-radius-sm);
+    transition:
+      color 120ms ease,
+      background-color 120ms ease;
+    &:hover {
+      color: var(--nds-text);
+      background-color: var(--nds-surface-hover);
+    }
+  }
+  &__body {
+    padding: var(--nds-spacing-lg);
+    @include text-base;
+    color: var(--nds-text);
+  }
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--nds-spacing-xs);
+    padding: var(--nds-spacing-md) var(--nds-spacing-lg);
+    border-top: var(--nds-border-width-thin) solid var(--nds-border);
+  }
+}
+
+nds-modal[data-open="true"] .modal__overlay {
+  display: flex;
+}
+
+@keyframes nds-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
