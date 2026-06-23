@@ -41,8 +41,7 @@
   &__textarea {
     min-height: 84px;
     padding: var(--nds-spacing-sm);
-    resize: vertical;
-    width: 100% !important;
+    width: 100%;
     line-height: 1.5;
   }
   &__charCount {
