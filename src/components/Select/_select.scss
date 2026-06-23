@@ -1,71 +1,90 @@
-@use '../../styles/tokens/typography' as *;
+@use "../../styles/tokens/typography" as *;
 
 .select {
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  width: 100%;
+  min-width: 200px;
 
   &__trigger {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--nds-spacing-xs) var(--nds-spacing-md);
-    background-color: var(--nds-neutral);
-    color: var(--nds-text);
-    border: none;
-    border-radius: var(--nds-radius-sm);
-    cursor: pointer;
-    width: 100%;
     gap: var(--nds-spacing-xs);
-
+    height: 38px;
+    padding: 0 var(--nds-spacing-sm);
+    background-color: var(--nds-surface);
+    border: var(--nds-border-width-thin) solid var(--nds-border-strong);
+    border-radius: var(--nds-radius-md);
+    cursor: pointer;
+    @include text-base;
+    color: var(--nds-text);
+    transition:
+      border-color 130ms ease,
+      box-shadow 130ms ease;
     &:hover {
-      background-color: color-mix(in srgb, var(--nds-neutral) 85%, var(--nds-text));
+      border-color: var(--nds-neutral);
+    }
+    &:focus-visible {
+      outline: none;
+      border-color: var(--nds-primary);
+      box-shadow: 0 0 0 3px var(--nds-ring);
+    }
+
+    svg {
+      color: var(--nds-neutral);
+      transition: transform 160ms ease;
+      flex-shrink: 0;
     }
   }
-
-  &__label {
-    flex: 1;
-    text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  &__placeholder {
+    color: var(--nds-neutral);
   }
 
+  &[data-open="true"] &__trigger {
+    border-color: var(--nds-primary);
+  }
+  &[data-open="true"] &__trigger svg {
+    transform: rotate(180deg);
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 40;
+    background-color: var(--nds-surface);
+    border: var(--nds-border-width-thin) solid var(--nds-border);
+    border-radius: var(--nds-radius-md);
+    box-shadow: var(--nds-shadow-md);
+    padding: var(--nds-spacing-3xs);
+    max-height: 240px;
+    overflow-y: auto;
+    display: none;
+  }
   &__arrow {
-    flex-shrink: 0;
     display: flex;
     align-items: center;
-
+    justify-content: center;
     &--hidden {
       display: none;
     }
   }
-
-  &__dropdown {
-    position: absolute;
-    top: calc(100% + var(--nds-spacing-2xs));
-    left: 0;
-    right: 0;
-    background-color: var(--nds-neutral);
-    border-radius: var(--nds-radius-sm);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    z-index: 100;
-    overflow: hidden;
-
-    &[hidden] {
-      display: none;
+  &--disabled {
+    cursor: not-allowed;
+    background-color: var(--nds-surface);
+    color: var(--nds-neutral);
+    border-color: var(--nds-border-strong);
+    opacity: 0.55;
+    & .select__trigger {
+      cursor: not-allowed;
+      &:hover {
+        border-color: var(--nds-border-strong);
+      }
     }
   }
-
-  &--disabled {
-  opacity: 0.5;
-
-  .select__trigger {
-    background-color: var(--nds-disabled);
-    cursor: not-allowed;
+  &[data-open="true"] &__menu {
+    display: block;
   }
-}
 }

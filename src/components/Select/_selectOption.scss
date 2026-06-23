@@ -1,32 +1,28 @@
-@use '../../styles/tokens/typography' as *;
+@use "../../styles/tokens/typography" as *;
 
 .select-option {
-  padding: var(--nds-spacing-xs) var(--nds-spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--nds-spacing-xs);
+  padding: var(--nds-spacing-xs) var(--nds-spacing-sm);
   cursor: pointer;
+  border-radius: var(--nds-radius-sm);
+  @include text-base;
   color: var(--nds-text);
-  background-color: var(--nds-neutral);
-  transition: background-color 0.15s ease;
+  transition: background-color 110ms ease;
 
-  &:hover:not(.select-option__disabled) {
-    background-color: var(--nds-secondary);
+  &:hover {
+    background-color: var(--nds-surface-hover);
   }
-
-  &:active {
-    background-color: var(--nds-accent);
+  &[aria-selected="true"] {
+    color: var(--nds-primary);
+    font-weight: 600;
   }
-
-  &__selected {
-    background-color: var(--nds-primary);
-    color: var(--nds-text);
-
-    &:hover {
-      background-color: color-mix(in srgb, var(--nds-primary) 85%, var(--nds-background));
-    }
-  }
-
   &__disabled {
-    background-color: var(--nds-disabled);
-    color: color-mix(in srgb, var(--nds-text) 40%, transparent);
+    color: var(--nds-disabled);
     cursor: not-allowed;
+    &:hover {
+      background: transparent;
+    }
   }
 }

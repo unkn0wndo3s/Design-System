@@ -29,22 +29,25 @@
   &__links {
     display: flex;
     align-items: center;
-    gap: var(--nds-spacing-2xs);
+    gap: var(--nds-spacing-xs);
     flex: 1;
-  }
-  &__link {
-    padding: var(--nds-spacing-2xs) var(--nds-spacing-sm);
-    border-radius: var(--nds-radius-md);
-    @include text-label;
-    color: var(--nds-neutral);
-    text-decoration: none;
-    transition: all 120ms ease;
-    &:hover {
+
+    :global(.navbar__link) {
+      padding: var(--nds-spacing-2xs) var(--nds-spacing-sm);
+      border-radius: var(--nds-radius-md);
+      @include text-label;
       color: var(--nds-text);
+      text-decoration: none !important;
+      transition: all 120ms ease;
+  
+    }
+    :global(.navbar__link:hover) {
       background-color: var(--nds-surface-hover);
     }
-    &--active {
-      color: var(--nds-text);
+
+    // On cible la variante active globale séparément
+    :global(.navbar__link--active) {
+      color: var(--nds-primary);
     }
   }
   &__right {
