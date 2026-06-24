@@ -1,5 +1,5 @@
 ---
-import { CloseIcon } from "../Icons";
+import { XIcon } from '@lucide/astro'
 
 export interface Props {
   type: "info" | "success" | "warning" | "error";
@@ -21,7 +21,7 @@ const { type } = Astro.props;
     aria-label="Close notification"
     onclick={`document.getElementById('${notificationUUID}')?.remove()`}
   >
-    <CloseIcon size={16} label="Close notification" />
+    <XIcon size={16} />
   </button>
 </div>
 

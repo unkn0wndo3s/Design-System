@@ -31,6 +31,8 @@ import LoadingBar from "../components/LoadingBar/loadingBar.astro";
 import Tooltip from "../components/Tooltip/tooltip.astro";
 import Modal from "../components/Modal/modal.astro";
 
+import { Plus, Shield, ListFilter, Download, Ellipsis, LayoutGrid, ChartLine, Settings } from "@lucide/astro";
+
 import {
   Arrow2Icon,
   BinIcon,
@@ -327,16 +329,16 @@ const radiusScale = ["xs", "sm", "md", "lg", "xl", "2xl", "full"];
             <span class="vg__lbl">With icon · icon-only</span>
             <div class="vg__body">
               <Button type="primary" size="md"
-                ><PlusIcon slot="icon-left" size={16} />New service</Button
+                ><Plus slot="icon-left" size={16} />New service</Button
               >
               <Button type="secondary" size="md"
-                >Filter<FilterIcon slot="icon-right" size={16} /></Button
+                >Filter<ListFilter slot="icon-right" size={16} /></Button
               >
               <Button type="ghost" size="md" icon={true}
-                ><MoreIcon size={18} /></Button
+                ><Ellipsis size={18} /></Button
               >
               <Button type="primary" size="md" icon={true}
-                ><DownloadIcon size={18} /></Button
+                ><Download size={18} /></Button
               >
             </div>
           </div>
@@ -505,6 +507,8 @@ const radiusScale = ["xs", "sm", "md", "lg", "xl", "2xl", "full"];
               />
               <Avatar type="initials" name="Ava Stone" />
               <Avatar type="initials" name="Jane Smith" />
+              <Avatar type="photo" name="Bob Johnson"
+                image="https://i.pravatarc/80?img=12"/>
             </div>
           </div>
         </section>
@@ -730,16 +734,16 @@ const radiusScale = ["xs", "sm", "md", "lg", "xl", "2xl", "full"];
             <div class="vg__body">
               <Sidebar header="Nova">
                 <SidebarItem href="#" active
-                  ><OverviewIcon slot="icon" size={18} />Overview</SidebarItem
+                  ><LayoutGrid slot="icon" size={18} />Overview</SidebarItem
                 >
                 <SidebarItem href="#"
-                  ><StatsIcon slot="icon" size={18} />Metrics</SidebarItem
+                  ><ChartLine slot="icon" size={18} />Metrics</SidebarItem
                 >
                 <SidebarItem href="#"
-                  ><ShieldIcon slot="icon" size={18} />Security</SidebarItem
+                  ><Shield slot="icon" size={18} />Security</SidebarItem
                 >
                 <SidebarItem href="#"
-                  ><SettingsIcon slot="icon" size={18} />Settings</SidebarItem
+                  ><Settings slot="icon" size={18} />Settings</SidebarItem
                 >
               </Sidebar>
             </div>
@@ -774,23 +778,6 @@ const radiusScale = ["xs", "sm", "md", "lg", "xl", "2xl", "full"];
         <!-- ── ICONS ── -->
         <section id="icons" class="blk">
           <h2>Icons</h2>
-          <p class="blk__desc">25 line icons at 16 / 24 / 32 px.</p>
-
-          <div class="vg">
-            <span class="vg__lbl">Arrow2 — orientations × 16 / 24 / 32</span>
-            <div class="vg__body">
-              {
-                ([16, 24, 32] as const).map((s) => (
-                  <span class="icon-line">
-                    <Arrow2Icon size={s} orientation="up" />
-                    <Arrow2Icon size={s} orientation="right" />
-                    <Arrow2Icon size={s} orientation="down" />
-                    <Arrow2Icon size={s} orientation="left" />
-                  </span>
-                ))
-              }
-            </div>
-          </div>
 
           <div class="vg">
             <span class="vg__lbl">Library — 25 icons at 24px</span>
@@ -805,25 +792,6 @@ const radiusScale = ["xs", "sm", "md", "lg", "xl", "2xl", "full"];
                   ))
                 }
               </div>
-            </div>
-          </div>
-
-          <div class="vg">
-            <span class="vg__lbl">Sizes — 16 / 24 / 32</span>
-            <div class="vg__body">
-              {
-                [SearchIcon, SettingsIcon, ShareIcon, DownloadIcon].map(
-                  (Icon) => (
-                    <span class="icon-line">
-                      <>
-                        <Icon size={16} />
-                        <Icon size={24} />
-                        <Icon size={32} />
-                      </>
-                    </span>
-                  ),
-                )
-              }
             </div>
           </div>
         </section>

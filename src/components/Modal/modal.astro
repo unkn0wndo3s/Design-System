@@ -1,5 +1,5 @@
 ---
-import { CloseIcon } from "../Icons";
+import { XIcon } from '@lucide/astro'
 
 export interface Props {
   id: string;
@@ -21,7 +21,7 @@ const hasFooter = Astro.slots.has("footer");
       <div class="modal__head">
         <span class="modal__title">{title}</span>
         <button class="modal__close" data-modal-close aria-label="Close">
-          <CloseIcon size={18} label="Close" />
+          <XIcon size={18} />
         </button>
       </div>
       <div class="modal__body"><slot /></div>

@@ -1,5 +1,5 @@
 ---
-import Arrow2 from '../Icons/Arrow2/Arrow2.astro';
+import { ChevronLeft, ChevronDown } from '@lucide/astro'
 
 export interface Props {
   default?: string;
@@ -23,10 +23,10 @@ const { default: defaultValue, disabled = false, value } = Astro.props;
     disabled={disabled}
   >
     <span class="select__label"></span><span class="select__arrow select__arrow--closed">
-      <Arrow2 size={16} orientation="left" />
+      <ChevronLeft size={16} />
     </span>
     <span class="select__arrow select__arrow--open select__arrow--hidden">
-      <Arrow2 size={16} orientation="down" />
+      <ChevronDown size={16} />
     </span>
   </button>
 

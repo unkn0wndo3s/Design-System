@@ -1,6 +1,6 @@
 ---
 import Button from '../Button/button.astro';
-import { MinusIcon, PlusIcon } from '../Icons';
+import { Minus, Plus } from '@lucide/astro'
 
 export interface Props {
   id: string;
@@ -24,7 +24,7 @@ const { id, min, max, value = 0, step = 1 } = Astro.props;
 >
   <span class="numeric-stepper__control" data-action="increment">
     <Button type="ghost" icon={true}>
-      <MinusIcon size={24} />
+      <Minus size={24} />
     </Button>
   </span>
   
@@ -32,7 +32,7 @@ const { id, min, max, value = 0, step = 1 } = Astro.props;
   
   <span class="numeric-stepper__control" data-action="decrement">
     <Button type="ghost" icon={true}>
-      <PlusIcon size={24} />
+      <Plus size={24} />
     </Button>
   </span>
 </div>
