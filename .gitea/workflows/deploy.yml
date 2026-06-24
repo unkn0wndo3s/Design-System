@@ -1,0 +1,60 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'package.json'   # Triggers only if package.json changes
+
+jobs:
+  check-and-deploy:
+    runs-on: ubuntu-latest
+    # Mount the local Apache folder into this job
+    volumes:
+      - /var/www/design-system:/var/www/design-system
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # Needed to compare with previous commit
+
+      - name: Check if version changed
+        id: version_check
+        run: |
+          PREV=$(git show HEAD~1:package.json | node -p "require('/dev/stdin').version" 2>/dev/null || echo "none")
+          CURR=$(node -p "require('./package.json').version")
+          echo "prev=$PREV"
+          echo "curr=$CURR"
+          if [ "$PREV" != "$CURR" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Node
+        if: steps.version_check.outputs.changed == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        if: steps.version_check.outputs.changed == 'true'
+        run: npm ci --legacy-peer-deps
+
+      - name: Build documentation
+        if: steps.version_check.outputs.changed == 'true'
+        run: npm run build
+
+      - name: Deploy to Apache volume
+        if: steps.version_check.outputs.changed == 'true'
+        run: |
+          # Clean old documentation files
+          rm -rf /var/www/design-system/*
+          
+          # Copy the new build (replace 'dist' if your build output directory is different)
+          cp -r dist/* /var/www/design-system/
+          
+          # Fix permissions so Apache can read the raw files properly
+          chmod -R 755 /var/www/design-system/
