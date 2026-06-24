@@ -31,7 +31,6 @@ jobs:
         run: npm run build
 
       - name: Deploy to Apache volume
-        if: steps.version_check.outputs.changed == 'true'
         run: |
           find /var/www/design-system -mindepth 1 -delete
           
