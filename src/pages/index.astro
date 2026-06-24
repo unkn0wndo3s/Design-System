@@ -33,34 +33,6 @@ import Modal from "../components/Modal/modal.astro";
 
 import { Plus, Shield, ListFilter, Download, Ellipsis, LayoutGrid, ChartLine, Settings } from "@lucide/astro";
 
-import {
-  Arrow2Icon,
-  BinIcon,
-  BurgerIcon,
-  CalendarIcon,
-  CheckIcon,
-  CloseIcon,
-  CodeIcon,
-  CubeIcon,
-  DownloadIcon,
-  FilterIcon,
-  HelpIcon,
-  HomeIcon,
-  LinkIcon,
-  MinusIcon,
-  MoreIcon,
-  OverviewIcon,
-  PlusIcon,
-  ProfileIcon,
-  SearchIcon,
-  SettingsIcon,
-  ShareIcon,
-  ShieldIcon,
-  SortIcon,
-  StatsIcon,
-  UploadIcon,
-} from "../components/Icons/index.ts";
-
 const tones = [
   "primary",
   "neutral",
@@ -79,33 +51,6 @@ const notifMessages: Record<string, string> = {
   error: "An error occurred. Please try again.",
 };
 const tooltipPositions = ["top", "bottom", "left", "right"] as const;
-const iconLib = [
-  { name: "Arrow2", Icon: Arrow2Icon },
-  { name: "Bin", Icon: BinIcon },
-  { name: "Burger", Icon: BurgerIcon },
-  { name: "Calendar", Icon: CalendarIcon },
-  { name: "Check", Icon: CheckIcon },
-  { name: "Close", Icon: CloseIcon },
-  { name: "Code", Icon: CodeIcon },
-  { name: "Cube", Icon: CubeIcon },
-  { name: "Download", Icon: DownloadIcon },
-  { name: "Filter", Icon: FilterIcon },
-  { name: "Help", Icon: HelpIcon },
-  { name: "Home", Icon: HomeIcon },
-  { name: "Link", Icon: LinkIcon },
-  { name: "Minus", Icon: MinusIcon },
-  { name: "More", Icon: MoreIcon },
-  { name: "Overview", Icon: OverviewIcon },
-  { name: "Plus", Icon: PlusIcon },
-  { name: "Profile", Icon: ProfileIcon },
-  { name: "Search", Icon: SearchIcon },
-  { name: "Settings", Icon: SettingsIcon },
-  { name: "Share", Icon: ShareIcon },
-  { name: "Shield", Icon: ShieldIcon },
-  { name: "Sort", Icon: SortIcon },
-  { name: "Stats", Icon: StatsIcon },
-  { name: "Upload", Icon: UploadIcon },
-] as const;
 
 const tokenColors = [
   "text",
@@ -783,14 +728,14 @@ const radiusScale = ["xs", "sm", "md", "lg", "xl", "2xl", "full"];
             <span class="vg__lbl">Library — 25 icons at 24px</span>
             <div class="vg__body" style="display:block;">
               <div class="icon-grid">
-                {
+                <!-- {
                   iconLib.map(({ name, Icon }) => (
                     <div class="icon-cell">
                       <Icon size={24} />
                       <span>{name}</span>
                     </div>
                   ))
-                }
+                } -->
               </div>
             </div>
           </div>
