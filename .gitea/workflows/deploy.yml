@@ -31,8 +31,10 @@ jobs:
         run: npm run build
 
       - name: Deploy to Apache volume
+        if: steps.version_check.outputs.changed == 'true'
         run: |
-          rm -rf /var/www/design-system
-          mkdir -p /var/www/design-system
+          find /var/www/design-system -mindepth 1 -delete
+          
           cp -r dist/. /var/www/design-system/
+          
           chmod -R 755 /var/www/design-system/
