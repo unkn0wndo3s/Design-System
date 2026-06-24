@@ -11,9 +11,10 @@ on:
 jobs:
   check-and-deploy:
     runs-on: ubuntu-latest
-    # Mount the local Apache folder into this job
-    volumes:
-      - /var/www/design-system:/var/www/design-system
+
+    container:
+      volumes:
+        - /var/www/design-system:/var/www/design-system
 
     steps:
       - name: Checkout
@@ -51,14 +52,10 @@ jobs:
       - name: Deploy to Apache volume
         if: steps.version_check.outputs.changed == 'true'
         run: |
-          # Clean old documentation files
           rm -rf /var/www/design-system
           
-          # 2. Recreate the fresh, empty directory
           mkdir -p /var/www/design-system
           
-          # Copy the new build (replace 'dist' if your build output directory is different)
-          cp -r dist/* /var/www/design-system/
+          cp -r dist/. /var/www/design-system/
           
-          # Fix permissions so Apache can read the raw files properly
           chmod -R 755 /var/www/design-system/
