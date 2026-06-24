@@ -1,14 +1,14 @@
 {
   "name": "@unkn0wndo3s/nova-design-system",
   "type": "module",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Nova Design System — Astro component library",
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "LICENSE.md",
   "author": "Unkn0wn",
   "main": "./src/index.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://git.novaprojects.dev/unkn0wn/nova-design-system.git"
+    "url": "https://git.novaprojects.dev/unkn0wn/nova-design-system.git"
   },
   "bugs": {
     "url": "https://git.novaprojects.dev/unkn0wn/nova-design-system/issues"
