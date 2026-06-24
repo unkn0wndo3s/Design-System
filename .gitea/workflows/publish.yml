@@ -43,7 +43,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.version_check.outputs.changed == 'true'
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Publish
         if: steps.version_check.outputs.changed == 'true'
