@@ -20,9 +20,7 @@ const hasFooter = Astro.slots.has("footer");
     >
       <div class="modal__head">
         <span class="modal__title">{title}</span>
-        <!-- <button  data-modal-close > -->
           <XIcon data-modal-close class="modal__close" size={18} aria-label="Close"/>
-        <!-- </button> -->
       </div>
       <div class="modal__body"><slot /></div>
       {
