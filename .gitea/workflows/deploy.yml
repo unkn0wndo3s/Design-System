@@ -13,14 +13,16 @@ jobs:
     runs-on: host
 
     steps:
-      - name: Checkout Code
+      - name: Install Node.js requirements for Actions
         run: |
-          if [ -d ".git" ]; then
-            git fetch --depth=2
-            git reset --hard FETCH_HEAD
-          else
-            git clone --depth=2 https://git.novaprojects.dev/unkn0wn/nova-design-system.git .
+          if ! command -v node &> /dev/null; then
+            apk add --no-cache nodejs npm
           fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Install dependencies
         if: steps.version_check.outputs.changed == 'true'
