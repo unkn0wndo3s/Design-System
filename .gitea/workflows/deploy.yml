@@ -19,7 +19,7 @@ jobs:
             git fetch --depth=2
             git reset --hard FETCH_HEAD
           else
-            git clone --depth=2 https://${{ gitea.server_url }}/${{ gitea.repository }}.git .
+            git clone --depth=2 https://git.novaprojects.dev/unkn0wn/nova-design-system.git .
           fi
 
       - name: Check if version changed
