@@ -22,22 +22,6 @@ jobs:
             git clone --depth=2 https://git.novaprojects.dev/unkn0wn/nova-design-system.git .
           fi
 
-      - name: Check if version changed
-        id: version_check
-        run: |
-          PREV=$(git show HEAD~1:package.json | node -p "require('/dev/stdin').version" 2>/dev/null || echo "none")
-          CURR=$(node -p "require('./package.json').version")
-          echo "prev=$PREV"
-          echo "curr=$CURR"
-          if [ "$PREV" != "$CURR" ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-          fi
-       
-       
-       
-          Nabla
       - name: Install dependencies
         if: steps.version_check.outputs.changed == 'true'
         run: npm ci --legacy-peer-deps
