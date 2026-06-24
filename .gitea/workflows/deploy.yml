@@ -5,22 +5,18 @@ on:
     branches:
       - main
     paths:
-      - 'package.json'   # Triggers only if package.json changes
+      - 'package.json'
   workflow_dispatch:
 
 jobs:
   check-and-deploy:
-    runs-on: ubuntu-latest
-
-    container:
-      volumes:
-        - /var/www/design-system:/var/www/design-system
+    runs-on: host
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2   # Needed to compare with previous commit
+          fetch-depth: 2
 
       - name: Check if version changed
         id: version_check
@@ -34,13 +30,10 @@ jobs:
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
-
-      - name: Setup Node
-        if: steps.version_check.outputs.changed == 'true'
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
+       
+       
+       
+          Nabla
       - name: Install dependencies
         if: steps.version_check.outputs.changed == 'true'
         run: npm ci --legacy-peer-deps
@@ -53,9 +46,6 @@ jobs:
         if: steps.version_check.outputs.changed == 'true'
         run: |
           rm -rf /var/www/design-system
-          
           mkdir -p /var/www/design-system
-          
           cp -r dist/. /var/www/design-system/
-          
           chmod -R 755 /var/www/design-system/
