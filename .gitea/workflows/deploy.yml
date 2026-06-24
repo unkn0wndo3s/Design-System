@@ -25,15 +25,12 @@ jobs:
           fetch-depth: 2
 
       - name: Install dependencies
-        if: steps.version_check.outputs.changed == 'true'
         run: npm ci --legacy-peer-deps
 
       - name: Build documentation
-        if: steps.version_check.outputs.changed == 'true'
         run: npm run build
 
       - name: Deploy to Apache volume
-        if: steps.version_check.outputs.changed == 'true'
         run: |
           rm -rf /var/www/design-system
           mkdir -p /var/www/design-system
