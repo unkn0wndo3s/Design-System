@@ -23,7 +23,7 @@ Nova Design System (NDS) is a lightweight, responsive UI component library built
 NDS provides a focused set of reusable Astro components with centralized design tokens, light/dark theming, and a strong focus on consistency and maintainability. The component documentation and showcase are also built with Astro.
 
 ## Project Status
-> **ALPHA** — The library is under active development. Current version: `1.01.0`. Component APIs, token naming, and internal architecture may change before a stable release.
+> **ALPHA** — The library is under active development. Current version: `1.2.1`. Component APIs, token naming, and internal architecture may change before a stable release.
 
 ## Core Principles
 
