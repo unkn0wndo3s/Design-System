@@ -4,7 +4,23 @@
   "version": "1.1.1",
   "description": "Nova Design System — Astro component library",
   "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Unkn0wn",
   "main": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.novaprojects.dev/unkn0wn/nova-design-system.git"
+  },
+  "bugs": {
+    "url": "https://git.novaprojects.dev/unkn0wn/nova-design-system/issues"
+  },
+  "homepage": "https://git.novaprojects.dev/unkn0wn/nova-design-system#readme",
+  "keywords": [
+    "astro",
+    "astro-components",
+    "design-system",
+    "ui-library",
+    "nova"
+  ],
   "engines": {
     "node": ">=22.12.0"
   },
@@ -14,7 +30,8 @@
   },
   "files": [
     "src",
-    "LICENSE.md"
+    "LICENSE.md",
+    "README.md"
   ],
   "scripts": {
     "dev": "astro dev",
