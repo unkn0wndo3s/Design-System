@@ -13,10 +13,14 @@ jobs:
     runs-on: host
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
+      - name: Checkout Code
+        run: |
+          if [ -d ".git" ]; then
+            git fetch --depth=2
+            git reset --hard FETCH_HEAD
+          else
+            git clone --depth=2 https://${{ gitea.server_url }}/${{ gitea.repository }}.git .
+          fi
 
       - name: Check if version changed
         id: version_check
