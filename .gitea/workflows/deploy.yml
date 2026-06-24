@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'package.json'   # Triggers only if package.json changes
+  workflow_dispatch:
 
 jobs:
   check-and-deploy:
