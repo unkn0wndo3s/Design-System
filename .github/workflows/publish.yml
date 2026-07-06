@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'package.json'   # se déclenche uniquement si package.json change
+      - 'package.json'
+  workflow_dispatch:
 
 jobs:
   check-and-publish:
@@ -15,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2   # pour pouvoir comparer avec le commit précédent
+          fetch-depth: 2 
 
       - name: Check if version changed
         id: version_check
