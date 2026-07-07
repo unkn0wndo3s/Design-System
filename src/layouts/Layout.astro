@@ -1,7 +1,9 @@
 ---
 import '../styles/index.scss';
+import { inject } from '@vercel/analytics';
 interface Props { title?: string; }
 const { title = 'Nova Design System' } = Astro.props;
+inject();
 ---
 <!doctype html>
 <html lang="en" data-theme="dark">
