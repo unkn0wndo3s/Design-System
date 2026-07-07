@@ -40,7 +40,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@lucide/astro": "^1.21.0"
+    "@lucide/astro": "^1.21.0",
+    "@vercel/speed-insights": "^2.0.0"
   },
   "peerDependencies": {
     "astro": "^7.0.0"
