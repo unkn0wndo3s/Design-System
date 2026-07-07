@@ -1,5 +1,6 @@
 ---
 import '../styles/index.scss';
+import SpeedInsights from '@vercel/speed-insights/astro';
 interface Props { title?: string; }
 const { title = 'Nova Design System' } = Astro.props;
 ---
@@ -13,5 +14,6 @@ const { title = 'Nova Design System' } = Astro.props;
   </head>
   <body>
     <slot />
+    <SpeedInsights />
   </body>
 </html>
