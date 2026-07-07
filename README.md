@@ -1,6 +1,6 @@
-# Nova Design System (NDS)
+# Nova Design System — Vue 3
 
-Nova Design System (NDS) is a lightweight, responsive UI component library built with **Astro**. It is developed primarily for internal and personal projects, and is publicly available for reference and contributions.
+Vue 3 + TypeScript port of the Nova Design System (Astro). Same tokens, same BEM SCSS, but all interactivity relies on Vue's reactivity: `v-model`, `defineModel`, `provide`/`inject`, named slots — zero `document.querySelector`, zero custom elements.
 
 ---
 
@@ -13,17 +13,21 @@ Nova Design System (NDS) is a lightweight, responsive UI component library built
 5. [Design Tokens](#user-content-design-tokens)
 6. [Installation](#user-content-installation)
 7. [Usage](#user-content-usage)
-8. [Development](#user-content-development)
-9. [License](#user-content-license)
+8. [Interactive Components API](#user-content-interactive-components-api)
+9. [Named Slots](#user-content-named-slots)
+10. [Differences from the Astro version](#user-content-differences-from-the-astro-version)
+11. [Development](#user-content-development)
+12. [License](#user-content-license)
 
 ---
 
 ## Overview
 
-NDS provides a focused set of reusable Astro components with centralized design tokens, light/dark theming, and a strong focus on consistency and maintainability. The component documentation and showcase are also built with Astro.
+This package is the Vue 3 port of the Nova Design System, distributed **on the same npm package** as the Astro version (`@unkn0wndo3s/nova-design-system`), under the `vue` dist-tag. Design tokens, SCSS/BEM naming, and the visual component API remain identical across versions; only the interactivity layer changes paradigm.
 
 ## Project Status
-> **ALPHA** — The library is under active development. Current version: `1.2.1`. Component APIs, token naming, and internal architecture may change before a stable release.
+
+> **ALPHA** — The port is under active development. Current version: `1.2.1-vue` (based on Astro version `1.2.1`). Component APIs, token naming, and internal architecture may change before a stable release.
 
 ## Core Principles
 
@@ -35,102 +39,117 @@ NDS provides a focused set of reusable Astro components with centralized design 
 
 ## Available Components
 
-These are the components currently exported from the package (`src/components/index.ts`):
+Interactive components with Vue-managed state:
 
-| Component                                         | Category     |
-| -------------------------------------------------- | ------------ |
-| `Button`                                           | Actions      |
-| `Toggle`                                           | Actions      |
-| `NumericStepper`                                   | Actions      |
-| `Select` / `SelectOption`                          | Actions      |
-| `TextField`                                        | Forms        |
-| `Checkbox`                                         | Forms        |
-| `Radio`                                            | Forms        |
-| `Tab` / `TabItem` / `TabContent`                   | Navigation   |
-| `Link`                                             | Navigation   |
-| `Breadcrumb` / `BreadcrumbItem`                    | Navigation   |
-| `Pagination` / `PaginationNumber`                  | Navigation   |
-| `Navbar`                                           | Navigation   |
-| `Sidebar` / `SidebarItem`                          | Navigation   |
-| `Avatar`                                           | Data Display |
-| `Badge`                                            | Data Display |
-| `Card`                                             | Data Display |
-| `ListItem` / `ListItemTitle` / `ListItemSubtitle`  | Data Display |
-| `Notification`                                     | Feedback     |
-| `LoadingBar`                                       | Feedback     |
-| `Tooltip`                                          | Feedback     |
-| `Modal`                                            | Overlay      |
+| Component | Category |
+|---|---|
+| `Button` | Actions |
+| `Toggle` | Actions |
+| `NumericStepper` | Actions |
+| `Select` / `SelectOption` | Actions |
+| `TextField` | Forms |
+| `Checkbox` | Forms |
+| `Radio` | Forms |
+| `Tab` / `TabItem` / `TabContent` | Navigation |
+| `Pagination` / `PaginationNumber` | Navigation |
+| `Sidebar` / `SidebarItem` | Navigation |
+| `Navbar` | Navigation |
+| `Card` | Data Display |
+| `Modal` | Overlay |
+| `Notification` | Feedback |
 
-> Icons are no longer shipped as standalone NDS components. As of `1.00.3`, all icons used internally (e.g. in `Select`, `Avatar`, `Notification`, `numericStepper`) come directly from the **[`@lucide/astro`](https://www.npmjs.com/package/@lucide/astro)** package. See `ATTRIBUTION.md` for details.
+> Icons come from **[`lucide-vue-next`](https://www.npmjs.com/package/lucide-vue-next)**, the Vue equivalent of `@lucide/astro` used on the Astro side. See `ATTRIBUTION.md` for the full mapping.
 
 ## Design Tokens
 
-All styling is controlled via CSS custom properties prefixed with `--nds-`, defined in `src/styles/tokens/`:
+Tokens are strictly shared with the Astro version (same SCSS files, same `--nds-*` variables):
 
-| File               | Contents                                                                  |
-| ------------------ | ------------------------------------------------------------------------- |
-| `_colors.scss`     | Color palette and semantic colors (`success`, `warning`, `error`, `info`) |
-| `_spacing.scss`    | Base spacing scale, border radius, and border width                       |
-| `_typography.scss` | Font families, sizes, and weights                                         |
+| File | Contents |
+|---|---|
+| `_colors.scss` | Color palette and semantic colors (`success`, `warning`, `error`, `info`) |
+| `_spacing.scss` | Spacing scale, border radius, border width |
+| `_typography.scss` | Font families, sizes, weights |
 
 **Rules:**
 
-- Never hardcode colors, spacing, or radii in component styles when a token exists.
-- Never override tokens locally in component scope unless explicitly supported.
-- All global token changes must go through the core styling system.
+- Never hardcode a color, spacing, or radius when a token exists.
+- Never override a token locally unless explicitly supported.
+- Any global token change goes through the central styling system (shared with Astro).
 
 ## Installation
 
 Requires **Node.js >= 22.12.0**.
 
 ```bash
-npm install @unkn0wndo3s/nova-design-system
+npm install @unkn0wndo3s/nova-design-system@vue
 ```
 
-No extra Vite de-optimization configuration is required.
+```ts
+// main.ts
+import '@unkn0wndo3s/nova-design-system/style.css'; // if styles are exported separately
+```
 
 ## Usage
 
-Import components directly from the package:
+```vue
+<script setup lang="ts">
+import { ref } from 'vue';
+import { Select, SelectOption, Toggle, Modal, Button } from '@unkn0wndo3s/nova-design-system';
 
-```astro
----
-import { Button } from '@unkn0wndo3s/nova-design-system';
----
+const country = ref('fr');
+const enabled = ref(false);
+const open = ref(false);
+</script>
 
-<Button>Click me</Button>
+<template>
+  <Toggle v-model="enabled" id="notif" />
+
+  <Select v-model="country" @change="({ value, label }) => console.log(value, label)">
+    <SelectOption value="fr">France</SelectOption>
+    <SelectOption value="be">Belgium</SelectOption>
+  </Select>
+
+  <Button @click="open = true">Open</Button>
+  <Modal v-model:open="open" title="Confirmation">
+    Content
+    <template #footer>
+      <Button type="secondary" @click="open = false">Close</Button>
+    </template>
+  </Modal>
+</template>
 ```
 
-```astro
----
-import { Notification } from '@unkn0wndo3s/nova-design-system';
----
+## Interactive Components API
 
-<Notification type="warning">
-  This is a warning message.
-</Notification>
-```
+| Component | v-model | Events | Notes |
+|---|---|---|---|
+| `Toggle` | `v-model` (boolean) | — | keyboard accessible (`role="switch"`) |
+| `Checkbox` | `v-model` (boolean) | — | |
+| `Radio` | `v-model` (string) | — | shared `v-model` per group, `value` per button |
+| `TextField` | `v-model` (string) | — | reactive character counter if `max` + `type="textarea"` |
+| `NumericStepper` | `v-model` (number) | — | `min` / `max` / `step`, automatic clamping |
+| `Select` | `v-model` (string) | `@change({ value, label })` | options via slot + `SelectOption`, closes on outside click / Escape |
+| `Tab` | `v-model:active` (string) | `@change(itemId)` | falls back to `defaultActive`, otherwise the first `TabItem` |
+| `Pagination` | `v-model` (number) | `@change(page)` | `PaginationNumber` takes a `page` prop |
+| `Modal` | `v-model:open` (boolean) | — | closes on Escape, overlay click, close button; `#footer` slot |
+| `Notification` | — | `@close` | removes itself from the DOM on close-button click |
 
-```astro
----
-import { Modal } from '@unkn0wndo3s/nova-design-system';
----
+## Named Slots
 
-<Modal>
-  This is a modal dialog.
-</Modal>
-```
+- `Button`: `#icon-left`, default, `#icon-right`
+- `Card` / `Modal`: `#footer` (conditionally rendered via `$slots.footer`)
+- `Sidebar`: default + `#footer`; `SidebarItem`: `#icon`
+- `Navbar`: default + `#right`
 
-```astro
----
-import { Breadcrumb, BreadcrumbItem } from '@unkn0wndo3s/nova-design-system';
----
+## Differences from the Astro version
 
-<Breadcrumb>
-  <BreadcrumbItem href="/">Home</BreadcrumbItem>
-  <BreadcrumbItem href="/docs">Docs</BreadcrumbItem>
-</Breadcrumb>
-```
+- Custom elements (`nds-select`, `nds-modal`, `toggle-switch`) and all DOM `<script>` tags are replaced by Vue state.
+- `Select`/`SelectOption`, `Tab`/`TabItem`/`TabContent`, and `Pagination`/`PaginationNumber` communicate via typed `provide`/`inject` (`InjectionKey`) instead of custom DOM events.
+- `PaginationNumber` takes an explicit `page` prop instead of reading `textContent`.
+- `TabContent` no longer needs the group's `id` (handled by context), only `item-id`.
+- Icons: `@lucide/astro` → `lucide-vue-next`.
+- The SCSS (tokens + BEM components) is reused as-is.
+- Publishing: same npm package as the Astro version, distinguished by dist-tag (`latest` = Astro, `vue` = Vue) and a version suffix (`-vue`).
 
 ## Development
 
@@ -138,6 +157,7 @@ import { Breadcrumb, BreadcrumbItem } from '@unkn0wndo3s/nova-design-system';
 
 ```bash
 git clone https://git.novaprojects.dev/unkn0wn/nova-design-system.git
+git checkout main-vue
 ```
 
 ### Install dependencies
@@ -149,60 +169,20 @@ npm install
 ### Start the dev server
 
 ```bash
-npm run dev
+npm run dev        # demo in src/demo/App.vue
 ```
 
 ### Useful scripts
 
 ```bash
-npm run build    # Build the project
-npm run preview  # Preview the production build
-```
-
-### Project Structure
-
-```text
-src/
-├── components/            # Astro components
-│   ├── Avatar/
-│   ├── Badge/
-│   ├── Breadcrumb/
-│   ├── Button/
-│   ├── Card/
-│   ├── Checkbox/
-│   ├── Link/
-│   ├── ListItem/
-│   ├── LoadingBar/
-│   ├── Modal/
-│   ├── Navbar/
-│   ├── Notifications/
-│   ├── numericStepper/
-│   ├── pagination/
-│   ├── Radio/
-│   ├── Select/
-│   ├── Sidebar/
-│   ├── Tabs/
-│   ├── textField/
-│   ├── Toggle/
-│   ├── Tooltip/
-│   └── index.ts
-├── layouts/                # Astro layouts
-├── pages/                  # Documentation pages
-├── styles/
-│   ├── tokens/
-│   │   ├── _colors.scss
-│   │   ├── _spacing.scss
-│   │   └── _typography.scss
-│   └── index.scss
-└── index.ts
+npm run typecheck  # vue-tsc
+npm run build
 ```
 
 ## Contributing
 
-Contributions are welcome. To report a bug, suggest a feature, or open a Pull Request, follow the repository contribution rules and templates.
-
-NDS no longer maintains a custom set of icon components — icons are sourced from the **[Lucide](https://lucide.dev/)** icon set via `@lucide/astro`. If a needed icon isn't in Lucide, open an issue to discuss it before adding any new icon dependency.
+Contributions are welcome. To report a bug, suggest a feature, or open a Pull Request, follow the repository's contribution rules and templates.
 
 ## License
 
-This project is **not distributed under a standard open-source license**. Usage, redistribution, commercial use, and derivative work rules are defined in `LICENSE.md`. Read that file carefully before using the library in a product or service.
+This project is **not distributed under a standard open-source license**. Usage, redistribution, commercial use, and derivative work rules are defined in `LICENSE.md` (shared with the Astro version). Read that file carefully before using the library in a product or service.

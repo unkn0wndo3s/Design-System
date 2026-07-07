@@ -1,9 +1,9 @@
-name: Publish to npm
+name: Publish to npm (Vue)
 
 on:
   push:
     branches:
-      - main
+      - main-vue
     paths:
       - 'package.json'
   workflow_dispatch:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2 
+          fetch-depth: 2
 
       - name: Check if version changed
         id: version_check
@@ -25,6 +25,7 @@ jobs:
           CURR=$(node -p "require('./package.json').version")
           echo "prev=$PREV"
           echo "curr=$CURR"
+          echo "curr_version=$CURR" >> $GITHUB_OUTPUT
           if [ "$PREV" != "$CURR" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
@@ -46,6 +47,10 @@ jobs:
         if: steps.version_check.outputs.changed == 'true'
         run: npm ci --legacy-peer-deps
 
+      - name: Set Vue publish version
+        if: steps.version_check.outputs.changed == 'true'
+        run: npm pkg set version="${{ steps.version_check.outputs.curr_version }}-vue"
+
       - name: Publish
         if: steps.version_check.outputs.changed == 'true'
-        run: npm publish
+        run: npm publish --tag vue

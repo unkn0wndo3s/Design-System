@@ -31,8 +31,13 @@
     align-items: center;
     gap: var(--nds-spacing-xs);
     flex: 1;
-
-    :global(.navbar__link) {
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-spacing-sm);
+  }
+  &__link {
       padding: var(--nds-spacing-2xs) var(--nds-spacing-sm);
       border-radius: var(--nds-radius-md);
       @include text-label;
@@ -40,19 +45,15 @@
       text-decoration: none !important;
       transition: all 120ms ease;
   
-    }
-    :global(.navbar__link:hover) {
+    
+    &:hover {
       background-color: var(--nds-surface-hover);
     }
 
     // On cible la variante active globale séparément
-    :global(.navbar__link--active) {
+    &--active {
       color: var(--nds-primary);
     }
   }
-  &__right {
-    display: flex;
-    align-items: center;
-    gap: var(--nds-spacing-sm);
-  }
 }
+
